@@ -1,0 +1,18 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+	"settings":
+	{
+		"less2css":
+		{
+			"autoCompile": false,
+			"minify": false,
+			"main_file": "ING-style-3.0.less",
+			"outputDir": "www_dev/css"
+		}
+	}
+}
