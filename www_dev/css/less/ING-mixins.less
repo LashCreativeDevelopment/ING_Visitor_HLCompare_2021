@@ -1,0 +1,146 @@
+/*
+ * ING Direct Mixins LESS
+ */
+
+.xs-row (@weight: 1.0) { 
+	#grid-system > .make-row(@grid-gutter-xs * @weight); 
+}
+.sm-row (@weight: 1.0) { 
+	@media @from-sm {
+		#grid-system > .make-row(@grid-gutter-sm * @weight); 
+	}
+}
+.md-row (@weight: 1.0) {
+	@media @from-md {
+		#grid-system > .make-row(@grid-gutter-md * @weight); 
+	}
+}
+.lg-row (@weight: 1.0) { 
+	@media @from-lg { 
+		#grid-system > .make-row(@grid-gutter-lg * @weight); 
+	}
+}
+
+.xs-column(@columns, @weight: 1.0) {
+	#grid-system > .make-grid-column(@columns, @grid-gutter-xs * @weight);
+}
+.sm-column(@columns, @weight: 1.0) {
+	@media @from-sm {
+		#grid-system > .make-grid-column(@columns, @grid-gutter-sm * @weight);
+	}
+}
+.md-column(@columns, @weight: 1.0) {
+  @media @from-md {
+  	#grid-system > .make-grid-column(@columns, @grid-gutter-md * @weight);
+  }
+}
+.lg-column(@columns, @weight: 1.0) {
+  @media @from-lg {
+  	#grid-system > .make-grid-column(@columns, @grid-gutter-lg * @weight);
+  }
+}
+
+
+// override grid system mixins
+#grid-system {
+
+	// Creates a wrapper for a series of columns
+	.make-row(@gutter: @grid-gutter-width) {
+	  margin-left:  (@gutter / -2);
+	  margin-right: (@gutter / -2);
+	  .clearfix();
+	}
+
+	// percentage grid system 
+	.make-percentage-column(@percentage; @gutter: @grid-gutter-width) {
+	  position: relative;
+	  float: left;
+	  width: @percentage;
+	  // Prevent columns from collapsing when empty
+	  min-height: 1px;
+	  // Inner gutter via padding
+	  padding-left:  (@gutter / 2);
+	  padding-right: (@gutter / 2);
+
+	}
+
+	// normal grid system
+	.make-grid-column(@columns; @gutter: @grid-gutter-width) {
+		.make-percentage-column(percentage((@columns / @grid-columns)), @gutter);
+	}
+}
+
+
+// media queries: ;
+@only-xs:				~"all and (max-width: @{screen-xs-max})";
+@only-sm:				~"all and (min-width: @{screen-sm}) and (max-width: @{screen-sm-max})";
+@only-md:				~"all and (min-width: @{screen-md}) and (max-width: @{screen-md-max})";
+@only-lg:				~"all and (min-width: @{screen-lg})";
+@from-sm:				~"all and (min-width: @{screen-sm})";
+@from-md:				~"all and (min-width: @{screen-md})";
+@from-lg:				@only-lg;
+
+
+
+// margin, padding
+@default-padding:						20px;
+@default-margin:						20px;
+
+.padding-top(@weight: 1) 		{ padding-top: @default-padding * @weight; }
+.padding-bottom(@weight: 1) { padding-bottom: @default-padding * @weight; }
+.padding-left(@weight: 1) 	{ padding-left: @default-padding * @weight; }
+.padding-right(@weight: 1) 	{ padding-right: @default-padding * @weight; }
+.padding-clear() {
+	.padding-top(0);
+	.padding-bottom(0);
+	.padding-left(0);
+	.padding-right(0);
+}
+.margin-top(@weight: 1) 		{ margin-top: @default-margin * @weight; }
+.margin-bottom(@weight: 1) 	{ margin-bottom: @default-margin * @weight; }
+.margin-left(@weight: 1) 		{ margin-left: @default-margin * @weight; }
+.margin-right(@weight: 1) 	{ margin-right: @default-margin * @weight; }
+.margin-clear() {
+	.margin-top(0);
+	.margin-bottom(0);
+	.margin-left(0);
+	.margin-right(0);
+}
+
+
+// double background colored layer
+.double-background-color(@top-color:@color-bg-white, @bottom-color:@color-bg-gray) {
+	background-color: @top-color;
+	position: relative;
+	z-index: 0;
+
+	&:before {
+	  content: '';
+	  z-index: -1;
+	  position: absolute;
+	  left: 0;
+	  right: 0;
+	  width: 100%;
+	  height: 50%;
+	  bottom: 0;
+	  margin-left: auto;
+	  margin-right: auto;
+	  background-color: @bottom-color;
+	}
+}
+
+.text-left {
+	text-align: left !important;
+}
+.text-center {
+	text-align: center !important;
+}
+.text-right {
+	text-align: right !important;
+}
+
+.block-center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}

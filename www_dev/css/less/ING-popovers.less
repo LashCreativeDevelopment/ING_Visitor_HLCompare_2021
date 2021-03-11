@@ -1,0 +1,229 @@
+/*
+ * ING Direct Popover LESS
+ */
+
+@border-radius-large:									5px;
+
+@popover-bg:                          @color-tooltip-bg;
+@popover-text-color:									@ING-blue;
+@popover-width:                       400px;//276px;
+@popover-min-width:                   250px;
+@popover-max-width:                   500px;      
+@popover-border-color:                @color-tooltip-border;
+@popover-fallback-border-color:       #ccc;
+
+@popover-title-bg:                    darken(@popover-bg, 3%);
+
+@popover-arrow-width:                 10px;
+@popover-arrow-color:                 @color-tooltip-bg;
+
+@popover-arrow-outer-width:           (@popover-arrow-width + 1);
+@popover-arrow-outer-color:           @color-tooltip-border;
+@popover-arrow-outer-fallback-color:  #999;
+
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: @zindex-popover;
+  display: none;
+  max-width: @popover-width;
+  &.small {
+    max-width: @popover-min-width;
+  }
+  &.large {
+    max-width: @popover-max-width;
+  }
+  padding: 1px;
+  color: @popover-text-color;
+  text-align: left; // Reset given new insertion method
+  background-color: @popover-bg;
+  background-clip: padding-box;
+  border: 1px solid @popover-fallback-border-color;
+  border: 1px solid @popover-border-color;
+  border-radius: @border-radius-large;
+  .box-shadow(0 5px 10px rgba(0,0,0,.2));
+
+  // Overrides for proper insertion
+  white-space: normal;
+
+  // Offset the popover to account for the popover arrow
+  &.top     { margin-top: -10px; }
+  &.right   { margin-left: 10px; }
+  &.bottom  { margin-top: 10px; }
+  &.left    { margin-left: -10px; }
+}
+
+@media @only-xs {
+  .popover {
+    display: none !important;
+  }
+  .always-show {
+    display: block !important;
+    left: 10px !important;
+    right: 10px !important;
+  }
+}
+
+.popover-title {
+  margin: 0; // reset heading margin
+  padding: 8px 14px;
+  font-size: @font-size-base;
+  font-weight: normal;
+  line-height: 18px;
+  background-color: @popover-title-bg;
+  border-bottom: 1px solid darken(@popover-title-bg, 5%);
+  border-radius: 5px 5px 0 0;
+  color: @white;
+}
+
+.popover-content {
+  padding: 15px 20px;
+  font-size: 15px;
+  h4 {
+    color: @ING-blue;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+}
+
+// Arrows
+//
+// .arrow is outer, .arrow:after is inner
+
+.popover .arrow {
+  &,
+  &:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+  }
+}
+.popover .arrow {
+  border-width: @popover-arrow-outer-width;
+}
+.popover .arrow:after {
+  border-width: @popover-arrow-width;
+  content: "";
+}
+
+.popover {
+  &.top .arrow {
+    left: 50%;
+    margin-left: -@popover-arrow-outer-width;
+    border-bottom-width: 0;
+    border-top-color: @popover-arrow-outer-fallback-color; // IE8 fallback
+    border-top-color: @popover-arrow-outer-color;
+    bottom: -@popover-arrow-outer-width;
+    &:after {
+      content: " ";
+      bottom: 1px;
+      margin-left: -@popover-arrow-width;
+      border-bottom-width: 0;
+      border-top-color: @popover-arrow-color;
+    }
+  }
+  &.right .arrow {
+    top: 50%;
+    left: -@popover-arrow-outer-width;
+    margin-top: -@popover-arrow-outer-width;
+    border-left-width: 0;
+    border-right-color: @popover-arrow-outer-fallback-color; // IE8 fallback
+    border-right-color: @popover-arrow-outer-color;
+    &:after {
+      content: " ";
+      left: 1px;
+      bottom: -@popover-arrow-width;
+      border-left-width: 0;
+      border-right-color: @popover-arrow-color;
+    }
+  }
+  &.bottom .arrow {
+    left: 50%;
+    margin-left: -@popover-arrow-outer-width;
+    border-top-width: 0;
+    border-bottom-color: @popover-arrow-outer-fallback-color; // IE8 fallback
+    border-bottom-color: @popover-arrow-outer-color;
+    top: -@popover-arrow-outer-width;
+    &:after {
+      content: " ";
+      top: 1px;
+      margin-left: -@popover-arrow-width;
+      border-top-width: 0;
+      border-bottom-color: @popover-arrow-color;
+    }
+  }
+
+  &.left .arrow {
+    top: 50%;
+    right: -@popover-arrow-outer-width;
+    margin-top: -@popover-arrow-outer-width;
+    border-right-width: 0;
+    border-left-color: @popover-arrow-outer-fallback-color; // IE8 fallback
+    border-left-color: @popover-arrow-outer-color;
+    &:after {
+      content: " ";
+      right: 1px;
+      border-right-width: 0;
+      border-left-color: @popover-arrow-color;
+      bottom: -@popover-arrow-width;
+    }
+  }
+}
+
+.popover-style {
+  &:hover, &:focus {
+    cursor: pointer;
+  }
+}
+@media @only-xs {
+  .popover-style {
+    &:hover, &:focus {
+      cursor: default !important;
+    }
+  }
+}
+
+.popover-content {
+  p {
+    margin-bottom: 10px;
+  }
+  a, a:hover, a:focus {
+    color: @ING-orange;
+  }
+  a > p {
+    margin-bottom: 0;
+  }
+}
+
+.popover-arrow {
+  .circle-icon;
+  .arrow;
+}
+
+.popover-question {
+  .icon;
+  .icon-question;
+  .orange;
+}
+
+.popover-close {
+  .icon-font;
+  .icon-close;
+  color: @ING-blue;
+  font-size: 13px;
+  font-weight: bold;
+
+  position: absolute; 
+  top: 10px !important;
+  right: 10px;  
+  margin-right: 0;
+
+  &:hover, &:focus {
+    cursor: pointer;
+  }
+}
+

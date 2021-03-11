@@ -1,0 +1,1126 @@
+/*
+// Utilities
+@import "mixins/hide-text.less";
+@import "mixins/opacity.less";
+@import "mixins/image.less";
+@import "mixins/labels.less";
+@import "mixins/reset-filter.less";
+@import "mixins/resize.less";
+@import "mixins/responsive-visibility.less";
+@import "mixins/size.less";
+@import "mixins/tab-focus.less";
+@import "mixins/reset-text.less";
+@import "mixins/text-emphasis.less";
+@import "mixins/text-overflow.less";
+@import "mixins/vendor-prefixes.less";
+
+// Components
+@import "mixins/alerts.less";
+@import "mixins/buttons.less";
+@import "mixins/panels.less";
+@import "mixins/pagination.less";
+@import "mixins/list-group.less";
+@import "mixins/nav-divider.less";
+@import "mixins/forms.less";
+@import "mixins/progress-bar.less";
+@import "mixins/table-row.less";
+
+// Skins
+@import "mixins/background-variant.less";
+@import "mixins/border-radius.less";
+@import "mixins/gradients.less";
+
+// Layout
+@import "mixins/clearfix.less";
+@import "mixins/center-block.less";
+@import "mixins/nav-vertical-align.less";
+@import "mixins/grid-framework.less";
+@import "mixins/grid.less";
+*/
+/*
+ * ING Direct Variables LESS
+ */
+/*
+ * ING Direct Mixins LESS
+ */
+.text-left {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media all and (max-width: 767px) {
+  small,
+  .small {
+    font-size: 12px;
+  }
+}
+@media all and (min-width: 768px) {
+  small,
+  .small {
+    font-size: 12px;
+  }
+}
+@media all and (min-width: 980px) {
+  small,
+  .small {
+    font-size: 12px;
+  }
+}
+.filter-base {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: block;
+  width: 100%;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #444444;
+  vertical-align: middle;
+  text-align: left;
+  background-image: none;
+  outline: none !important;
+  -webkit-transition: border-color 0.3s, background-color 0.3s, border-radius 0.3s;
+  transition: border-color 0.3s, background-color 0.3s, border-radius 0.3s;
+  background-color: transparent;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
+  border-bottom-color: #cccccc;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.no-touch .filter-base:hover {
+  background-color: #ffffff;
+  border-color: #ED5F00;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.no-touch .filter-base.no-hover:hover {
+  background-color: transparent;
+  border-color: transparent;
+  border-bottom-color: #cccccc;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.filter-base:focus {
+  background-color: #ffffff;
+  border-color: #ED5F00;
+  color: #444444;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.filter-base.active,
+.open .filter-base {
+  background-color: #ffffff;
+  padding-top: 8px;
+  padding-bottom: 9px;
+  padding-left: 19px;
+  padding-right: 19px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-right-width: 2px;
+  border-color: #ED5F00;
+  border-bottom-color: #cccccc !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.filter-radio-group {
+  display: flex;
+}
+label.filter-radio input[type="radio"] + span {
+  margin-bottom: 10px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+}
+label.filter-radio input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+label.filter-radio input[type="radio"] + span {
+  display: block;
+  position: relative;
+  height: 50px;
+  padding: 13px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 24px;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+label.filter-radio input[type="radio"]:focus + span {
+  border: 1px solid #ff6600 !important;
+}
+label.filter-radio input[type="radio"]:checked + span {
+  background-color: #ff6600;
+  color: #ffffff;
+}
+label.filter-radio:first-child input[type="radio"] + span {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+label.filter-radio:last-child input[type="radio"] + span {
+  border-right: 1px solid #cccccc;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.filter-input {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: block;
+  width: 100%;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #444444;
+  vertical-align: middle;
+  text-align: left;
+  background-image: none;
+  outline: none !important;
+  -webkit-transition: border-color 0.3s, background-color 0.3s, border-radius 0.3s;
+  transition: border-color 0.3s, background-color 0.3s, border-radius 0.3s;
+  background-color: transparent;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
+  border-bottom-color: #cccccc;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  height: 50px;
+}
+.no-touch .filter-input:hover {
+  background-color: #ffffff;
+  border-color: #ED5F00;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.no-touch .filter-input.no-hover:hover {
+  background-color: transparent;
+  border-color: transparent;
+  border-bottom-color: #cccccc;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.filter-input:focus {
+  background-color: #ffffff;
+  border-color: #ED5F00;
+  color: #444444;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.filter-input.active,
+.open .filter-input {
+  background-color: #ffffff;
+  padding-top: 8px;
+  padding-bottom: 9px;
+  padding-left: 19px;
+  padding-right: 19px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-right-width: 2px;
+  border-color: #ED5F00;
+  border-bottom-color: #cccccc !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.filter-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: block;
+  width: 100%;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #444444;
+  vertical-align: middle;
+  text-align: left;
+  background-image: none;
+  outline: none !important;
+  -webkit-transition: border-color 0.3s, background-color 0.3s, border-radius 0.3s;
+  transition: border-color 0.3s, background-color 0.3s, border-radius 0.3s;
+  background-color: transparent;
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent;
+  border-bottom-color: #cccccc;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  height: 50px;
+  touch-action: manipulation;
+  cursor: pointer;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.no-touch .filter-button:hover {
+  background-color: #ffffff;
+  border-color: #ED5F00;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.no-touch .filter-button.no-hover:hover {
+  background-color: transparent;
+  border-color: transparent;
+  border-bottom-color: #cccccc;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.filter-button:focus {
+  background-color: #ffffff;
+  border-color: #ED5F00;
+  color: #444444;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.filter-button.active,
+.open .filter-button {
+  background-color: #ffffff;
+  padding-top: 8px;
+  padding-bottom: 9px;
+  padding-left: 19px;
+  padding-right: 19px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-right-width: 2px;
+  border-color: #ED5F00;
+  border-bottom-color: #cccccc !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.filter-button.disabled,
+.filter-button[disabled],
+fieldset[disabled] .filter-button {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.filter-button.style-doubleline {
+  height: 60px;
+}
+.filter-button .initial-placeholder {
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.open .filter-button .initial-placeholder {
+  opacity: 1;
+}
+@media all and (max-width: 767px) {
+  .filter-button ~ .filter-symbol {
+    font-size: 12px;
+  }
+}
+@media all and (min-width: 768px) {
+  .filter-button ~ .filter-symbol {
+    font-size: 12px;
+  }
+}
+@media all and (min-width: 980px) {
+  .filter-button ~ .filter-symbol {
+    font-size: 12px;
+  }
+}
+.filter-symbol {
+  position: absolute;
+  display: block;
+  width: 20px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+  pointer-events: none;
+  height: 22px;
+  color: #aaaaaa;
+}
+.filter-symbol,
+.filter-symbol span,
+.filter-symbol span:before {
+  line-height: 22px;
+}
+.filter-placeholder {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  color: #777777;
+  height: 22px;
+  top: 14px;
+  left: 0;
+  padding-left: 20px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.filter-button.style-doubleline + .filter-placeholder {
+  top: 19px;
+}
+.filter-input:focus + .filter-placeholder,
+.filter-input.has-content + .filter-placeholder,
+.filter-container.open .filter-placeholder,
+.filter-button.has-content + .filter-placeholder {
+  top: -20px;
+  padding-left: 0;
+}
+@media all and (max-width: 767px) {
+  .filter-input:focus + .filter-placeholder,
+  .filter-input.has-content + .filter-placeholder,
+  .filter-container.open .filter-placeholder,
+  .filter-button.has-content + .filter-placeholder {
+    font-size: 12px;
+  }
+}
+@media all and (min-width: 768px) {
+  .filter-input:focus + .filter-placeholder,
+  .filter-input.has-content + .filter-placeholder,
+  .filter-container.open .filter-placeholder,
+  .filter-button.has-content + .filter-placeholder {
+    font-size: 12px;
+  }
+}
+@media all and (min-width: 980px) {
+  .filter-input:focus + .filter-placeholder,
+  .filter-input.has-content + .filter-placeholder,
+  .filter-container.open .filter-placeholder,
+  .filter-button.has-content + .filter-placeholder {
+    font-size: 12px;
+  }
+}
+.symbol-money .filter-input:focus ~ .filter-symbol,
+.symbol-money .filter-input.has-content ~ .filter-symbol {
+  opacity: 1 !important;
+}
+.filter-message {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+}
+@media all and (max-width: 767px) {
+  .filter-message {
+    font-size: 12px;
+  }
+}
+@media all and (min-width: 768px) {
+  .filter-message {
+    font-size: 12px;
+  }
+}
+@media all and (min-width: 980px) {
+  .filter-message {
+    font-size: 12px;
+  }
+}
+.filter-container {
+  position: relative;
+  margin-bottom: 0;
+  -webkit-transition: margin-bottom 0.3s;
+  transition: margin-bottom 0.3s;
+}
+.filter-container.symbol-left .filter-input,
+.filter-container.symbol-left .filter-button {
+  padding-left: 40px;
+}
+.filter-container.symbol-left .filter-input.active,
+.filter-container.symbol-left .filter-button.active {
+  padding-left: 39px;
+}
+.filter-container.symbol-left .filter-symbol {
+  left: 20px;
+  text-align: left;
+}
+.filter-container.symbol-left .filter-placeholder {
+  padding-left: 40px;
+}
+.filter-container.symbol-left .filter-input:focus + .filter-placeholder {
+  padding-left: 0;
+}
+.filter-container.symbol-right .filter-input,
+.filter-container.symbol-right .filter-button {
+  padding-right: 40px;
+}
+.filter-container.symbol-right .filter-input.active,
+.filter-container.symbol-right .filter-button.active {
+  padding-right: 39px;
+}
+.filter-container.symbol-right .filter-symbol {
+  right: 20px;
+  text-align: right;
+}
+.filter-container.symbol-money .filter-input {
+  padding-left: 30px;
+}
+.filter-container.symbol-money .filter-symbol {
+  opacity: 0;
+  left: 20px;
+  text-align: left;
+  color: #444444;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.filter-container.placeholder {
+  margin-top: 20px;
+}
+.filter-container.error {
+  margin-bottom: 20px;
+}
+.filter-container.error .filter-input,
+.filter-container.error .filter-button {
+  border-bottom-color: #F40818;
+}
+.filter-container.error .filter-message {
+  display: block;
+  color: #F40818;
+}
+.filter-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  float: left;
+  width: 100%;
+  max-height: 180px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  background-color: #ffffff;
+  color: #444444;
+  border-width: 2px;
+  border-top-width: 0;
+  border-style: solid;
+  border-color: #ED5F00;
+  background-clip: padding-box;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  display: none;
+}
+.open .filter-menu {
+  display: block;
+}
+.filter-menu-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+  text-align: left;
+  max-height: 180px;
+}
+.filter-menu-list > li,
+.filter-menu-list .filter-menu-cell {
+  padding-left: 20px;
+  padding-right: 40px;
+  font-size: 15px;
+  line-height: 1.5;
+  position: relative;
+  -webkit-transition: background-color 0.2s, color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+}
+.no-touch .filter-menu-list > li.menu:hover,
+.no-touch .filter-menu-list .filter-menu-cell.menu:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+.filter-menu-list > li.menu:active,
+.filter-menu-list .filter-menu-cell.menu:active {
+  background-color: #ff6600 !important;
+  color: #ffffff;
+}
+.filter-menu-list > li.header,
+.filter-menu-list .filter-menu-cell.header {
+  font-weight: bold;
+}
+.filter-menu-list > li.divider,
+.filter-menu-list .filter-menu-cell.divider {
+  height: 1px;
+  overflow: hidden;
+  background-color: #cccccc;
+  margin: 5px 0;
+}
+.filter-menu-list.style-singleline > li,
+.filter-menu-list.style-singleline .filter-menu-cell {
+  height: 40px;
+}
+.filter-menu-list.style-doubleline > li,
+.filter-menu-list.style-doubleline .filter-menu-cell {
+  height: 60px;
+}
+.filter-menu-list.style-tripleline > li,
+.filter-menu-list.style-tripleline .filter-menu-cell {
+  height: 90px;
+}
+.filter-info {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+}
+.filter-info .filter-info-container {
+  display: table-cell;
+  vertical-align: middle;
+}
+.content-style-default .main {
+  font-weight: bold;
+}
+.content-style-default .main:before,
+.content-style-default .main:after {
+  content: " ";
+  display: table;
+}
+.content-style-default .main:after {
+  clear: both;
+}
+.content-style-default .main .title {
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.content-style-default .main .total {
+  float: right;
+  text-align: right;
+  width: 50%;
+}
+@media all and (max-width: 767px) {
+  .content-style-default .description {
+    font-size: 12px;
+  }
+}
+@media all and (min-width: 768px) {
+  .content-style-default .description {
+    font-size: 12px;
+  }
+}
+@media all and (min-width: 980px) {
+  .content-style-default .description {
+    font-size: 12px;
+  }
+}
+.content-style-default .description span + span {
+  margin-left: 20px;
+}
+.content-style-default .default {
+  color: #444444;
+}
+.form-control {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: block;
+  width: 100%;
+  height: 50px;
+  padding: 13px 20px;
+  font-size: 16px;
+  line-height: 1.57142857;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+}
+@media all and (max-width: 767px) {
+  .form-control {
+    padding: 13px 12px;
+  }
+}
+.form-control[disabled=disabled] {
+  background-color: #eeeeee;
+}
+@media all and (min-width: 768px) {
+  .refinance-calculator .content-module {
+    padding: 30px;
+  }
+}
+@media all and (min-width: 980px) {
+  .refinance-calculator .content-module {
+    padding: 50px;
+  }
+}
+@media all and (min-width: 1200px) {
+  .refinance-calculator .content-module {
+    padding: 50px 85px;
+  }
+}
+.refinance-calculator .content-module .calc-section p {
+  margin-bottom: 5px;
+}
+.refinance-calculator .content-module .calc-section h5 {
+  margin-bottom: 0;
+}
+.refinance-calculator .content-module .calc-section .form-field {
+  margin-bottom: 20px;
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+@media all and (min-width: 768px) {
+  .refinance-calculator .content-module .calc-section .form-field {
+    margin-bottom: 10px;
+  }
+}
+.refinance-calculator .content-module .calc-section .form-field:focus {
+  border: 1px solid #ff6600;
+  outline: 0;
+}
+.refinance-calculator .content-module .calc-section .form-select {
+  width: 100%;
+  height: 50px;
+  padding: 13px 20px;
+  font-size: 16px;
+  line-height: 1.57142857;
+  color: #555555;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #dbdbdb;
+  border-radius: 4px;
+}
+@media all and (max-width: 767px) {
+  .refinance-calculator .content-module .calc-section .form-select {
+    padding: 13px 12px;
+  }
+}
+.refinance-calculator .content-module .calc-section .form-select::-ms-expand {
+  border: 0;
+  background-color: transparent;
+}
+.refinance-calculator .content-module .calc-section .grid-custom {
+  position: relative;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell,
+.refinance-calculator .content-module .calc-section .grid-custom .grid-spacing-cell,
+.refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-double-cell {
+  position: relative;
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+@media all and (min-width: 980px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell,
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-spacing-cell,
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-double-cell {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+.refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell .grid-row,
+.refinance-calculator .content-module .calc-section .grid-custom .grid-spacing-cell .grid-row,
+.refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-double-cell .grid-row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+@media all and (min-width: 980px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell .grid-row,
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-spacing-cell .grid-row,
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-double-cell .grid-row {
+    margin-left: -14px;
+    margin-right: -14px;
+  }
+}
+@media all and (min-width: 768px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-spacing-cell {
+    width: 7%;
+  }
+}
+.refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell {
+  width: 100%;
+}
+@media all and (min-width: 768px) and (max-width: 979px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell.sm-half {
+    width: 50%;
+  }
+}
+@media all and (min-width: 768px) and (max-width: 979px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell .only-sm-half {
+    width: 50%;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media all and (min-width: 980px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell.md-full {
+    width: 100%;
+  }
+}
+@media all and (min-width: 768px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell.sm-third {
+    width: 33.33333333%;
+  }
+}
+@media all and (min-width: 980px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell.md-half {
+    width: 50%;
+  }
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell.md-third {
+    width: 33.33333333%;
+  }
+}
+@media all and (min-width: 980px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell {
+    width: 31%;
+  }
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-cell.full {
+    width: 100%;
+  }
+}
+.refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-double-cell {
+  width: 100%;
+}
+@media all and (min-width: 980px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-fixed-double-cell {
+    width: 62%;
+  }
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -o-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+@media all and (max-width: 767px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .box-cell {
+    margin-top: 20px;
+  }
+  .refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .box-cell:first-child {
+    margin-top: 0;
+  }
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .box-cell.with-label {
+  padding-top: 30px;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .box-cell.with-label > p {
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+@media all and (min-width: 1200px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .box-cell.with-label > p {
+    left: 14px;
+  }
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .blue-box {
+  background-color: #e7f2f9;
+  border-radius: 10px;
+  height: 100%;
+  padding: 10px;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .blue-box.border-only {
+  background-color: transparent;
+  border: 1px solid #D8D8D8;
+}
+@media all and (min-width: 980px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .blue-box {
+    padding: 20px;
+  }
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .blue-box .title-container {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  height: 67.5px;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .blue-box .title-container .title-cell {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .blue-box .title-container .title-cell .box-title {
+  text-align: center;
+  margin: 0 auto;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .blue-box .results-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -moz-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  -o-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  margin-top: 10px;
+  width: 100%;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .blue-box .results-container .result-cell {
+  width: 50%;
+  text-align: center;
+  padding: 10px 0;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .blue-box .results-container .result-cell:first-child {
+  border-right: 1px solid #D8D8D8;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .blue-box .results-container .icon-cell {
+  width: 36px;
+  height: auto;
+  margin: 10px auto;
+}
+@media all and (min-width: 980px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .blue-box .results-container .icon-cell {
+    width: 46px;
+  }
+}
+.refinance-calculator .content-module .calc-section .grid-custom .double-result-boxes .blue-box .results-container .total-amount .small-desc {
+  font-size: 60%;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .box-container .icon-cell {
+  display: inline-block;
+  width: 30px;
+  height: auto;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .box-container .icon-cell.small {
+  width: 24px;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .box-container .total-amount {
+  display: inline-block;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .box-container .total-amount .small-desc {
+  font-size: 60%;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .box-container > p {
+  font-size: 13px;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .box-container > p:last-child {
+  margin-bottom: 0;
+}
+@media all and (max-width: 767px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .desc-container {
+    text-align: center;
+  }
+}
+.refinance-calculator .content-module .calc-section .grid-custom .desc-container .label {
+  color: #ff6600;
+  margin-bottom: 5px;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .grid-block {
+  clear: both;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .grid-block .grid-block-cell {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+@media all and (max-width: 767px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-block .grid-block-cell {
+    min-height: 100px;
+  }
+}
+@media all and (min-width: 768px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-block {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-block .grid-block-cell {
+    width: 33.33333333%;
+  }
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-block .grid-block-cell.half {
+    width: 50%;
+  }
+}
+@media all and (min-width: 980px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-block {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+}
+.refinance-calculator .content-module .calc-section .grid-custom .grid-block.with-border .grid-block-cell {
+  border-left: 1px solid #dbdbdb;
+}
+.refinance-calculator .content-module .calc-section .grid-custom .grid-block.with-border .grid-block-cell:last-child {
+  border-right: 1px solid #dbdbdb;
+}
+@media all and (max-width: 767px) {
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-block.with-border .grid-block-cell {
+    border-top: 1px solid #dbdbdb;
+    border-left: 0 none;
+    padding: 10px 0;
+  }
+  .refinance-calculator .content-module .calc-section .grid-custom .grid-block.with-border .grid-block-cell:last-child {
+    border-bottom: 1px solid #dbdbdb;
+    border-right: 0 none;
+  }
+}
+.refinance-calculator .content-module .calc-section .horiz-line {
+  margin: 20px 0 20px;
+  color: #dbdbdb;
+  background-color: #dbdbdb;
+  border-color: #dbdbdb;
+}
+@media all and (max-width: 767px) {
+  .refinance-calculator .content-module .calc-section .horiz-line.hide-xs {
+    margin: 20px 0 0;
+    color: transparent;
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+.refinance-calculator .content-module .calc-section .button-container {
+  text-align: center;
+}
+.refinance-calculator .content-module .calc-section .button-container .ING-button {
+  min-width: 130px;
+  height: 40px;
+  margin-right: 10px;
+}
+.refinance-calculator .content-module .calc-section .button-container .ING-button.outline {
+  background-color: transparent;
+  border: 1px solid #525199;
+  color: #525199;
+}
+.refinance-calculator .content-module .calc-section .button-container .ING-button.outline:hover {
+  background-color: #39396b;
+  border-color: #39396b;
+  color: #ffffff;
+}
+.refinance-calculator .content-module .disclaimer-section {
+  padding: 30px 0 0 0;
+}
+.refinance-calculator .content-module.border-style {
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+  border-radius: 7px;
+}
+@media all and (max-width: 767px) {
+  .refinance-calculator .content-module.border-style {
+    border: 0;
+  }
+}
+.refinance-calculator .dropdown {
+  position: relative;
+}
+.refinance-calculator .dropdown .btn {
+  height: 50px;
+  padding: 12px 20px;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s;
+}
+.refinance-calculator .dropdown .btn.btn-dropdown-orange {
+  border-color: #dbdbdb;
+}
+.refinance-calculator .dropdown .btn.btn-dropdown-orange:focus {
+  border-color: #ff6600;
+}
+.refinance-calculator .dropdown .btn.btn-block {
+  display: block;
+  width: 100%;
+}
+.refinance-calculator .dropdown .btn.symbol-right:after {
+  content: "";
+  position: absolute;
+  top: 23px;
+  right: 20px;
+  border-top: 4px dashed;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.refinance-calculator .dropdown.open .dropdown-menu {
+  display: block;
+}
+.refinance-calculator .dropdown .dropdown-menu > li > a {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #555555;
+}
+.refinance-calculator .dropdown .dropdown-menu > li > a:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+.refinance-calculator .mt-20 {
+  margin-top: 20px;
+}
+.refinance-calculator .mb-20 {
+  margin-bottom: 20px;
+}
+.refinance-calculator .no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+.refinance-calculator .no-padding-right {
+  padding-right: 0 !important;
+}
+.refinance-calculator .text-red {
+  color: red;
+}
+
+
+.refi-grey-box {
+  background-color: #eee;
+  border-radius: 10px;
+  padding: 10px;
+}
+@media all and (max-width: 767px) {
+  .refi-grey-box {
+    padding: 20px;
+  }
+}

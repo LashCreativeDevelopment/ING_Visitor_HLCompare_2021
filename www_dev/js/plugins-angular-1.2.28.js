@@ -1,0 +1,5 @@
+// @codekit-prepend "vendor/angular-1.2.28/angular.js"
+// @codekit-prepend "vendor/angular-1.2.28/angular-animate.js"
+// @codekit-prepend "vendor/angular-1.2.28/angular-sanitize.js"
+// @codekit-prepend "vendor/jquery.ba-bbq.min.js"
+// @codekit-prepend "vendor/ui-bootstrap-tpls-0.12.1.js"

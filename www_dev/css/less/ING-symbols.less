@@ -1,0 +1,303 @@
+/*
+ * ING Direct Symbols LESS
+ */
+
+// ING Sprite Symbol
+// ----------------------------------------------
+
+@sprite-margin:             20px;
+
+@symbol-IE8:                '../img/etc/IE8.png';
+
+@symbol-rollover:            '../img/sprites/Rollover-sprite.png';
+
+// v1.3.0 Andy Sin
+//@symbol-orange:             '../img/sprites/Symbol-Title-v3.png';
+@symbol-orange:             '../img/sprites/Symbol-Title-v4.png';
+//
+@symbol-white:              '../img/sprites/Symbol-White.png';
+@symbol-calculator:         '../img/sprites/symbols-orange-calculator.png';
+
+@symbol-form:               '../img/sprites/Form.png';
+
+@symbol-banking:            '../img/sprites/Symbol-Banking.png';
+@symbol-living-super-icon:  '../img/sprites/Symbol-SuperannuationIcon.png';
+
+@symbol-category-sm:        '../img/sprites/WaytoBanking-symbol.png';
+@symbol-saving-sm:          '../img/sprites/ways-to-save-sprite.png';
+
+@symbol-banking-width:      104px;
+@symbol-banking-height:     84px;
+
+@symbol-orange-width:       40px;
+@symbol-orange-height:      42px;
+
+@symbol-white-width:        42px;
+@symbol-white-height:       48px;
+
+@symbol-calculator-width:   40px;
+@symbol-calculator-height:  40px;
+
+@symbol-radio-width:        26px;
+@symbol-radio-height:       26px;
+
+@symbol-offer-width:        34px;
+@symbol-offer-height:       34px;
+
+@symbol-category-sm-width:  150px; //140px; //220px;
+// v1.3.0
+//@symbol-category-sm-height: 122px; //200px;
+@symbol-category-sm-height: 100px; //200px;
+// end
+@symbol-category-margin-top:20px;
+@symbol-category-margin-bottom:30px;
+
+@symbol-saving-sm-size:     250px;
+
+@symbol-living-super-icon-width: 48px;
+@symbol-living-super-icon-height:44px; 
+
+
+
+.symbol-feature-title {
+  @media @from-sm {
+    padding-top: 5px; // new way for multi-line issue
+    padding-left: @symbol-orange-width + 10px;
+    padding-bottom: 10px;
+    .symbol-orange;
+  }
+  .ie8 & {
+    padding-top: 5px; // new way for multi-line issue
+    padding-left: @symbol-orange-width + 10px;
+    padding-bottom: 10px;
+    .symbol-orange;
+  }
+}
+
+.symbol-orange {
+  position: relative;
+  &:after {
+    content: '';
+    width: @symbol-orange-width;
+    height: @symbol-orange-height;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-image: url(@symbol-orange);
+    background-repeat: no-repeat;
+  }
+
+  @start-Y: -(@symbol-orange-height + @sprite-margin);
+  &.cash-back   { &:after { background-position: 0 (@start-Y * 0); }}
+  &.no-fees     { &:after { background-position: 0 (@start-Y * 1); }}
+  &.free-atm    { &:after { background-position: 0 (@start-Y * 2); }}
+  &.mobile      { &:after { background-position: 0 (@start-Y * 3); }}
+  &.always      { &:after { background-position: 0 (@start-Y * 4); }}
+  &.card-plus   { &:after { background-position: 0 (@start-Y * 5); }}
+  &.pdf         { &:after { background-position: 0 (@start-Y * 6); }}
+  &.mouse       { &:after { background-position: 0 (@start-Y * 7); }}
+  &.mail        { &:after { background-position: 0 (@start-Y * 8); }}
+  &.phone       { &:after { background-position: 0 (@start-Y * 9); }}
+  &.stopwatch   { &:after { background-position: 0 (@start-Y * 10); }}
+  &.arrow       { &:after { background-position: 0 (@start-Y * 11); }}
+  &.arrow-down  { &:after { background-position: 0 (@start-Y * 12); }}
+  &.padlock     { &:after { background-position: 0 (@start-Y * 13); }}
+  &.piggy-bank  { &:after { background-position: 0 (@start-Y * 14); }}
+  &.great-rate  { &:after { background-position: 0 (@start-Y * 15); }}
+  &.reward      { &:after { background-position: 0 (@start-Y * 16); }}
+  &.tick        { &:after { background-position: 0 (@start-Y * 17); }}
+  &.time        { &:after { background-position: 0 (@start-Y * 18); }}
+  &.scissors    { &:after { background-position: 0 (@start-Y * 19); }}
+  &.low-fee     { &:after { background-position: 0 (@start-Y * 20); }}
+  &.tools       { &:after { background-position: 0 (@start-Y * 21); }}
+  &.house-cash  { &:after { background-position: 0 (@start-Y * 22); }}
+  &.cash        { &:after { background-position: 0 (@start-Y * 23); }}
+  &.consolidate { &:after { background-position: 0 (@start-Y * 24); }}
+  &.card        { &:after { background-position: 0 (@start-Y * 25); }}
+  &.house-rate  { &:after { background-position: 0 (@start-Y * 26); }}
+  &.house-lock  { &:after { background-position: 0 (@start-Y * 27); }}
+  &.plan-time   { &:after { background-position: 0 (@start-Y * 28); }}
+  &.scales      { &:after { background-position: 0 (@start-Y * 29); }}
+  &.money       { &:after { background-position: 0 (@start-Y * 30); }}
+  &.umbrella    { &:after { background-position: 0 (@start-Y * 31); }}
+  &.eye         { &:after { background-position: 0 (@start-Y * 32); }}
+  &.grow        { &:after { background-position: 0 (@start-Y * 33); }}
+
+  // MARK: ING internal changing(20140602)
+  &.house-choose{ &:after { background-position: 0 (@start-Y * 34); }}
+  // v1.3.0 Andy Sin
+  &.advice      { &:after { background-position: 0 (@start-Y * 35); }}
+  // end
+}
+
+.symbol-white {
+  position: relative;
+  &:after {
+    content: '';
+    width: @symbol-white-width;
+    height: @symbol-white-height;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-image: url(@symbol-white);
+    background-repeat: no-repeat;
+  }
+
+  @start-Y: -(@symbol-white-height + @sprite-margin);
+  &.phone         { &:after { background-position: 0 (@start-Y * 0); }}
+  &.clock         { &:after { background-position: 0 (@start-Y * 1); }}
+  &.mouse         { &:after { background-position: 0 (@start-Y * 2); }}
+}
+
+.symbol-calculator {
+  position: relative;
+  &:after {
+    content: '';
+    width: @symbol-calculator-width;
+    height: @symbol-calculator-height;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-image: url(@symbol-calculator);
+    background-repeat: no-repeat;
+  }
+
+  @start-Y: -(@symbol-calculator-height + @sprite-margin);
+  &.cup       { &:after { background-position: 0 (@start-Y * 0); }}
+  &.taxi      { &:after { background-position: 0 (@start-Y * 1); }}
+  &.petrol    { &:after { background-position: 0 (@start-Y * 2); }}
+  &.groceries { &:after { background-position: 0 (@start-Y * 3); }}
+}
+
+.symbol-radio {
+  position: relative;
+  &:before {
+    .icon-font;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: @ING-orange;
+    font-size: 22px;
+    line-height: 30px;
+  }
+}
+.symbol-radio-on {
+  .symbol-radio;
+  .icon-form-check-on;
+}
+.symbol-radio-off {
+  .symbol-radio;
+  .icon-form-check-off;
+}
+
+.symbol-banking {
+  width: @symbol-banking-width;
+  height: @symbol-banking-height;
+  margin-left: auto;
+  margin-right: auto;
+
+  background-image: url(@symbol-banking);
+  background-repeat: no-repeat;
+  @start-X: -(@symbol-banking-width + @sprite-margin);
+  &.internet      { background-position: (@start-X * 0) 0; }
+  &.mobile        { background-position: (@start-X * 1) 0; }
+  &.contact       { background-position: (@start-X * 2) 0; }
+  &.phone         { background-position: (@start-X * 3) 0; }
+  &.post          { background-position: (@start-X * 4) 0; }
+  &.atm           { background-position: (@start-X * 5) 0; }
+}
+
+.symbol-living-super-icon {
+  width: @symbol-living-super-icon-width;
+  height: @symbol-living-super-icon-height;
+  margin-left: auto;
+  margin-right: auto;
+
+  background-image: url(@symbol-living-super-icon);
+  background-repeat: no-repeat;
+  @start-Y: -(@symbol-living-super-icon-height + @sprite-margin);
+  &.one         { background-position: 0 (@start-Y * 0); }
+  &.two         { background-position: 0 (@start-Y * 1); }
+  &.three       { background-position: 0 (@start-Y * 2); }
+}
+
+.symbol-category {
+  margin-left: auto;
+  margin-right: auto;
+  background-repeat: no-repeat;
+  @media @from-sm {
+    width: @symbol-category-sm-width;
+    height: @symbol-category-sm-height;
+    background-image: url(@symbol-category-sm);
+    @start-X: -(@symbol-category-sm-width + @sprite-margin);
+    .category-sprite-position(@start-X);
+    // v1.3.0
+//    margin-top: @symbol-category-margin-top;
+//    margin-bottom: @symbol-category-margin-bottom;
+  }
+  .ie8 & {
+    width: @symbol-category-sm-width;
+    height: @symbol-category-sm-height;
+    background-image: url(@symbol-category-sm);
+    @start-X: -(@symbol-category-sm-width + @sprite-margin);
+    .category-sprite-position(@start-X);
+    // v1.3.0
+//    margin-top: @symbol-category-margin-top;
+//    margin-bottom: @symbol-category-margin-bottom;
+  }
+}
+
+.category-sprite-position(@start-X) {
+  &.account       { background-position: (@start-X * 0) 0; }
+  &.card          { background-position: (@start-X * 1) 0; }
+  &.saving        { background-position: (@start-X * 2) 0; }
+  &.transfer      { background-position: (@start-X * 3) 0; }
+  &.calendar      { background-position: (@start-X * 4) 0; }
+  &.security      { background-position: (@start-X * 5) 0; }
+  &.money-tree    { background-position: (@start-X * 6) 0; }
+  &.interest      { background-position: (@start-X * 7) 0; }
+  &.checklist     { background-position: (@start-X * 8) 0; }
+  &.application   { background-position: (@start-X * 9) 0; }
+  &.keys          { background-position: (@start-X * 10) 0; }
+  &.merge         { background-position: (@start-X * 11) 0; }
+  &.sprout        { background-position: (@start-X * 12) 0; }
+  &.bag           { background-position: (@start-X * 13) 0; }
+
+  // MARK: ING internal changing(20140602)
+  //&.house         { background-position: (@start-X * 14) 0; }
+  &.scale         { background-position: (@start-X * 14) 0; }
+}
+
+.symbol-saving {
+  margin-left: auto;
+  margin-right: auto;
+  background-repeat: no-repeat;
+  @media @from-sm {
+    .square(@symbol-saving-sm-size);
+    background-image: url(@symbol-saving-sm);
+    @start-Y: -(@symbol-saving-sm-size);
+    .saving-sprite-position(@start-Y);
+  }
+  .ie8 & {
+    .square(@symbol-saving-sm-size);
+    background-image: url(@symbol-saving-sm);
+    @start-Y: -(@symbol-saving-sm-size);
+    .saving-sprite-position(@start-Y);
+  }
+}
+
+.saving-sprite-position(@start-Y) {
+  &.piggy   { background-position: 0 (@start-Y * 3); }
+  &.plant   { background-position: 0 (@start-Y * 1); }
+  &.house   { background-position: 0 (@start-Y * 2); }
+}
+
+.symbol-special-offer {
+  width: @symbol-offer-width;
+  height: @symbol-offer-height;
+  background: url(@symbol-rollover) no-repeat 0 -198px;
+  display: inline-block;
+  &:hover, &:focus {
+    background: url(@symbol-rollover) no-repeat 0 -264px;
+  }
+}

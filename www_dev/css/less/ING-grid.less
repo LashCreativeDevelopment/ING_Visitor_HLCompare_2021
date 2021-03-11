@@ -1,0 +1,170 @@
+/*
+ * ING Direct responsive grid system LESS
+ */
+
+@xs-container-gap:			16px;			// from design
+@sm-container-gap:			(@grid-gutter-sm / 2);
+@md-container-gap:			(@grid-gutter-md / 2);
+@lg-container-gap:			(@grid-gutter-lg / 2);
+
+.grid-container {
+	.grid-container;
+}
+
+.grid-2-cell {
+	.grid-2-cell; 
+}
+
+.grid-3-cell {
+	.grid-3-cell;
+}
+
+.grid-4-cell {
+	.grid-4-cell;
+}
+
+.grid-5-cell {
+	.grid-5-cell;
+}
+
+.grid-6-cell {
+	.grid-6-cell;
+}
+
+.grid-8-cell {
+	.grid-8-cell;
+}
+
+.grid-9-cell {
+	.grid-9-cell;
+}
+
+.grid-12-cell {
+	.grid-12-cell;
+}
+
+
+.container {
+	.container-fixed();
+	@media @only-xs {
+		padding-left: @xs-container-gap;
+		padding-right: @xs-container-gap;
+	}
+	@media @from-sm {	
+		width: @container-sm;	
+		padding-left: @sm-container-gap;
+		padding-right: @sm-container-gap;
+	}
+	@media @from-md {	
+		width: @container-md;	
+		padding-left: @md-container-gap;
+		padding-right: @md-container-gap;
+	}
+	@media @from-lg {	
+		width: @container-lg;	
+		padding-left: @lg-container-gap;
+		padding-right: @lg-container-gap;
+	}
+	.ie8 & {
+		width: @container-md;
+		padding-left: @md-container-gap;
+		padding-right: @md-container-gap;
+	}
+}
+
+.grid-container(@weight: 1.0) {
+	.xs-row(1.0); // --> not enough left/right gap
+	.sm-row(1.0);
+	.md-row(@weight);
+	.lg-row(@weight);
+	.ie8 & {
+		#grid-system > .make-row(@grid-gutter-md * @weight); 
+	}
+}
+
+.grid-2-cell(@weight: 1.0) {
+	.xs-column(6);
+	.sm-column(4);
+	.md-column(2, @weight);
+	.lg-column(2, @weight);
+	.ie8 & {
+	 	#grid-system > .make-grid-column(2, @grid-gutter-md * @weight);
+	}
+}
+
+.grid-3-cell(@weight: 1.0) {
+	.xs-column(12);
+	.sm-column(6);
+	.md-column(3, @weight);
+	.lg-column(3, @weight);
+	.ie8 & {
+	 	#grid-system > .make-grid-column(3, @grid-gutter-md * @weight);
+	}
+}
+
+.grid-4-cell(@weight: 1.0) {
+	.xs-column(12);
+	.sm-column(4);
+	.md-column(4, @weight);
+	.lg-column(4, @weight);
+	.ie8 & {
+		#grid-system > .make-grid-column(4, @grid-gutter-md * @weight);	
+	}
+}
+
+.grid-5-cell(@weight: 1.0) {
+	.xs-column(12);
+	.sm-column(5);
+	.md-column(5, @weight);
+	.lg-column(5, @weight);
+	.ie8 & {
+	 	#grid-system > .make-grid-column(5, @grid-gutter-md * @weight);
+	}
+}
+
+.grid-6-cell(@weight: 1.0) {
+	.xs-column(12);
+	.sm-column(6);
+	.md-column(6, @weight);
+	.lg-column(6, @weight);
+	.ie8 & {
+	 	#grid-system > .make-grid-column(6, @grid-gutter-md * @weight);
+	}
+}
+
+.grid-8-cell(@weight: 1.0) {
+	.xs-column(12);
+	.sm-column(8);
+	.md-column(8, @weight);
+	.lg-column(8, @weight);
+	.ie8 & {
+		#grid-system > .make-grid-column(8, @grid-gutter-md * @weight);	
+	}
+}
+
+.grid-9-cell(@weight: 1.0) {
+	.xs-column(12);
+	.sm-column(9);
+	.md-column(9, @weight);
+	.lg-column(9, @weight);
+	.ie8 & {
+		#grid-system > .make-grid-column(9, @grid-gutter-md * @weight);	
+	}
+}
+
+.grid-12-cell(@weight: 1.0) {
+	.xs-column(12);
+	.sm-column(12);
+	.md-column(12, @weight);
+	.lg-column(12, @weight);
+	.ie8 & {
+		#grid-system > .make-grid-column(12, @grid-gutter-md * @weight);	
+	}
+}
+
+.grid-offset-4-cell {
+	.make-sm-column-offset(4);
+	.ie8 & {
+		margin-left: percentage((4 / @grid-columns));	
+	}
+}

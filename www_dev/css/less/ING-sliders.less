@@ -1,0 +1,286 @@
+/*
+ * ING Direct Sliders LESS
+ */
+
+
+// More About Slider
+// ----------------------------------------------
+.content-more-about-slider {
+//	background-color: @color-bg-white;
+
+	.more-about-slider {
+		position: relative;
+	}
+
+	.slide-container {
+		img {
+			.margin-bottom(0.5);
+			margin-left: auto;
+			margin-right: auto;
+		}
+		text-align: center;
+		@media @from-sm {
+			text-align: left;
+		}
+		.ie8 & {
+			text-align: left;
+		}
+	}
+}
+
+
+// Features Slider 
+// ----------------------------------------------
+
+.content-features-slider {
+	position: relative;
+
+	@media @from-sm {
+		height: 0;
+		overflow: hidden;
+		&.ready {
+			height: auto;
+			overflow: visible;
+		}
+	}
+	.ie8 & {
+		height: 0;
+		overflow: hidden;
+		&.ready {
+			height: auto;
+			overflow: visible;
+		}
+	}
+
+	ul.features-slider {
+		position: relative;
+
+		@media @from-sm {
+			height: inherit;
+		}
+		.ie8 & {
+			height: inherit;
+		}
+	}
+
+	li.slide {
+		@media @only-xs {
+				margin-bottom: 10px;
+		}
+		
+		@media @from-sm {
+			height: inherit;
+			border-top: @content-border-style;
+			border-bottom: @content-border-style;
+			border-right: @content-border-style;
+			&:first-child {
+				border-left: @content-border-style;
+			}
+		}
+		.ie8 & {
+			height: inherit;
+			border-top: @content-border-style;
+			border-bottom: @content-border-style;
+			border-right: @content-border-style;
+			&:first-child {
+				border-left: @content-border-style;
+			}
+		}
+	}
+
+	.slide-container {
+
+		@media @only-xs {
+			img {
+				display: none;
+			}
+		}
+
+		@media @from-sm {
+			padding: 20px;
+			text-align: center;
+			img {
+				.margin-bottom(0.5);
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 10px;
+			}
+			h5 {
+				line-height: 1.0;
+				margin-bottom: 20px;
+			}
+			p {
+				font-size: 14px;
+			}
+			text-align: center;
+		}
+		.ie8 & {
+			padding: 20px;
+			text-align: center;
+			img {
+				.margin-bottom(0.5);
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 10px;
+			}
+			h5 {
+				line-height: 1.0;
+				margin-bottom: 20px;
+			}
+			p {
+				font-size: 14px;
+			}
+			text-align: center;
+		}
+	}
+
+	.bx-viewport {
+		position: relative;
+		&:after {
+			content: '';
+			position: absolute;
+			width: 1px;
+			top: 0;
+			left: 0;
+			height: 100%;
+			background-color: @color-content-border;
+		}
+		&:before {
+			content: '';
+			position: absolute;
+			width: 1px;
+			top: 0;
+			right: 0;
+			height: 100%;
+			background-color: @color-content-border;
+		}
+	}
+
+	.bx-wrapper {
+		.padding-top(0);
+		margin-bottom: 20px;
+		.bx-pager {
+			display: none;
+		}
+		.bx-prev, .bx-next {
+			margin-top: auto;			
+			margin-bottom: auto;
+		}
+		.bx-prev {
+//			margin-left: -30px;
+		}
+		.bx-next {
+//			margin-right: -30px;
+		}
+	}
+
+	.bx-wrapper .bx-controls-direction a.disabled {
+		display: block !important;
+		background-color: #CFD0CF;
+		cursor: default;
+	}
+}
+
+
+// Custom bx-slider style (General)
+// ----------------------------------------------
+.bx-wrapper {
+	.padding-top(2);
+}
+
+.bx-pager {
+	.bx-pager-link {
+		width: 14px !important;
+		height: 14px !important;
+		border-radius: 50% !important;
+		border: 1px solid darken(@gray-light, 20%) !important;
+		background-color: darken(@gray-light, 10%) !important;
+		&.active {
+			background-color: @ING-orange !important;
+		}
+	}
+}
+
+.no-borderradius .bx-pager {
+	.bx-pager-link {
+		display: block !important;
+		border-radius: 0 !important;
+		border: 0 !important;
+		background: transparent url(@symbol-IE8) no-repeat 0 -72px !important;
+		width: 16px !important;
+		height: 16px !important;
+		&.active {
+			background: transparent url(@symbol-IE8) no-repeat 0 -36px !important;
+		}
+	}
+}
+
+.bx-controls-direction a {
+	@control-width-xs:	40px;
+	@control-height-xs:	44px;
+//	@control-width-sm: 	50px;
+//	@control-height-sm:	50px;
+	@control-width-sm: 	44px;
+	@control-height-sm:	44px;
+
+	text-indent: 0 !important;
+	text-align: center;
+	width: @control-width-xs !important;
+	height: @control-height-xs !important;
+	line-height: @control-height-xs;
+	color: white;
+	background: @ING-gray;
+	z-index: 500 !important;
+	.icon-font;
+	&:before {
+		line-height: @control-height-xs;
+	}
+	&.bx-prev { 
+		.icon-arrow-left;
+		left: -@xs-container-gap; 
+		border-radius: 3px;
+		// @media @from-sm { left: (-@grid-gutter-sm/2); }
+		// @media @from-md { left: (-@grid-gutter-md/2); }
+		// @media @from-lg { left: (-@grid-gutter-lg/2); }
+		// .ie8 & { left: (-@grid-gutter-md/2); }
+		@media @from-sm { left: (-@grid-gutter-sm); }
+		@media @from-md { left: (-@grid-gutter-md); }
+		@media @from-lg { left: (-@grid-gutter-lg); }
+		.ie8 & { left: (-@grid-gutter-md); }
+	}
+	&.bx-next { 
+		.icon-arrow-right;
+		right: -@xs-container-gap; 
+		border-radius: 3px;
+		// @media @from-sm { right: (-@grid-gutter-sm/2); }
+		// @media @from-md { right: (-@grid-gutter-md/2); }
+		// @media @from-lg { right: (-@grid-gutter-lg/2); }
+		// .ie8 & { right: (-@grid-gutter-md/2); }
+		@media @from-sm { right: (-@grid-gutter-sm); }
+		@media @from-md { right: (-@grid-gutter-md); }
+		@media @from-lg { right: (-@grid-gutter-lg); }
+		.ie8 & { right: (-@grid-gutter-md); }
+	}
+	&.bx-prev, &.bx-next {
+		&:hover, &:focus {
+			text-decoration: none;
+			background-color: darken(@ING-gray, 10%);
+		}
+	}
+	@media @from-sm {
+		width: @control-width-sm !important;
+		height: @control-height-sm !important;
+		top: 110px !important;
+		&:before {
+			line-height: @control-height-sm;
+		}
+	}
+	.ie8 & {
+		width: @control-width-sm !important;
+		height: @control-height-sm !important;
+		top: 110px !important;
+		&:before {
+			line-height: @control-height-sm;
+		}
+	}
+}

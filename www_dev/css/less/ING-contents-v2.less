@@ -1,0 +1,461 @@
+/*
+ * ING Direct Contents LESS
+ */
+
+.tab-pane {
+	@media @only-xs {
+		display: block;
+		&.fade {
+			opacity: 1;
+		}
+	}
+	@media @from-sm {
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+	.ie8 & {
+		display: none;
+		&.active {
+			display: block;
+		}
+	}
+}
+
+// Content Tab Style
+// ----------------------------------------------
+.content-tab-style {
+
+	position: relative;
+	display: table;
+	width: 100%;
+	z-index: 100;
+
+  > li {
+  	z-index: 11;
+  	position: relative;
+		display: table-cell;
+		vertical-align: middle;
+  	text-align: center;
+
+  	&.highlighter {
+  		z-index: 10;
+  		background-color: @ING-orange;
+  		height: 100%;
+  		position: absolute;
+  		left: 0;
+  		top: 0;
+  		.transition(left ~'@{duration-fast}');
+
+  		&:after {
+  			content: '';
+  			position: absolute;
+  			width: 0;
+  			height: 0;
+  			left: 0;
+  			right: 0;
+  			margin-left: auto;
+  			margin-right: auto;
+  		}
+  	}
+	}
+
+	&.category {
+		@bg-color: #FBFBFB;
+		@border-color: darken(@bg-color, 10%);
+		@category-title-radius: 4px;
+
+		@media @only-xs {
+			display: none !important;
+		}
+
+		border-radius: @category-title-radius;
+		border: 1px solid @border-color;
+		background-color: @white;
+	  .box-shadow(inset 0px 2px 2px 0px rgba(0,0,0,0.1););
+
+		> li {
+			.main-tab-title;
+	  	line-height: 1.5;
+	  	padding: 10px;
+	  	border-radius: @category-title-radius;
+
+	  	a {
+	  		display: block;
+	  		color: @color-default-text;
+	  		.transition(color ~'@{duration-fast}');
+	  	}
+	  	a:hover {
+	  		text-decoration: none;
+	  		color: @ING-orange;
+	  	}
+	  	&.active {
+	  		a { color: @white; }
+	  	}
+
+	  	&.highlighter {
+	  		background-color: @ING-orange;
+	  		&:after {
+	  			//top: 100%;
+	  			bottom: -8px;
+	  			border-top: 9px solid @ING-orange;
+	  			border-left: 9px solid transparent;
+	  			border-right: 9px solid transparent;
+	  		}
+	  	}
+	  }
+	}
+
+	&.block-gray {
+		@bg-color: #5C605F;
+		@border-color: #494D4C;
+		@border-width: 5px;
+
+		@media @only-xs {
+			display: none !important;
+		}
+
+		border-bottom: 4px solid @border-color;
+		background-color: @bg-color;
+
+		> li {
+	  	line-height: 1.2;
+	  	&+li {
+	  		border-left: 1px solid lighten(@bg-color, 10%);
+	  	}
+
+	  	a {
+	  		display: block;
+	  		// v1.4.0 padding: 16px 16px;
+		  	padding: 10px 16px;
+	  		color: @white;
+	  	}
+	  	a:hover {
+	  		text-decoration: none;
+	  		color: @white;
+	  	}
+	  	&.active {
+	  		background-color: @border-color;
+	  		// v1.3.0 Andy Sin
+	  		font-weight: bold;
+	  		// end
+	  	}
+
+	  	&.highlighter {
+	  		background-color: transparent;
+	  		border-left: 0;
+	  		&:after {
+	  			//top: 100%;
+	  			bottom: -13px;
+	  			border-top: 13px solid @border-color;
+	  			border-left: 13px solid transparent;
+	  			border-right: 13px solid transparent;
+	  		}
+	  	}
+	  	&:hover, &:focus {
+	  		background-color: #585a5a;
+	  	}
+	  }
+	}
+
+	&.faq {
+		@selected-bg-color: @content-gradient-color-start;
+		width: 100%;
+
+		@media @only-xs {
+			display: block;
+			border: @content-border-style;
+		}
+
+		li {
+			position: relative;
+			z-index: 0;
+
+			@media @only-xs {
+				display: block;
+				width: 100% !important;
+				.text-left;
+			}
+
+			&.selected {
+				@media @only-xs {
+					display: none;
+				}
+				@media @from-sm {
+					background-color: @selected-bg-color;
+					border-left: @content-border-style;
+					border-right: @content-border-style;
+				}
+				.ie8 & {
+					background-color: @selected-bg-color;
+					border-left: @content-border-style;
+					border-right: @content-border-style;
+				}
+			}
+			&:before {
+				display: block;
+				content: '';
+				z-index: -1;
+				position: absolute;
+				height: 1px;
+				width: 100%;
+				top: 0;
+				left: 0;
+				background-color: @color-content-border;
+			}
+			a {
+				display: block;
+				@media @only-xs {
+					padding: 10px @xs-container-gap;
+				}
+				@media @from-sm {
+					padding: 10px;
+				}
+				.ie8 & {
+					padding: 10px;
+				}
+			}
+		}
+	}
+
+	&.divide-2 > li { width: percentage(1/2); }
+	&.divide-3 > li { width: percentage(1/3); }
+	&.divide-4 > li { width: percentage(1/4); }
+	&.divide-5 > li { width: percentage(1/5); }
+	&.divide-6 > li { width: percentage(1/6); }
+	&.divide-7 > li { width: percentage(1/7); }
+}
+
+
+// Mobile Tab
+// ----------------------------------------------
+.mobile-tab {
+	.visible-xs;
+	.mobile-tab-style;
+}
+
+.mobile-tab-style {
+	@border-color: #E0E0E0;
+	@bg-color: #F4F4F4;
+	@active-bg-color: @ING-orange;
+	@active-border-color: @ING-orange;
+
+	background-color: @bg-color;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: @border-color;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	.transition(~"background-color @{duration-fast}, border-top-color @{duration-fast}");
+
+	&.active {
+		background-color: @active-bg-color;
+		border-top-color: @active-border-color;
+		> .container:after {
+			color: @white;
+			content: '\e610';
+		}
+		.h4 { 
+			color: @white; 
+		}
+	}
+
+	> .container {
+		position: relative;
+		z-index: 0;
+
+		.h4 {
+			.transition(color @duration-fast);				
+		}
+
+		&:after {
+			content: '\e617';
+			position: absolute;
+			z-index: -1;
+			right: @xs-container-gap;
+			top: 0;
+			bottom: 0;
+			margin-top: auto;
+			margin-bottom: auto;
+			.transition(color @duration-fast);
+
+			// icon-font
+		  font-family: 'ING-icon-font';
+		  font-style: normal;
+		  font-weight: normal;
+		  -webkit-font-smoothing: antialiased;
+		  -moz-osx-font-smoothing: grayscale;
+		}
+	}
+
+	&.second-level {
+		background-color: #5C605F;
+		border-top-color: #6C706F;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		color: @white;
+		.h4 {
+			color: @white;
+		}
+		&.active {
+			background-color: @active-bg-color;
+			border-top-color: @active-border-color;
+		}
+	}
+
+}
+
+
+.suffix-percent {
+	position: relative;
+	margin-right: 25px;
+	&:before, &:after {
+		font-size: 40%;
+		font-weight: lighter;
+		position: absolute;
+		text-align: left;
+		right: -25px;
+		width: 20px;
+		height: 50%;
+	}
+	&:before {
+		content: '%';
+		top: 6px;
+	} 
+	&:after {
+		content: 'p.a.';
+		bottom: 2px;
+	}
+}
+
+.suffix-year, .suffix-years {
+	position: relative;
+	margin-right: 25px;
+	&:before {
+		content: 'yr';
+		font-size: 40%;
+		font-weight: lighter;
+		position: absolute;
+		text-align: left;
+		right: -25px;
+		width: 20px;
+		height: 100%;
+		line-height: 250%;
+	}
+	@media @from-sm {
+		&:before {
+			content: 'year';
+			font-size: 50%;
+			line-height: 200%;
+		}
+	} 
+	.ie8 & {
+		&:before {
+			content: 'year';
+			font-size: 50%;
+			line-height: 200%;
+		}
+	} 
+}
+
+.suffix-years {
+	@media @from-sm {
+		&:before {
+			content: 'years';
+		}
+	}
+	.ie8 & {
+		&:before {
+			content: 'years';
+		}
+	}
+}
+
+.reset-bx-slider {
+	-webkit-transform: none !important;
+	-webkit-transition: none !important;
+	transition: none !important;
+
+	.slide {
+		width: 100% !important;
+	}
+}
+
+
+
+
+
+// Gradient background
+// ----------------------------------------------
+.gradient-gray-top {
+	@media @from-sm {
+		#gradient > .vertical(@table-gradient-gray-start, @table-gradient-gray-end, 20%, 100%);
+	}
+	.ie8 & {
+		#gradient > .vertical(@table-gradient-gray-start, @table-gradient-gray-end, 20%, 100%);
+	}
+}
+
+.gradient-gray-bottom {
+	@media @from-sm {
+		#gradient > .vertical(@table-gradient-gray-end, @table-gradient-gray-start, 80%, 100%);
+	}
+	.ie8 & {
+		#gradient > .vertical(@table-gradient-gray-end, @table-gradient-gray-start, 80%, 100%);
+	}
+}
+
+.gradient-gray-right {
+	@media @from-sm {
+		#gradient > .horizontal(@table-gradient-gray-end, @table-gradient-gray-start, 80%, 100%);
+	}
+	.ie8 & {
+		#gradient > .horizontal(@table-gradient-gray-end, @table-gradient-gray-start, 80%, 100%);
+	}
+}
+
+.gradient-orange-left {
+	@media @from-sm {
+		background: url('../img/oe-calculator/bg2.png') no-repeat left center ;
+	}
+	.ie8 & {
+		background: url('../img/oe-calculator/bg2.png') no-repeat left center ;
+	}
+}
+
+.gradient-gray-left-right {
+	@media @from-sm {
+		// http://www.colorzilla.com/gradient-editor/
+		background: #f7f7f7; /* Old browsers */
+		/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+		background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y3ZjdmNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjI1JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijc1JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmN2Y3ZjciIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+		background: linear-gradient(to right,  #f7f7f7 0%,#ffffff 25%,#ffffff 75%,#f7f7f7 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#f7f7f7',GradientType=1 ); /* IE6-8 */
+	}
+	.ie8 & {
+		// http://www.colorzilla.com/gradient-editor/
+		background: #f7f7f7; /* Old browsers */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#f7f7f7',GradientType=1 ); /* IE6-8 */
+	}
+}
+
+.gradient-orange-center {
+	#gradient > .horizontal-three-colors(#ff6600, #ff9600, 50%, #ff6600);
+	.ie9 & {
+		background-color: #ff6600;
+	}
+}
+
+
+// Etc.
+// ----------------------------------------------
+.divider {
+	&.gray {
+		border-top: 1px solid @gray-lighter;
+	}
+}
+
+.no-wrap {
+	white-space: nowrap;
+}

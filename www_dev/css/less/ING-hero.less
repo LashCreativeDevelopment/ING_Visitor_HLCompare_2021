@@ -1,0 +1,204 @@
+/*
+ * ING Direct Hero LESS
+ */
+
+
+@hero-height-xs:							210px;
+@hero-height-sm:							260px;
+@hero-height-md:							240px;
+@hero-bg-color:								#F37800;
+@hero-bg-color-middle:				#F5A600;
+
+
+.content-hero {
+	background: url('../img/heros/hero-bg.jpg') repeat center;
+	position: relative;
+	z-index: 0;
+
+	@media @only-xs { height: @hero-height-xs; }
+	@media @from-sm { height: @hero-height-sm; }
+	@media @from-md { height: @hero-height-md; }
+	.ie8 & { height: @hero-height-md; }
+
+	&:after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	@media @only-xs { 
+		&:after { background-image: url('../img/heros/hero-xs-sample.jpg'); }
+		&.c-business { &:after { background-image: url('../img/heros/xs/c-business.jpg'); } }
+		&.c-home-loans { &:after { background-image: url('../img/heros/xs/c-home-loans.jpg'); } }
+		&.c-savings { &:after { background-image: url('../img/heros/xs/c-savings.jpg'); } }
+        &.c-savings-maximiser { &:after { background-image: url('../img/heros/xs/SM_VisitorProduct_Mobile_350.jpg'); } }
+		&.c-super { &:after { background-image: url('../img/heros/xs/c-super.jpg'); } }
+		&.c-calculators-tools { &:after { background-image: url('../img/heros/xs/c-calculators-tools.jpg'); } }
+		&.c-about-us { &:after { background-image: url('../img/heros/xs/15yrs_AboutUs_Mobile.jpg'); } }
+		&.c-help-and-support { &:after { background-image: url('../img/heros/xs/c-help-and-support.jpg'); } }
+		&.c-rates-and-fees { &:after { background-image: url('../img/heros/xs/c-rates-and-fees.jpg'); } }
+		&.c-ready-to-switch { &:after { background-image: url('../img/heros/xs/c-ready-to-switch.jpg'); } }
+		&.c-ways-to-bank { &:after { background-image: url('../img/heros/xs/c-ways-to-bank.jpg'); } }
+		&.p-living-super { &:after { background-image: url('../img/heros/xs/p-living-super.jpg'); } }
+		&.p-mortgage-simplifier { &:after { background-image: url('../img/heros/xs/p-mortgage-simplifier.jpg'); } }
+		&.p-orange-advantage { &:after { background-image: url('../img/heros/xs/p-orange-advantage.jpg'); } }
+		
+		// MARK: ING internal changing(20140602)
+		//&.p-orange-everyday { &:after { background-image: url('../img/heros/xs/p-orange-everyday.jpg'); } }		
+		// MARK: ING internal changing(20140730)
+		//&.p-orange-everyday { &:after { background-image: url('../img/heros/xs/orange_everyday_lastdays_mobile.jpg'); } }		
+		&.p-orange-everyday { &:after { background-image: url('../img/heros/xs/OE-TVC_Product-Banner_Mobile.jpg'); } }		
+		
+		&.p-business-term-deposit { &:after { background-image: url('../img/heros/xs/p-business-term-deposit.jpg'); } }		
+		&.p-smsf { &:after { background-image: url('../img/heros/xs/p-smsf.jpg'); } }	
+
+		&.m-login	{ &:after { background-image: url('../img/heros/xs/m-login.jpg'); } }
+	}
+	@media @from-sm { 
+		&:after { background-image: url('../img/heros/hero-sm-sample.jpg'); }
+		&.c-business { &:after { background-image: url('../img/heros/sm/c-business.jpg'); } }
+		&.c-home-loans { &:after { background-image: url('../img/heros/sm/c-home-loans.jpg'); } }
+		&.c-savings { &:after { background-image: url('../img/heros/sm/c-savings.jpg'); } }
+        &.c-savings-maximiser { &:after { background-image: url('../img/heros/sm/SM_VisitorProduct_Tablet_350.jpg'); } }
+		&.c-super { &:after { background-image: url('../img/heros/sm/c-super.jpg'); } }
+		&.c-calculators-tools { &:after { background-image: url('../img/heros/sm/c-calculators-tools.jpg'); } }
+		&.c-about-us { &:after { background-image: url('../img/heros/sm/15yrs_AboutUs_Tablet.jpg'); } }
+		&.c-help-and-support { &:after { background-image: url('../img/heros/sm/c-help-and-support.jpg'); } }
+		&.c-rates-and-fees { &:after { background-image: url('../img/heros/sm/c-rates-and-fees.jpg'); } }
+		&.c-ready-to-switch { &:after { background-image: url('../img/heros/sm/c-ready-to-switch.jpg'); } }
+		&.c-ways-to-bank { &:after { background-image: url('../img/heros/sm/c-ways-to-bank.jpg'); } }
+		&.p-living-super { &:after { background-image: url('../img/heros/sm/p-living-super.jpg'); } }
+		&.p-mortgage-simplifier { &:after { background-image: url('../img/heros/sm/p-mortgage-simplifier.jpg'); } }
+		&.p-orange-advantage { &:after { background-image: url('../img/heros/sm/p-orange-advantage.jpg'); } }
+		
+		// MARK: ING internal changing(20140602)
+		//&.p-orange-everyday { &:after { background-image: url('../img/heros/sm/p-orange-everyday.jpg'); } }		
+		// MARK: ING internal changing(20140730)
+		//&.p-orange-everyday { &:after { background-image: url('../img/heros/sm/orange_everyday_lastdays_desk.jpg'); } }		
+		&.p-orange-everyday { &:after { background-image: url('../img/heros/sm/OE-TVC_Product-Banner_Tablet.jpg'); } }		
+
+		&.p-business-term-deposit { &:after { background-image: url('../img/heros/sm/p-business-term-deposit.jpg'); } }		
+		&.p-smsf { &:after { background-image: url('../img/heros/sm/p-smsf.jpg'); } }		
+	}
+	@media @from-md { 
+		&:after { background-image: url('../img/heros/hero-md-sample.jpg'); }
+		&.c-business { &:after { background-image: url('../img/heros/md/c-business.jpg'); } }
+		&.c-home-loans { &:after { background-image: url('../img/heros/md/c-home-loans.jpg'); } }
+        &.c-savings { &:after { background-image: url('../img/heros/md/c-savings.jpg'); } }
+		&.c-savings-maximiser { &:after { background-image: url('../img/heros/md/SM_VisitorProduct_Desktop_350.jpg'); } }
+		&.c-super { &:after { background-image: url('../img/heros/md/c-super.jpg'); } }
+		&.c-calculators-tools { &:after { background-image: url('../img/heros/md/c-calculators-tools.jpg'); } }
+		&.c-about-us { &:after { background-image: url('../img/heros/md/15yrs_AboutUs_Desktop.jpg'); } }
+		&.c-help-and-support { &:after { background-image: url('../img/heros/md/c-help-and-support.jpg'); } }
+		&.c-rates-and-fees { &:after { background-image: url('../img/heros/md/c-rates-and-fees.jpg'); } }
+		&.c-ready-to-switch { &:after { background-image: url('../img/heros/md/c-ready-to-switch.jpg'); } }
+		&.c-ways-to-bank { &:after { background-image: url('../img/heros/md/c-ways-to-bank.jpg'); } }
+		&.p-living-super { &:after { background-image: url('../img/heros/md/p-living-super.jpg'); } }
+		&.p-mortgage-simplifier { &:after { background-image: url('../img/heros/md/p-mortgage-simplifier.jpg'); } }
+		&.p-orange-advantage { &:after { background-image: url('../img/heros/md/p-orange-advantage.jpg'); } }
+
+		// MARK: ING internal changing(20140602)
+		//&.p-orange-everyday { &:after { background-image: url('../img/heros/md/p-orange-everyday.jpg'); } }		
+		// MARK: ING internal changing(20140730)
+		//&.p-orange-everyday { &:after { background-image: url('../img/heros/md/orange_everyday_lastdays_tablet.jpg'); } }		
+		&.p-orange-everyday { &:after { background-image: url('../img/heros/md/OE-TVC_Product-Banner_Desktop.jpg'); } }		
+
+		&.p-business-term-deposit { &:after { background-image: url('../img/heros/md/p-business-term-deposit.jpg'); } }		
+		&.p-smsf { &:after { background-image: url('../img/heros/md/p-smsf.jpg'); } }		
+	}
+	.ie8 & { 
+		&:after { background-image: url('../img/heros/hero-md-sample.jpg'); }
+		&.c-business { &:after { background-image: url('../img/heros/md/c-business.jpg'); } }
+		&.c-home-loans { &:after { background-image: url('../img/heros/md/c-home-loans.jpg'); } }
+		&.c-savings { &:after { background-image: url('../img/heros/md/c-savings.jpg'); } }
+        &.c-savings-maximiser { &:after { background-image: url('../img/heros/md/SM375-product-desktop.png'); } }
+		&.c-super { &:after { background-image: url('../img/heros/md/c-super.jpg'); } }
+		&.c-calculators-tools { &:after { background-image: url('../img/heros/md/c-calculators-tools.jpg'); } }
+		&.c-about-us { &:after { background-image: url('../img/heros/md/15yrs_AboutUs_Desktop.jpg'); } }
+		&.c-help-and-support { &:after { background-image: url('../img/heros/md/c-help-and-support.jpg'); } }
+		&.c-rates-and-fees { &:after { background-image: url('../img/heros/md/c-rates-and-fees.jpg'); } }
+		&.c-ready-to-switch { &:after { background-image: url('../img/heros/md/c-ready-to-switch.jpg'); } }
+		&.c-ways-to-bank { &:after { background-image: url('../img/heros/md/c-ways-to-bank.jpg'); } }
+		&.p-living-super { &:after { background-image: url('../img/heros/md/p-living-super.jpg'); } }
+		&.p-mortgage-simplifier { &:after { background-image: url('../img/heros/md/p-mortgage-simplifier.jpg'); } }
+		&.p-orange-advantage { &:after { background-image: url('../img/heros/md/p-orange-advantage.jpg'); } }
+
+		// MARK: ING internal changing(20140602)
+		//&.p-orange-everyday { &:after { background-image: url('../img/heros/md/p-orange-everyday.jpg'); } }		
+		// MARK: ING internal changing(20140730)
+		//&.p-orange-everyday { &:after { background-image: url('../img/heros/md/orange_everyday_lastdays_tablet.jpg'); } }		
+		&.p-orange-everyday { &:after { background-image: url('../img/heros/md/OE-TVC_Product-Banner_Desktop.jpg'); } }		
+
+		&.p-business-term-deposit { &:after { background-image: url('../img/heros/md/p-business-term-deposit.jpg'); } }		
+		&.p-smsf { &:after { background-image: url('../img/heros/md/p-smsf.jpg'); } }		
+	}
+
+	.container {
+		height: 100%;
+	}
+
+	.breadcrumb {
+		.hidden-xs;
+		padding: 20px 0;
+	}
+
+	.hero-title, .hero-detail {
+		color: @white;
+	}
+	.hero-title {
+		line-height: 1;
+		font-weight: bold;
+		letter-spacing: -1px;
+		
+		.margin-bottom(0.5);
+		.margin-top;
+		@media @from-sm { 
+			.margin-top(0); 
+			.margin-bottom(0.5);
+		}
+		.ie8 & { 
+			.margin-top(0); 
+			.margin-bottom(0.5);
+		}
+	}
+	.hero-detail {
+		line-height: 1.2;
+		.margin-top(0.5);
+		.margin-bottom(0.7);
+		@media @only-xs {
+            width: 60%; 
+            &.wider {width: 90%;}
+		}
+		@media @from-sm { width: 45%; }
+		@media @from-md { width: 50%; }
+		@media @from-lg { width: 50%; }
+		.ie8 & { width: 50%; }
+
+		&.small {
+			.margin-top(-0.5);
+			.margin-bottom(1.0);
+			font-size: 12px;
+		}
+	}
+
+	&.simple {
+		background: @white;
+		&:after {
+			background: @white;
+		}
+		height: auto !important;
+		.hero-title, .hero-detail, .ING-button {
+			display: none;
+		}
+		.breadcrumb {
+			a, a:hover, a:focus, li.active, li+li:before { color: @color-default-text; }
+		}
+	}
+}

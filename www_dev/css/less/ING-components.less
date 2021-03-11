@@ -1,0 +1,381 @@
+/*
+ * ING Direct Common Components LESS
+ */
+
+@padding-base-horizontal: 15px;
+@padding-base-horizontal-sm: 10px;
+@padding-base-horizontal-md: 30px;
+@padding-base-vertical: 9px;
+@border-radius-base: 2px;
+@btn-font-weight: normal;
+@btn-default-color: @ING-orange;
+
+// ING Buttons
+// ----------------------------------------------
+.ING-button {
+	.btn;
+
+  &.orange {
+  	.button-variant-color(@white, #F36D00, #ED5F00);
+  }
+  &.gray {
+  	.button-variant-color(@white, #5C605F, #727373);
+  }
+  &.blue {
+    .button-variant-color(@white, @ING-blue, @color-button-blue-active);
+  }
+
+  &.small {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.btn {
+  display: inline-block;
+  margin-bottom: 0; // For input.btn
+  font-weight: @btn-font-weight;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid transparent;
+  white-space: nowrap;
+  @media @only-xs {
+    .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @border-radius-base);
+  }
+  @media @only-sm {
+    .button-size(@padding-base-vertical; @padding-base-horizontal-sm; 13px; @line-height-base; @border-radius-base);
+  }
+  @media @from-md {
+    .button-size(@padding-base-vertical; @padding-base-horizontal-md; @font-size-base; @line-height-base; @border-radius-base);
+  }
+  .ie8 & {
+    .button-size(@padding-base-vertical; @padding-base-horizontal-md; @font-size-base; @line-height-base; @border-radius-base);
+  }
+  .user-select(none);
+
+  &:focus {
+    .tab-focus();
+  }
+
+  &:hover,
+  &:focus {
+    color: @btn-default-color;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    outline: 0;
+    background-image: none;
+    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: not-allowed;
+    pointer-events: none; // Future-proof disabling of clicks
+    .opacity(.65);
+    .box-shadow(none);
+  }
+}
+
+.button-variant-color(@color; @background; @active-background) {
+  color: @color;
+  background-color: @background;
+  border-color: darken(@background, 10%);
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    color: @color;
+    background-color: @active-background;
+        border-color: darken(@active-background, 10%);
+  }
+  &:active,
+  &.active,
+  .open .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background-color: @background;
+          border-color: darken(@background, 10%);
+    }
+  }
+}
+
+// ING Breadcrumb
+// ----------------------------------------------
+@breadcrumb-color:      			@white;
+@breadcrumb-active-color:     @white;
+@breadcrumb-separator:        ">";
+
+.breadcrumb {
+	a, a:hover, a:focus {
+		color: @breadcrumb-color;
+	}
+
+  padding: 8px 0;
+  > li {
+    display: inline-block;
+    &+li:before {
+      content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
+      padding: 0 5px;
+      color: @breadcrumb-color;
+    }
+  }
+  > .active {
+    color: @breadcrumb-active-color;
+  }
+}
+
+
+// ING Icon Texts
+// ----------------------------------------------
+.circle-icon {
+	position: relative;
+	border-radius: 50%;
+	background-color: @ING-orange;
+	color: @white;
+	top: 2px !important;
+  margin-left: 0;
+	margin-right: 7px;
+  &.right { 
+    margin-left: 7px;
+    margin-right: 0;
+  }
+	font-size: 10px !important;
+	width: 16px !important;
+	height: 16px !important;
+
+  .icon-font;
+	&:before {
+		position: absolute;
+		top: 3px;
+		left: 3px;
+	}
+
+	&.plus        { .icon-plus; }
+	&.arrow	      { .icon-arrow-small; } // it is different as icon-arrow-right
+  &.close       { .icon-close; }
+  &.question    { .icon-question; }
+  &.arrow-up    { .icon-arrow-up; }
+
+  .no-borderradius & {
+    position: relative;
+    border-radius: none;
+    background-color: transparent;
+    background-image: url(@symbol-rollover);
+    background-position: 0 -330px;
+    width: 16px;
+    height: 16px;
+  }
+}
+a:hover .circle-icon {
+  background-color: #F38400;
+  .no-borderradius & {
+    background-color: transparent;
+    background-position: 0 -396px;
+  }
+}
+
+.circle-icon-block {
+  position: relative;
+  position: relative;
+  padding-left: 23px;
+
+  &:before {
+    .icon-font;
+    z-index: 1;
+    line-height: @xs-line-height;
+    position: absolute;
+    top: 6px !important;
+    left: 3px !important;
+    color: @white;
+    background-color: transparent;
+    font-size: 10px !important;
+  }
+  &:after {
+    content: '';
+    z-index: 0;
+    line-height: @xs-line-height;
+    position: absolute;
+    top: 5px !important;
+    left: 0px !important;
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 50%;
+    background-color: @ING-orange;
+  }
+  @media @from-sm {
+    &:before {
+      line-height: @sm-line-height;
+    }
+  }
+  .ie8 & {
+    &:before {
+      line-height: @sm-line-height;
+    }
+  }
+
+  &.plus        { .icon-plus; }
+  &.arrow       { .icon-arrow-small; } // it is different as icon-arrow-right
+  &.close       { .icon-close; }
+  &.question    { .icon-question; }
+  &.arrow-up    { .icon-arrow-up; }
+
+  .no-borderradius & {
+    &:after {
+      background-color: transparent;
+      background-image: url(@symbol-rollover);
+      background-position: 0 -330px;
+    }
+    &.blue:after {
+      background-position: 0 -594px;
+    }
+  }
+}
+.circle-icon-block:hover {
+  &:after { background-color: #F38400; }
+
+  .no-borderradius & {
+    &:after {
+      background-color: transparent;
+      background-image: url(@symbol-rollover);
+      background-position: 0 -396px;
+    }
+    &.blue:after {
+      background-position: 0 -660px;
+    }
+  }
+}
+
+#save-everyday-banking .plus-symbol {
+	&:after {
+        content: '';
+        position: relative;
+        .square(@plus-icon-size);
+        margin-left: 10%;
+        display: table;
+        background-image: url('/img/homepage/helper.png');
+        background-repeat: no-repeat;
+        background-position: -((102px) * 5) 0;
+        @media @only-xs { 
+            margin-left: 40%;
+        }
+	}
+}
+
+.icon {
+  margin-right: 10px;
+  .icon-font;
+  &.arrow       { .icon-arrow-small; } // it is different as icon-arrow-right
+  &.check       { .icon-check; } 
+  &.question    { .icon-question; }
+
+  &.orange      { color: @ING-orange; }
+}
+
+.icon-block {
+  position: relative;
+  padding-left: 26px;
+
+  &:before {
+    .icon-font;
+    line-height: @xs-line-height;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  @media @from-sm {
+    &:before {
+      line-height: @sm-line-height;
+    }
+  }
+  .ie8 & {
+    &:before {
+      line-height: @sm-line-height;
+    }
+  }
+
+  &.arrow       { .icon-arrow-small; }
+  &.check       { .icon-check; }
+  &.dot         { .icon-dot; &:before { color: @ING-orange; } }
+
+  &.orange      { &:before { color: @ING-orange; }}
+}
+
+.orange-info-icon {
+  .orange-icon;
+  .icon-important;
+}
+.orange-call-icon {
+  .orange-icon;
+  .icon-call;
+}
+.orange-instruction-icon {
+  .orange-icon;
+  .icon-instruction;
+}
+
+.orange-icon {
+  color: @ING-orange;
+  .icon-font;
+
+  @media @only-xs { 
+    margin-right: 10px; 
+    top: 4px !important;
+    font-size: (@xs-h5 + 8);
+  }
+  @media @from-sm { 
+    margin-right: 14px; 
+    top: 6px !important;
+    font-size: (@sm-h5 + 8);
+  }
+  @media @from-md {
+    font-size: (@md-h5 + 8);
+  }
+  .ie8 & {
+    margin-right: 14px; 
+    top: 6px !important;
+    font-size: (@md-h5 + 8);
+  }
+}
+
+.link-mobile {
+  display: inline-block !important;
+  // &:before {
+  //   content: '\00a0';
+  // }
+
+  color: @color-default-text;
+  &:hover,
+  &:focus {
+    color: @color-default-text;
+    text-decoration: none;
+  }
+}
+
+a.inline-style {
+  &+a.inline-style {
+    margin-left: 10px;
+  }
+}
+
+.ie8 .visible-md {
+  display: block !important;
+}
+.ie8 .visible-lg {
+  display: block !important;
+}

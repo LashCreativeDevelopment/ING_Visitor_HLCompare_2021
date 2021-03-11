@@ -1,0 +1,64 @@
+/*
+ * ING Direct Fonts LESS
+ */
+@font-face {
+  font-family: 'ING Me Web Regular';
+  src: url('../fonts/INGMe/INGMeWeb-Regular.eot');
+  src: url('../fonts/INGMe/INGMeWeb-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/INGMe/INGMeWeb-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  
+  /* IE9 */
+  /* Modern Browsers */
+}
+@font-face {
+  font-family: 'ING Me Web Light';
+  src: url('../fonts/INGMe/INGMeWeb-Light.eot');
+  src: url('../fonts/INGMe/INGMeWeb-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/INGMe/INGMeWeb-Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  
+  /* IE9 */
+  /* Modern Browsers */
+}
+@font-face {
+  font-family: 'ING Me Web Bold';
+  src: url('../fonts/INGMe/INGMeWeb-Bold.eot');
+  src: url('../fonts/INGMe/INGMeWeb-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/INGMe/INGMeWeb-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  
+  /* IE9 */
+  /* Modern Browsers */
+}
+@font-face {
+  font-family: 'ING Me Web Italic';
+  src: url('../fonts/INGMe/INGMeWeb-Italic.eot');
+  src: url('../fonts/INGMe/INGMeWeb-Italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/INGMe/INGMeWeb-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  
+  /* IE9 */
+  /* Modern Browsers */
+}
+/* Narrow */
+@font-face {
+  font-family: 'ING Me Narrow Web Regular';
+  src: url('../fonts/INGMeNarrow/INGMeNarrowWeb-Regular.eot');
+  src: url('../fonts/INGMeNarrow/INGMeNarrowWeb-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/INGMeNarrow/INGMeNarrowWeb-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  
+  /* IE9 */
+  /* Modern Browsers */
+}
+@font-face {
+  font-family: 'ING Me Narrow Web Bold';
+  src: url('../fonts/INGMeNarrow/INGMeNarrowWeb-Bold.eot');
+  src: url('../fonts/INGMeNarrow/INGMeNarrowWeb-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/INGMeNarrow/INGMeNarrowWeb-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  
+  /* IE9 */
+  /* Modern Browsers */
+}

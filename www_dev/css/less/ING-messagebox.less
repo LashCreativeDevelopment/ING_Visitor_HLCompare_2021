@@ -1,0 +1,90 @@
+/* 
+ * ING Direct Top Message Box LESS
+ */
+
+@messagebox-bg-color: #4c4c94;
+@messagebox-text-color: @white;
+@messagebox-divider-color: #5B5D9B;
+@messagebox-gap-width: 60px;
+@messagebox-gap-width-mobile: 50px;
+
+
+.ING-messagebox {
+	position: relative;
+	background-color: @messagebox-bg-color;
+	color: @messagebox-text-color;
+
+	// ul {
+	// 	padding-right: @messagebox-gap-width;
+	// }
+
+	li+li {
+		border-top: 1px solid @messagebox-divider-color;
+	}
+
+	// .container {
+	// 	position: relative;
+	// }
+
+	.message {
+		position: relative;
+		display: table-cell;
+		vertical-align: middle;
+		font-size: 13px;
+		line-height: 18px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		padding-left: @messagebox-gap-width;
+		padding-right: 20px;
+
+		&:after {
+			content: '';
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			top: 50%;
+			margin-top: -15px;
+			left: 10px;
+			background: url('/img/etc/message-icons.png') no-repeat center;
+		}
+	}
+
+	.close-button {
+		.icon-font;
+		.icon-close;
+		color: @white;
+		line-height: @close-button-size;
+		text-align: center;
+
+		position: absolute;
+		top: 50%;
+		margin-top: -@close-button-size/2;
+
+		.square(@close-button-size);
+		background-color: @ING-blue;
+		.transition(background-color @duration-fastest);
+		&:hover, &:focus {
+			background-color: darken(@ING-blue, 10%);
+			cursor: pointer;
+		}
+
+		@media @only-xs { right: @xs-container-gap; }
+		@media @from-sm { right: @sm-container-gap; }
+		@media @from-md { right: @md-container-gap; }
+		@media @from-lg { right: @lg-container-gap; }
+		.ie8 & { right: @md-container-gap; }
+	}	
+
+	@media @only-xs {
+		ul {
+			padding-right: @messagebox-gap-width-mobile;
+		}
+		.message {
+			padding-left: @messagebox-gap-width-mobile;
+			padding-right: 0;
+			&:after {
+				left: 0;
+			}
+		}
+	}
+}

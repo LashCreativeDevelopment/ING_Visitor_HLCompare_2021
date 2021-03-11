@@ -1,0 +1,141 @@
+/*
+ * ING Direct Tooltips LESS
+ */
+
+@color-tooltip-bg:                    #E9EDF7;
+@color-tooltip-border:                #B3C0DE;
+
+
+@font-size-small:             13px;
+@tooltip-max-width:           250px;
+@tooltip-color:               @color-default-text;
+@tooltip-bg:                  @color-tooltip-bg;
+
+@tooltip-arrow-width:         5px;
+@tooltip-arrow-color:         @color-tooltip-bg;
+
+// Base class
+.tooltip {
+  position: absolute;
+  z-index: @zindex-tooltip;
+  display: block;
+  visibility: visible;
+  font-size: @font-size-small;
+  line-height: 1.4;
+  .opacity(0);
+
+  &.in     { .opacity(1); }
+  &.top    { margin-top:  -3px; padding: @tooltip-arrow-width 0; }
+  &.right  { margin-left:  3px; padding: 0 @tooltip-arrow-width; }
+  &.bottom { margin-top:   3px; padding: @tooltip-arrow-width 0; }
+  &.left   { margin-left: -3px; padding: 0 @tooltip-arrow-width; }
+}
+@media @only-xs {
+  .tooltip {
+    display: none !important;
+  }
+}
+
+// Wrapper for the tooltip content
+.tooltip-inner {
+  max-width: @tooltip-max-width;
+  padding: 10px 20px;
+  color: @tooltip-color;
+  text-align: left;
+  text-decoration: none;
+  background-color: @tooltip-bg;
+  border-radius: @border-radius-base;
+//  border: 1px solid @popover-fallback-border-color;
+//  border: 1px solid @popover-border-color;  
+}
+
+// Arrows
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.tooltip {
+  &.top .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -@tooltip-arrow-width;
+    border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+    border-top-color: @tooltip-arrow-color;
+  }
+  &.top-left .tooltip-arrow {
+    bottom: 0;
+    left: @tooltip-arrow-width;
+    border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+    border-top-color: @tooltip-arrow-color;
+  }
+  &.top-right .tooltip-arrow {
+    bottom: 0;
+    right: @tooltip-arrow-width;
+    border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+    border-top-color: @tooltip-arrow-color;
+  }
+  &.right .tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -@tooltip-arrow-width;
+    border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
+    border-right-color: @tooltip-arrow-color;
+  }
+  &.left .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -@tooltip-arrow-width;
+    border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-left-color: @tooltip-arrow-color;
+  }
+  &.bottom .tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -@tooltip-arrow-width;
+    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-bottom-color: @tooltip-arrow-color;
+  }
+  &.bottom-left .tooltip-arrow {
+    top: 0;
+    left: @tooltip-arrow-width;
+    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-bottom-color: @tooltip-arrow-color;
+  }
+  &.bottom-right .tooltip-arrow {
+    top: 0;
+    right: @tooltip-arrow-width;
+    border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+    border-bottom-color: @tooltip-arrow-color;
+  }
+}
+
+.tooltip-style {
+  .no-wrap;
+
+  &.multiline {
+    white-space: normal;
+  }
+  
+  border-bottom-style: dotted;
+  &.solid-line {
+    border-bottom-style: solid;
+  }
+  border-bottom-width: 1px;
+  text-decoration: none;
+  &:hover, &:focus {
+    cursor: pointer;
+    color: @ING-blue;
+  }
+}
+@media @only-xs {
+  .tooltip-style {
+    border-bottom: 0;
+    &:hover, &:focus {
+      cursor: default;
+      color: inherit;
+    }
+  }
+}
