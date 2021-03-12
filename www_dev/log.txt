@@ -1,0 +1,45 @@
+/*
+ * ING HL Compare Tool version 2.0
+ *
+ * Date: 12 March 2021
+ * Updating the HL Compare tool for extended deposit category (https://www.ing.com.au/home-loans.html)
+ *
+ */
+
+
+
+Notes:
+-----
+- removed the 'Important: Interest Only repayments are not currently available on any of our Owner Occupied fixed rate loans.' on FRL with OO & IO combination.
+
+
+
+Questions:
+---------
+- Showing <10%, 10%-20%, 20%-30% ... in the deposit dropdown, is this ok?
+- Default Deposit? (used to be >20%)
+- What are the 'All borrowings' deposit criteria for?
+- Asssumption made to Comparison rate code to have either 'CP_' or 'COMP_' prefix to the rate code
+- FRL did not show any rates for OO with IO - the excel sheet now have rates for OO with IO combination
+- Can we get sample json (currenteffective response)?
+
+
+
+Update log:
+----------
+1. homeloan-style.min.css: zindex of popover to 1051 from 8 as the popover in the mobile tooltip, while the refinement popup is opened, goes behind
+2. home-loans.html: changing deposit radio button to dropdown (desktop, mobile, mobile refinement popup)
+3. homeloan-controller-2.0.js (new)
+4. interestRateManager-homeloan-2.0.js (new) - angular notifier added based on the latest interestRateManager.js provided from ING (Laura)
+
+
+
+Files to package up:
+-------------------
+/home-loans.html
+/js/homeloan/homeloan-controller-2.0.js
+/js/homeloan/homeloan-controller-2.0.min.js
+/js/homeloan/interestRateManager-homeloan.2.0.js (MARK: replacing the interestRateManager.js on this page only)
+/css/homeloan-style.min.css
+
+

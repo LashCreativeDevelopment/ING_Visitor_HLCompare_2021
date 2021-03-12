@@ -375,7 +375,7 @@
 																	<a href="/business/wholesale-term-deposit.html">
 																		<div class="column-inner-menu-cell">
 																			<h6>Wholesale Term Deposit</h6>
-																			<p>Competitive interest rates for a fixed period, that’s tailored to your cash flow needs.</p>
+																			<p>Competitive interest rates for a fixed period, that's tailored to your cash flow needs.</p>
 																		</div>
 																	</a>
 																</li>
@@ -1361,11 +1361,8 @@
 											</div>
 										</div>
 										<div class="grid-4-cell">
-											<p class="menu-title">{{::calcOptions.optionDeposit.title}}&nbsp;
-												<a href="" tabindex="0" aria-label="information-icon"  class="btn-symbol color-dark-gray" uib-popover-template="'popoverSmallDepositTemplate.html'" popover-trigger="outsideClick" popover-class="homeloan-popover-small" popover-append-to-body="true" type="button"><span class="icon-font icon-instruction"></span></a>
-											</p>
+											<p class="menu-title">{{::calcOptions.optionDeposit.title}}&nbsp;<a href="" tabindex="0" aria-label="information-icon"  class="btn-symbol color-dark-gray" uib-popover-template="'popoverSmallDepositTemplate.html'" popover-trigger="outsideClick" popover-class="homeloan-popover-small" popover-append-to-body="true" type="button"><span class="icon-font icon-instruction"></span></a></p>
 											<bs-dropdown data-menu-type="button" select-val="calcOptions.optionDeposit.selected = selectedVal" preselected-item="calcOptions.optionDeposit.selected" data-dropdown-data="calcOptions.optionDeposit.menus"></bs-dropdown>
-
 											<!-- <div class="btn-group btn-block btn-cell-{{::calcOptions.optionDeposit.menus.length}}">
 												<label class="btn btn-toggle-orange" ng-class="menu.doubleline ? 'btn-double-line-sm' : ''" ng-model="calcOptions.optionDeposit.selected" uib-btn-radio="{{::$index}}" ng-repeat="menu in calcOptions.optionDeposit.menus" ng-bind-html="::menu.name"></label>
 											</div> -->
@@ -1424,7 +1421,8 @@
 											<span class="icon-font icon-arrow-down"></span>
 										</label>
 										<label class="btn btn-toggle-orange btn-dropdown-style-xs" ng-click="pageInfo.openModalMobileCalculator();">
-											<span class="btn-double-line-sm" ng-bind-html="calcOptions.optionDeposit.menus[calcOptions.optionDeposit.selected].name"></span><br/>
+											<!-- <span class="btn-double-line-sm" ng-bind-html="calcOptions.optionDeposit.menus[calcOptions.optionDeposit.selected].name"></span><br/> -->
+											<span class="btn-double-line-sm" ng-bind-html="calcOptions.optionDeposit.selected.name"></span><br/>
 											<span class="icon-font icon-arrow-down"></span>
 										</label>
 									</div>
@@ -1495,10 +1493,14 @@
 													</div>
 												</div>
 
-												<!-- For FRL only and when Owner occupied and Interest Only selected -->
+
+												<!-- v2.0: remove this once approved -->
+												<!-- For FRL only and when Owner occupied and Interest Only selected (desktop version) -->
+												<!--
 												<div class="hl-compare-overlay-info-panel" ng-show="cardInfo.title=='Fixed Rate Loan' && calcOptions.optionPurpose.selected==0 && calcOptions.optionRepayment.selected==1">
 													<p><strong>Important:</strong> Interest Only repayments are not currently available on any of our Owner Occupied fixed rate loans.</p>
 												</div>
+												-->
 											</div>
 										</div>
 									</div>
@@ -1525,7 +1527,6 @@
 																	<a ng-if="cardInfo.interestInfo1.showTable == true" href="" tabindex="0" type="button" class="btn-symbol visible-xs center-block" ng-click="pageInfo.openModalMobileFixedRateTable()"><p class="bold" ng-bind-html="cardInfo.interestInfo1.name"></p></a>
 
 																	<p ng-if="cardInfo.interestInfo1.showTable != true" class="bold" ng-bind="cardInfo.interestInfo1.name"></p>
-
 																</div>
 																<div class="table-cell text-center color-gray">
 																	<div lc-interest-rate data-interest-rate="cardInfo.interestInfo2.rate"></div>
@@ -1570,10 +1571,14 @@
 														</div>
 													</div>
 
-													<!-- For FRL only and when Owner occupied and Interest Only selected -->
+
+													<!-- v2.0: remove this once approved -->
+													<!-- For FRL only and when Owner occupied and Interest Only selected (mobile version) -->
+													<!--
 													<div class="hl-compare-overlay-info-panel" ng-show="cardInfo.title=='Fixed Rate Loan' && calcOptions.optionPurpose.selected==0 && calcOptions.optionRepayment.selected==1">
 														<p><strong>Important:</strong> Interest Only repayments are not currently available on any of our Owner Occupied fixed rate loans.</p>
 													</div>
+													-->
 												</div>
 											</div>
 										</div>
@@ -1960,7 +1965,7 @@
 												<img width="100" src="/svgs/icon-freeatm.svg" class="hidden-xs center-block" alt="Save on the everyday">
 												<br class="hidden-xs" />
 												<p></p><h5 class="text-center">Save on the everyday</h5><p></p>
-												<p class="text-center">Just add Orange Everyday to your home loan, and you’ll get free ATMs across Australia, a rebate on fees from any ATM worldwide within 5 business days, and we’ll also rebate our ING international transaction fees.</p>
+												<p class="text-center">Just add Orange Everyday to your home loan, and you'll get free ATMs across Australia, a rebate on fees from any ATM worldwide within 5 business days, and we'll also rebate our ING international transaction fees.</p>
 											</div>
 										</div>
 										<div class="table-cell">
@@ -2026,12 +2031,12 @@
 			<!-- Popover Small Deposit Template -->
 			<script type="text/ng-template" id="popoverSmallDepositTemplate.html">
 				<div class="content-block">
-					If you plan to borrow more than 80% of the property’s value – otherwise known as the loan-to-value ratio (or LVR) - you may need to pay lenders mortgage insurance (or LMI).
+					If you plan to borrow more than 80% of the property's value - otherwise known as the loan-to-value ratio (or LVR) - you may need to pay lenders mortgage insurance (or LMI).
 				</div>
 			</script>
 			<script type="text/ng-template" id="popoverSmallDepositTemplate2.html">
 				<div class="content-block">
-					If you plan to borrow more than 80% of the property’s value – otherwise known as the loan-to-value ratio (or LVR) - you may need to pay lenders mortgage insurance (or LMI).
+					If you plan to borrow more than 80% of the property's value - otherwise known as the loan-to-value ratio (or LVR) - you may need to pay lenders mortgage insurance (or LMI).
 				</div>
 			</script>
 			<!-- Popover Small Special Offer Template -->
@@ -2075,10 +2080,14 @@
 									</div>
 								</div>
 								<div class="menu-container">
-									<p class="menu-title">{{::calcOptions.optionDeposit.title}} <span ng-if="true">&nbsp;<a href="" tabindex="0" class="btn-symbol color-dark-gray" uib-popover-template="'popoverSmallDepositTemplate.html'" popover-trigger="outsideClick" popover-class="homeloan-popover-small" popover-append-to-body="true" popover-placement="right" type="button"><span class="icon-font icon-instruction"></span></a></span></p>
+									<p class="menu-title">{{::calcOptions.optionDeposit.title}}&nbsp;<a href="" tabindex="0" class="btn-symbol color-dark-gray" uib-popover-template="'popoverSmallDepositTemplate.html'" popover-trigger="outsideClick" popover-class="homeloan-popover-small" popover-append-to-body="true" popover-placement="right" type="button"><span class="icon-font icon-instruction"></span></a></p>
+
+									<bs-dropdown data-menu-type="button" select-val="calcOptions.optionDeposit.selected = selectedVal" preselected-item="calcOptions.optionDeposit.selected" data-dropdown-data="calcOptions.optionDeposit.menus"></bs-dropdown>
+									<!-- 
 									<div class="btn-group btn-block btn-cell-{{::calcOptions.optionDeposit.menus.length}}">
 										<label class="btn btn-toggle-orange" ng-class="menu.doubleline ? 'btn-double-line-sm' : ''" ng-model="calcOptions.optionDeposit.selected" uib-btn-radio="{{::$index}}" ng-repeat="menu in calcOptions.optionDeposit.menus" ng-bind-html="::menu.name"></label>
-									</div>
+									</div> 
+									-->
 								</div>
 								<div class="menu-container">
 									<p class="menu-title">{{::calcOptions.optionRepayment.title}}</p>
@@ -2174,8 +2183,8 @@
 							<p>Where you have selected interest only repayments, we have calculated the minimum repayment amount on the assumption that the interest only repayments would apply for the entire term of the loan. In practice this would not be the case as our maximum interest only period is between 5 years (for owner occupiers) and 10 years (for investors) vs a standard loan term of 30 years. After the interest only period ends, you would be required to make principal and interest repayments for the remainder of the term or one final lump sum repayment so your balance is paid in full.</p>
 
 							<h4>Disclaimer</h4>
-							<p>Note: The results are an approximate guide and should not be used as exact values for financial planning purposes. The results do not constitute an offer to provide credit and do not imply that credit is available. The formulae used within this calculator may change at any time without notice. Applications are subject to ING’s usual credit assessment. Fees and charges apply. Full details of terms and conditions, including fees and charges are available on request.</p>
-							<p>You can also use another Loan Repayments Calculator provided by InfoChoice available under the ‘Tools &amp; calculators’ tab on this webpage. This calculator can also provide you with an indication of the minimum repayment amounts based on the information provided. It also includes a yearly breakdown of the interest paid, the principal balance and the total amount owing. Please check out the assumptions and qualifications for this calculator too.</p>
+							<p>Note: The results are an approximate guide and should not be used as exact values for financial planning purposes. The results do not constitute an offer to provide credit and do not imply that credit is available. The formulae used within this calculator may change at any time without notice. Applications are subject to ING's usual credit assessment. Fees and charges apply. Full details of terms and conditions, including fees and charges are available on request.</p>
+							<p>You can also use another Loan Repayments Calculator provided by InfoChoice available under the ‘Tools &amp; calculators' tab on this webpage. This calculator can also provide you with an indication of the minimum repayment amounts based on the information provided. It also includes a yearly breakdown of the interest paid, the principal balance and the total amount owing. Please check out the assumptions and qualifications for this calculator too.</p>
 						</div>
 					</div>
 				</div>
@@ -2217,8 +2226,8 @@
 							<p>Where you have selected interest only repayments, we have calculated the minimum repayment amount on the assumption that the interest only repayments would apply for the entire term of the loan. In practice this would not be the case as our maximum interest only period is between 5 years (for owner occupiers) and 10 years (for investors) vs a standard loan term of 30 years. After the interest only period ends, you would be required to make principal and interest repayments for the remainder of the term or one final lump sum repayment so your balance is paid in full.</p>
 
 							<h4>Disclaimer</h4>
-							<p>Note: The results are an approximate guide and should not be used as exact values for financial planning purposes. The results do not constitute an offer to provide credit and do not imply that credit is available. The formulae used within this calculator may change at any time without notice. Applications are subject to ING’s usual credit assessment. Fees and charges apply. Full details of terms and conditions, including fees and charges are available on request.</p>
-							<p>You can also use another Loan Repayments Calculator provided by InfoChoice available under the ‘Tools &amp; calculators’ tab on this webpage. This calculator can also provide you with an indication of the minimum repayment amounts based on the information provided. It also includes a yearly breakdown of the interest paid, the principal balance and the total amount owing. Please check out the assumptions and qualifications for this calculator too.</p>
+							<p>Note: The results are an approximate guide and should not be used as exact values for financial planning purposes. The results do not constitute an offer to provide credit and do not imply that credit is available. The formulae used within this calculator may change at any time without notice. Applications are subject to ING's usual credit assessment. Fees and charges apply. Full details of terms and conditions, including fees and charges are available on request.</p>
+							<p>You can also use another Loan Repayments Calculator provided by InfoChoice available under the ‘Tools &amp; calculators' tab on this webpage. This calculator can also provide you with an indication of the minimum repayment amounts based on the information provided. It also includes a yearly breakdown of the interest paid, the principal balance and the total amount owing. Please check out the assumptions and qualifications for this calculator too.</p>
 						</div>
 					</div>
 				</div>
@@ -2251,7 +2260,7 @@
 							<p>One year is assumed to contain exactly 52 weeks or 26 fortnights. This implicitly assumes that a year has 364 days rather than the actual 365 or 366.</p>
 
 							<h4>Interest rate</h4>
-							<p>The interest rate used in this calculation is the applicable ING Fixed Rate for the period of time selected only (eg. 3 year Fixed Rate) for an owner occupier loan. It includes a 0.10% p.a. discount on the relevant Fixed Rate because you’ve split your home loan by combining our Fixed Rate Home Loan with an Orange Advantage. In practice, at the end of the fixed interest period, your interest rate will change based on the new variable rate that you receive when you roll to a Mortgage Simplifier product.</p>
+							<p>The interest rate used in this calculation is the applicable ING Fixed Rate for the period of time selected only (eg. 3 year Fixed Rate) for an owner occupier loan. It includes a 0.10% p.a. discount on the relevant Fixed Rate because you've split your home loan by combining our Fixed Rate Home Loan with an Orange Advantage. In practice, at the end of the fixed interest period, your interest rate will change based on the new variable rate that you receive when you roll to a Mortgage Simplifier product.</p>
 
 							<h4>Loan-to-value ratio (LVR)</h4>
 							<p>We have assumed that the purchase price for the property is equal to our valuation of the property. This way, a 20% deposit would equate to an LVR of 80%.</p>
@@ -2260,8 +2269,8 @@
 							<p>Where you have selected interest only repayments, we have calculated the minimum repayment amount on the assumption that the interest only repayments would apply for the entire term of the loan. In practice this would not be the case as our maximum interest only period is between 5 years (for owner occupiers) and 10 years (for investors) vs a standard loan term of 30 years. After the interest only period ends, you would be required to make principal and interest repayments for the remainder of the term or one final lump sum repayment so your balance is paid in full.</p>
 
 							<h4>Disclaimer</h4>
-							<p>Note: The results are an approximate guide and should not be used as exact values for financial planning purposes. The results do not constitute an offer to provide credit and do not imply that credit is available. The formulae used within this calculator may change at any time without notice. Applications are subject to ING’s usual credit assessment. Fees and charges apply. Full details of terms and conditions, including fees and charges are available on request.</p>
-							<p>You can also use another Loan Repayments Calculator provided by InfoChoice available under the ‘Tools &amp; calculators’ tab on this webpage. This calculator can also provide you with an indication of the minimum repayment amounts based on the information provided. It also includes a yearly breakdown of the interest paid, the principal balance and the total amount owing. Please check out the assumptions and qualifications for this calculator too.</p>
+							<p>Note: The results are an approximate guide and should not be used as exact values for financial planning purposes. The results do not constitute an offer to provide credit and do not imply that credit is available. The formulae used within this calculator may change at any time without notice. Applications are subject to ING's usual credit assessment. Fees and charges apply. Full details of terms and conditions, including fees and charges are available on request.</p>
+							<p>You can also use another Loan Repayments Calculator provided by InfoChoice available under the ‘Tools &amp; calculators' tab on this webpage. This calculator can also provide you with an indication of the minimum repayment amounts based on the information provided. It also includes a yearly breakdown of the interest paid, the principal balance and the total amount owing. Please check out the assumptions and qualifications for this calculator too.</p>
 						</div>
 					</div>
 				</div>
@@ -2303,8 +2312,8 @@
 							<p>Where you have selected interest only repayments, we have calculated the minimum repayment amount on the assumption that the interest only repayments would apply for the entire term of the loan. In practice this would not be the case as our maximum interest only period is between 5 years (for owner occupiers) and 10 years (for investors) vs a standard loan term of 30 years. After the interest only period ends, you would be required to make principal and interest repayments for the remainder of the term or one final lump sum repayment so your balance is paid in full.</p>
 
 							<h4>Disclaimer</h4>
-							<p>Note: The results are an approximate guide and should not be used as exact values for financial planning purposes. The results do not constitute an offer to provide credit and do not imply that credit is available. The formulae used within this calculator may change at any time without notice. Applications are subject to ING’s usual credit assessment. Fees and charges apply. Full details of terms and conditions, including fees and charges are available on request.</p>
-							<p>You can also use another Loan Repayments Calculator provided by InfoChoice available under the ‘Tools &amp; calculators’ tab on this webpage. This calculator can also provide you with an indication of the minimum repayment amounts based on the information provided. It also includes a yearly breakdown of the interest paid, the principal balance and the total amount owing. Please check out the assumptions and qualifications for this calculator too.</p>
+							<p>Note: The results are an approximate guide and should not be used as exact values for financial planning purposes. The results do not constitute an offer to provide credit and do not imply that credit is available. The formulae used within this calculator may change at any time without notice. Applications are subject to ING's usual credit assessment. Fees and charges apply. Full details of terms and conditions, including fees and charges are available on request.</p>
+							<p>You can also use another Loan Repayments Calculator provided by InfoChoice available under the ‘Tools &amp; calculators' tab on this webpage. This calculator can also provide you with an indication of the minimum repayment amounts based on the information provided. It also includes a yearly breakdown of the interest paid, the principal balance and the total amount owing. Please check out the assumptions and qualifications for this calculator too.</p>
 						</div>
 					</div>
 				</div>
@@ -2377,8 +2386,8 @@
 							</a></li>
 							<li class="slide"><a href="https://blog.ing.com.au/house-and-home/buy/duncan-sable-stage-1-knowing-when-its-time-to-upgrade-your-home/" data-toggle="new-tab-page">
 								<div class="slide-container">
-									<img src="img/more-about-slider/homeloan-10.jpg" alt="Knowing when it’s time to upgrade your home">
-									<p>Knowing when it’s time to upgrade your home</p>
+									<img src="img/more-about-slider/homeloan-10.jpg" alt="Knowing when it's time to upgrade your home">
+									<p>Knowing when it's time to upgrade your home</p>
 								</div>
 							</a></li>
 						</ul>
@@ -2418,9 +2427,9 @@
 						<p class="disclaimer"><strong>Rebate Offers for ING Home Loan Customers</strong></p>
 						<p class="disclaimer">For as long as you hold an ING home loan, you'll receive the following benefits on your Orange Everyday and Orange One accounts:</p>
 						<ul class="disclaimer">
-							<li>- for ATMs in Australia – any ATM fee charged by the ATM operator is rebated immediately following the transaction, </li>
-							<li>- for ATMs outside Australia – ING will rebate the International ATM withdrawal fee of $2.50 immediately after it is charged and rebate any ATM fee charged by the ATM operator at settlement of the transaction. While the transaction is pending the amount of the acquirer fee will be deducted from your available balance and will be reinstated after the transaction is finalised. ATM transactions outside Australia can take up to 5 business days to finalise, and </li>
-							<li>- for ING international transaction fees – ING will rebate the International Transaction fee (Orange Everyday) and Foreign Currency Conversion fee (Orange One) of 2.5% of the amount of the international transaction immediately after it is charged. Merchants may charge you a separate fee for their services (which is not rebated under this offer).</li>
+							<li>- for ATMs in Australia - any ATM fee charged by the ATM operator is rebated immediately following the transaction, </li>
+							<li>- for ATMs outside Australia - ING will rebate the International ATM withdrawal fee of $2.50 immediately after it is charged and rebate any ATM fee charged by the ATM operator at settlement of the transaction. While the transaction is pending the amount of the acquirer fee will be deducted from your available balance and will be reinstated after the transaction is finalised. ATM transactions outside Australia can take up to 5 business days to finalise, and </li>
+							<li>- for ING international transaction fees - ING will rebate the International Transaction fee (Orange Everyday) and Foreign Currency Conversion fee (Orange One) of 2.5% of the amount of the international transaction immediately after it is charged. Merchants may charge you a separate fee for their services (which is not rebated under this offer).</li>
 						</ul>
 						<p class="disclaimer">If eligible, the benefits apply to:</p>
 						<ul class="disclaimer">
@@ -2434,7 +2443,7 @@
 						<p class="disclaimer">	ING is Australia's most recommended bank according to RFi XPRT Survey, June - November 20 (n = 31,509) when compared to customers of 20 other banks operating in Australia.</p>
 						<p class="disclaimer">Testimonials appearing on this site were obtained from customers as part of the 'Tell Isla' campaign from https://www.campaigns.ing.com.au/isla/ (no longer accessible) in May-June 2015. They are individual experiences of customers that have used our products and/or services. We do not guarantee that they are typical results that consumers will generally achieve. Testimonials are not necessarily representative of all those who will use our products and/or services.</p>
 						<p class="disclaimer"><strong>Further Discount Offer</strong></p>
-						<p class="disclaimer">Where an owner occupied Fixed Rate Home Loan with principal and interest repayments is combined with an owner occupier Orange Advantage Home Loan, an interest rate discount of 0.10% p.a. applies on the Fixed Interest Rate Home Loan. A further 0.10% p.a. interest rate discount applies to the Fixed Interest Rate Loan (total of 0.20% p.a. interest rate discount) where the LVR is ≤80% and the loan settles between 13 November 2020 and 31 March 2021 (<strong>"Further Discount Offer"</strong>). These interest rate discounts have been reflected in the advertised rates in this communication. A $299 annual fee applies to Orange Advantage Home Loans. The Further Discount Offer is a limited offer that can be withdrawn, varied or extended at any time at ING’s sole discretion. If this offer is withdrawn, ING will notify customers by publication in a national newspaper. </p>
+						<p class="disclaimer">Where an owner occupied Fixed Rate Home Loan with principal and interest repayments is combined with an owner occupier Orange Advantage Home Loan, an interest rate discount of 0.10% p.a. applies on the Fixed Interest Rate Home Loan. A further 0.10% p.a. interest rate discount applies to the Fixed Interest Rate Loan (total of 0.20% p.a. interest rate discount) where the LVR is ≤80% and the loan settles between 13 November 2020 and 31 March 2021 (<strong>"Further Discount Offer"</strong>). These interest rate discounts have been reflected in the advertised rates in this communication. A $299 annual fee applies to Orange Advantage Home Loans. The Further Discount Offer is a limited offer that can be withdrawn, varied or extended at any time at ING's sole discretion. If this offer is withdrawn, ING will notify customers by publication in a national newspaper. </p>
 						<p class="disclaimer"><strong>ING Property Reports</strong></p>
 						<p class="disclaimer">Property reports are prepared by Core Logic. The statements, information and opinions contained in those reports are those of Core Logic only, and ING does not endorse or accept any liability for them. The ING Property Report is available to customers who provide their contact details for ING to contact them about products and services. </p>
 					</div>
@@ -2523,7 +2532,7 @@
 				<p class="disclaimer">The comparison rate for the home loan is based on a loan amount of $150,000 over a loan term of 25 years. <strong>WARNING:</strong> This comparison rate is true only for the example given and may not include all fees and charges. Different terms, fees or other loan amounts might result in a different comparison rate.</p>
 				<br>
 				<p class="disclaimer"><strong>Further Discount Offer</strong><br>
-					Where an owner occupied Fixed Rate Home Loan with principal and interest repayments is combined with an owner occupier Orange Advantage Home Loan, an interest rate discount of 0.10% p.a. applies on the Fixed Interest Rate Home Loan. A further 0.10% p.a. interest rate discount applies to the Fixed Interest Rate Loan (total of 0.20% p.a. interest rate discount) where the LVR is ≤80% and the loan settles between 13 November 2020 and 31 March 2021 (”Further Discount Offer”). These interest rate discounts have been reflected in the advertised rates in this communication. A $299 annual fee applies to Orange Advantage Home Loans. The Further Discount Offer is a limited offer that can be withdrawn, varied or extended at any time at ING’s sole discretion. If this offer is withdrawn, ING will notify customers by publication in a national newspaper.
+					Where an owner occupied Fixed Rate Home Loan with principal and interest repayments is combined with an owner occupier Orange Advantage Home Loan, an interest rate discount of 0.10% p.a. applies on the Fixed Interest Rate Home Loan. A further 0.10% p.a. interest rate discount applies to the Fixed Interest Rate Loan (total of 0.20% p.a. interest rate discount) where the LVR is ≤80% and the loan settles between 13 November 2020 and 31 March 2021 (”Further Discount Offer”). These interest rate discounts have been reflected in the advertised rates in this communication. A $299 annual fee applies to Orange Advantage Home Loans. The Further Discount Offer is a limited offer that can be withdrawn, varied or extended at any time at ING's sole discretion. If this offer is withdrawn, ING will notify customers by publication in a national newspaper.
 				</p>
 			</div>
 		</div>
