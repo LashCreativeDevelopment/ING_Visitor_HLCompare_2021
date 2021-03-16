@@ -8,19 +8,10 @@
 
 
 
-Notes:
------
-- removed the 'Important: Interest Only repayments are not currently available on any of our Owner Occupied fixed rate loans.' on FRL with OO & IO combination.
-
-
-
 Questions:
 ---------
-- Showing <10%, 10%-20%, 20%-30% ... in the deposit dropdown, is this ok?
-- Default Deposit? (used to be >20%)
-- What are the 'All borrowings' deposit criteria for?
-- Asssumption made to Comparison rate code to have either 'CP_' or 'COMP_' prefix to the rate code
-- FRL did not show any rates for OO with IO - the excel sheet now have rates for OO with IO combination
+- Showing <10%, 10%-20%, 20%-30% ... in the deposit dropdown, is this ok? 
+- Default Deposit? (used to be >20%) => TBC
 - Can we get sample json (currenteffective response)?
 
 

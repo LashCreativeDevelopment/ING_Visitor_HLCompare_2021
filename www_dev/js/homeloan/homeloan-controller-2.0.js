@@ -232,6 +232,16 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		{ code: 'LVR50' },
 	];
 
+	// v2.0 - default options
+	var _depositMenus = [
+		{ name: '< 10%', value: 0 },
+		{ name: '10% - 20%', value: 1 },
+		{ name: '20% - 30%', value: 2 },
+		{ name: '30% - 40%', value: 3 },
+		{ name: '40% - 50%', value: 4 },
+		{ name: '> 50%', value: 5 },
+	];
+
 	// CALCULATOR OPTIONS
 	$scope.calcOptions = {
 		optionPurpose: {
@@ -258,25 +268,8 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		optionDeposit: {
 			title: 'Deposit:',
 			// v2.0
-			// menus: [
-			// 	{ name: 'LVR 50% or less', value: 5 },
-			// 	{ name: 'LVR between 50% & 60%', value: 4 },
-			// 	{ name: 'LVR between 60% & 70%', value: 3 },
-			// 	{ name: 'LVR between 70% & 80%', value: 2 },
-			// 	{ name: 'LVR between 80% & 90%', value: 1 },
-			// 	{ name: 'LVR above 90%', value: 0 },
-			// ],
-			// selected: { name: 'LVR between 70% & 80%', value: 2 },
-			menus: [
-				{ name: '< 10%', value: 0 },
-				{ name: '10% - 20%', value: 1 },
-				{ name: '20% - 30%', value: 2 },
-				{ name: '30% - 40%', value: 3 },
-				{ name: '40% - 50%', value: 4 },
-				{ name: '> 50%', value: 5 },
-			],
-			selected: { name: '20% - 30%', value: 2 },
-			// value: undefined,
+			menus: _depositMenus,
+			selected: _depositMenus[2],
 		},
 		optionRepayment: {
 			title: 'Repayment type:',
@@ -367,7 +360,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 			],
 			alertInfo: {
 				collapsed: true,
-				content: '', //'You could save $59,612.37 and pay off your loan 4 years and 4 months quicker', // v2.0 clean up - not being used and better not display this at all even though this is hidden in the page
+				content: '', //'You could save $59,612.37 and pay off your loan 4 years and 4 months quicker', // v2.0 - not being used and better not display this at all even though this is hidden in the page
 			},
 		},
 		{
@@ -421,7 +414,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 			],
 			alertInfo: {
 				collapsed: true,
-				content: '', //'You could save $59,612.37 and pay off your loan 4 years and 4 months quicker', // v2.0 clean up - not being used and better not display this at all even though this is hidden in the page
+				content: '', //'You could save $59,612.37 and pay off your loan 4 years and 4 months quicker', // v2.0 - not being used and better not display this at all even though this is hidden in the page
 			},
 		},
 		{
@@ -477,7 +470,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 			],
 			alertInfo: {
 				collapsed: true,
-				content: '', //'You could save $59,612.37 and pay off your loan 4 years and 4 months quicker', // v2.0 clean up - not being used and better not display this at all even though this is hidden in the page
+				content: '', //'You could save $59,612.37 and pay off your loan 4 years and 4 months quicker', // v2.0 - not being used and better not display this at all even though this is hidden in the page
 			},
 		}
 	];
@@ -1043,7 +1036,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		interestRateCode1 += '_' + rateCode;
 		interestRateCode2 = 'CP_' + interestRateCode1; // adding 'CP_' for comparison rate
 
-		console.log('[MS] Rate code: ' + interestRateCode1 + ', Comparison rate code: ' + interestRateCode2);
+		// console.log('[MS] Rate code: ' + interestRateCode1 + ', Comparison rate code: ' + interestRateCode2);
 
 		interestInfo1.rate = $scope.mainInfo.getInterestRateByCode(interestRateCode1);
 		interestInfo2.rate = $scope.mainInfo.getInterestRateByCode(interestRateCode2);
@@ -1174,7 +1167,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		interestRateCode1 += '_' + rateCode;
 		interestRateCode2 = 'CP_' + interestRateCode1; // adding 'CP_' for comparison rate
 
-		console.log('[OA] Rate code: ' + interestRateCode1 + ', Comparison rate code: ' + interestRateCode2);
+		// console.log('[OA] Rate code: ' + interestRateCode1 + ', Comparison rate code: ' + interestRateCode2);
 
 		interestInfo1.rate = $scope.mainInfo.getInterestRateByCode(interestRateCode1);
 		interestInfo2.rate = $scope.mainInfo.getInterestRateByCode(interestRateCode2);
@@ -1236,38 +1229,35 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 
 	// WATCH CALCULATOR OPTIONS
 	$scope.$watch('calcOptions.optionPurpose.selected', function () {
-		_updateCalculatorWithPurpose();
 		var menus = $scope.calcOptions.optionDeposit.menus;
 
-		
-
-		// v2.0
-		// TODO: first find out if we need this condition !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		// set deposit to >20% and hide the rest if INV
-		if ($scope.calcOptions.optionPurpose.selected == 1){
-			if (menus.length == 3) {
-				$scope.calcOptions.optionDeposit.selected.value = { name: '20% - 30%', value: 2 }; // v2.0
-				$scope.calcOptions.optionDeposit.menus.splice(0,2);
+		// v2.0 - check what the selected deposit would be with these conditions
+		// set deposit to 20-30% (default) and hide the rest if INV
+		if ($scope.calcOptions.optionPurpose.selected == 1) { // INV - allow >20%
+			if (menus.length == 6) {
+				$scope.calcOptions.optionDeposit.menus = [_depositMenus[2]];
+				$scope.calcOptions.optionDeposit.selected = _depositMenus[2];
 			}
 		}
-		else if ($scope.calcOptions.optionPurpose.selected == 0) {
-			if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length < 3) { }
-			else if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length == 3) {
-				$scope.calcOptions.optionDeposit.selected.value = { name: '20% - 30%', value: 2 }; // v2.0
-				$scope.calcOptions.optionDeposit.menus.splice(0, 2);
+		else if ($scope.calcOptions.optionPurpose.selected == 0) { // OO
+			if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length < 6) { 
+				// do nothing
 			}
-			else if (menus.length < 3) {
-				$scope.calcOptions.optionDeposit.menus.unshift({ name: '< 10%', value: undefined }, { name: '10% - <br/>20%', value: undefined, doubleline: true });
-				$scope.calcOptions.optionDeposit.selected.value = 2; // v2.0
+			else if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length == 6) { // IO
+				$scope.calcOptions.optionDeposit.selected = _depositMenus[2];
+				$scope.calcOptions.optionDeposit.menus = [_depositMenus[2]];
+			}
+			else if (menus.length < 6) {
+				$scope.calcOptions.optionDeposit.menus = _depositMenus;
+				$scope.calcOptions.optionDeposit.selected = _depositMenus[2];
 			}
 		}
-		else if (menus.length < 3) {
-		   $scope.calcOptions.optionDeposit.menus.unshift({ name: '< 10%', value: undefined }, { name: '10% - <br/>20%', value: undefined, doubleline: true });
-		   $scope.calcOptions.optionDeposit.selected.value = 2; // v2.0
+		else if (menus.length < 6) {
+		   $scope.calcOptions.optionDeposit.menus = _depositMenus;
+		   $scope.calcOptions.optionDeposit.selected = _depositMenus[2];
 		}
 
-
-
+		_updateCalculatorWithPurpose();
 	});
 	$scope.$watch('calcOptions.optionBorrowing.selected', function () {
 		if ($scope.calcOptions.optionBorrowing.isFromInput) {
@@ -1308,46 +1298,33 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		_updateCalculator();
 	});
 	$scope.$watch('calcOptions.optionRepayment.selected', function () {
-
-
-
-
-
-		// TODO: first find out if we need this condition !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		// set deposit to >20% and hide the rest if OO & IO
+		// v2.0
+		// set deposit to 20-30% (default) and hide the rest if OO & IO
 		var menus = $scope.calcOptions.optionDeposit.menus;
-		if ($scope.calcOptions.optionPurpose.selected == 0){
-			if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length == 3) {
-				$scope.calcOptions.optionDeposit.selected.value = 2; // v2.0
-				$scope.calcOptions.optionDeposit.menus.splice(0,2);
-				
+
+		if ($scope.calcOptions.optionPurpose.selected == 0) { // OO
+			if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length == 6) { // IO
+				$scope.calcOptions.optionDeposit.selected = _depositMenus[2];
+				$scope.calcOptions.optionDeposit.menus = [_depositMenus[2]];
 			}
-			else if (menus.length < 3) {
-				$scope.calcOptions.optionDeposit.menus.unshift({ name: '< 10%', value: undefined }, { name: '10% - <br/>20%', value: undefined, doubleline: true });
-				$scope.calcOptions.optionDeposit.selected.value = 2; // v2.0
-	 
+			else if (menus.length < 6) {
+				$scope.calcOptions.optionDeposit.menus = _depositMenus;
+				$scope.calcOptions.optionDeposit.selected = _depositMenus[2];
 			 }
 		}
-
-
-
 		
 		_updateCalculator();
 	});
 	$scope.$watch('calcOptions.optionFrequency.selected', function () {
 		_updateCalculator();
 	});
-	$scope.$watch('calcOptions.optionLoanTerm.selected', function () {
-		_updateCalculator();
-	});
 	// MARK: this watch only for mobile modal view
 	$scope.$watch('calcOptions.optionFrequency.selectedIndex', function () {
 		$scope.calcOptions.optionFrequency.selected = $scope.calcOptions.optionFrequency.menus[$scope.calcOptions.optionFrequency.selectedIndex];
 	});
-	// 191001 LASH - this doesn't do anything, commented this part out for now
-	//$scope.$watch('calcOptions.optionPurpose.selected', function () {
-	//
-	//});
+	$scope.$watch('calcOptions.optionLoanTerm.selected', function () {
+		_updateCalculator();
+	});
 }]);
 
 
@@ -1683,6 +1660,7 @@ angular.module('Homeloan-App').directive('bsDropdown', ["$compile", function ($c
 		},
 		link: function (scope, element, attrs) {
 			var html = '';
+
 			switch (attrs.menuType) {
 				case "button":
 					html += '<div class="btn-group btn-block"><button class="btn btn-dropdown-orange btn-block dropdown-toggle symbol-right text-left" data-toggle="dropdown">Action</button><span class="button-symbol"><span class="caret"></span></span>';
@@ -1692,13 +1670,16 @@ angular.module('Homeloan-App').directive('bsDropdown', ["$compile", function ($c
 					break;
 			}
 			html += '<ul class="dropdown-menu"><li ng-repeat="item in items"><a tabindex="-1" data-ng-click="selectVal(item)" href="javascript:;">{{rawText(item.name)}}</a></li></ul></div>';
+			
 			element.append($compile(html)(scope));
+			
 			for (var i = 0; i < scope.items.length; i++) {
 				if (scope.items[i].name === scope.selectedItem.name) {
 					scope.bSelectedItem = scope.items[i];
 					break;
 				}
 			}
+			
 			scope.selectVal = function (item) {
 				switch (attrs.menuType) {
 					case "button":
@@ -1712,9 +1693,16 @@ angular.module('Homeloan-App').directive('bsDropdown', ["$compile", function ($c
 					selectedVal: item
 				});
 			};
+			
 			scope.rawText = function (text) {
 				return $('<div>').html(text).text();
 			},
+
+			scope.$watch('items', function () {
+				// console.log('dropdown items changed');
+				scope.selectVal( scope.bSelectedItem );
+			}),
+
 			scope.selectVal(scope.bSelectedItem);
 		}
 	};

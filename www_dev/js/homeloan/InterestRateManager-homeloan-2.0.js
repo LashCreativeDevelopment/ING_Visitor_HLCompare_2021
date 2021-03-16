@@ -1,7 +1,8 @@
-
+﻿
 function InterestRateManager() {
-	//document.origin is not by ie
-	this.serviceUrl = location.protocol + '//' + location.host + "/ReverseProxy/ProductService/V1/productservice.svc/json/interestrates/currenteffective";
+	// document.origin is not by ie
+	// this.serviceUrl = location.protocol + '//' + location.host + "/ReverseProxy/ProductService/V1/productservice.svc/json/interestrates/currenteffective";
+    this.serviceUrl = location.protocol + '//' + location.host + "/js/homeloan/mtg-rafiki2-interest_rates_core_db_15Mar2021.json"; // TEST
 	this.enableCount = false;
 	this.responseObj;
 
@@ -18,7 +19,6 @@ function InterestRateManager() {
 			$('#HomeloanController').data('interestRateInfo', this.responseObj);
 		}
 	};
-
 
 	this.CallService = function (callBackSuccessful, callBackFail) {
 		//$.support.cors = true;
@@ -233,8 +233,8 @@ function InterestRateManager() {
     this.getOA_MAX500_8090_IO = function () { return this.Find("OA_IO_150_500_OO_LVR80_90"); };
 	this.getCOMP_OA_MAX500_8090_IO = function () { return this.Find("CP_OA_IO_150_500_OO_LVR80_90"); };
     //PI
-	this.getOA_MAX500_90 = function () { return this.Find("OA150_500_INV_LVR90"); };
-	this.getCOMP_OA_MAX500_90 = function () { return this.Find("CP_OA150_500_INV_LVR90"); };
+	this.getOA_MAX500_90 = function () { return this.Find("OA150_500_LVR90"); };
+	this.getCOMP_OA_MAX500_90 = function () { return this.Find("CP_OA150_500_LVR90"); };
     //IO
     this.getOA_MAX500_90_IO = function () { return this.Find("OA_IO_150_500_OO_LVR90"); };
 	this.getCOMP_OA_MAX500_90_IO = function () { return this.Find("CP_OA_IO_150_500_OO_LVR90"); };
@@ -769,10 +769,10 @@ function InterestRateManager() {
     //LVR 50% or less
     //OO P&I
     this.getMS_MIN500_LVR50 = function () { return this.Find("MS_MIN500_LVR50"); }; 
-	this.getCP_MS_MIN500_LVR50 = function () { return this.Find("CP_MS_MAX150_LVR50"); }; 
+	this.getCP_MS_MIN500_LVR50 = function () { return this.Find("CP_MS_MIN500_LVR50"); }; 
     //Inv P&I
     this.getMS_MIN500_INV_LVR50 = function () { return this.Find("MS_MIN500_INV_LVR50"); }; 
-    this.getCP_MS_MAX150_INV_LVR50 = function () { return this.Find("CP_MS_MAX150_INV_LVR50"); }; 
+    this.getCP_MS_MIN500_INV_LVR50 = function () { return this.Find("CP_MS_MIN500_INV_LVR50"); }; 
     //OO IO
     this.getMS_IO_MIN500_OO_LVR50 = function () { return this.Find("MS_IO_MIN500_OO_LVR50"); }; 
     this.getCP_MS_IO_MIN500_OO_LVR50 = function () { return this.Find("CP_MS_IO_MIN500_OO_LVR50"); };
@@ -783,10 +783,10 @@ function InterestRateManager() {
     //LVR between 50% & 60%
     //OO P&I
     this.getMS_MIN500_LVR50_60 = function () { return this.Find("MS_MIN500_LVR50_60"); }; 
-	this.getCP_MS_MIN500_LVR50_60 = function () { return this.Find("CP_MS_MAX150_LVR50_60"); }; 
+	this.getCP_MS_MIN500_LVR50_60 = function () { return this.Find("CP_MS_MIN500_LVR50_60"); }; 
     //Inv P&I
     this.getMS_MIN500_INV_LVR50_60 = function () { return this.Find("MS_MIN500_INV_LVR50_60"); }; 
-    this.getCP_MS_MAX150_INV_LVR50_60 = function () { return this.Find("CP_MS_MAX150_INV_LVR50_60"); }; 
+    this.getCP_MS_MIN500_INV_LVR50_60 = function () { return this.Find("CP_MS_MIN500_INV_LVR50_60"); }; 
     //OO IO
     this.getMS_IO_MIN500_OO_LVR50_60 = function () { return this.Find("MS_IO_MIN500_OO_LVR50_60"); }; 
     this.getCP_MS_IO_MIN500_OO_LVR50_60 = function () { return this.Find("CP_MS_IO_MIN500_OO_LVR50_60"); };
@@ -797,10 +797,10 @@ function InterestRateManager() {
     //LVR between 60% & 70%
     //OO P&I
     this.getMS_MIN500_LVR60_70 = function () { return this.Find("MS_MIN500_LVR60_70"); }; 
-	this.getCP_MS_MIN500_LVR60_70 = function () { return this.Find("CP_MS_MAX150_LVR60_70"); }; 
+	this.getCP_MS_MIN500_LVR60_70 = function () { return this.Find("CP_MS_MIN500_LVR60_70"); }; 
     //Inv P&I
     this.getMS_MIN500_INV_LVR60_70 = function () { return this.Find("MS_MIN500_INV_LVR60_70"); }; 
-    this.getCP_MS_MAX150_INV_LVR60_70 = function () { return this.Find("CP_MS_MAX150_INV_LVR60_70"); }; 
+    this.getCP_MS_MIN500_INV_LVR60_70 = function () { return this.Find("CP_MS_MIN500_INV_LVR60_70"); }; 
     //OO IO
     this.getMS_IO_MIN500_OO_LVR60_70 = function () { return this.Find("MS_IO_MIN500_OO_LVR60_70"); }; 
     this.getCP_MS_IO_MIN500_OO_LVR60_70 = function () { return this.Find("CP_MS_IO_MIN500_OO_LVR60_70"); };
@@ -811,10 +811,10 @@ function InterestRateManager() {
     //LVR between 70% & 80%
     //OO P&I
     this.getMS_MIN500_LVR70_80 = function () { return this.Find("MS_MIN500_LVR70_80"); }; 
-	this.getCP_MS_MIN500_LVR70_80 = function () { return this.Find("CP_MS_MAX150_LVR70_80"); }; 
+	this.getCP_MS_MIN500_LVR70_80 = function () { return this.Find("CP_MS_MIN500_LVR70_80"); }; 
     //Inv P&I
     this.getMS_MIN500_INV_LVR70_80 = function () { return this.Find("MS_MIN500_INV_LVR70_80"); }; 
-    this.getCP_MS_MAX150_INV_LVR70_80 = function () { return this.Find("CP_MS_MAX150_INV_LVR70_80"); }; 
+    this.getCP_MS_MIN500_INV_LVR70_80 = function () { return this.Find("CP_MS_MIN500_INV_LVR70_80"); }; 
     //OO IO
     this.getMS_IO_MIN500_OO_LVR70_80 = function () { return this.Find("MS_IO_MIN500_OO_LVR70_80"); }; 
     this.getCP_MS_IO_MIN500_OO_LVR70_80 = function () { return this.Find("CP_MS_IO_MIN500_OO_LVR70_80"); };
@@ -1906,7 +1906,7 @@ jQuery.fn.extend({
             $('.rate_HL_CP_MS_MIN500_LVR50_InterestRate').text(manager.getCP_MS_MIN500_LVR50().Rate).toTwoDecimalPlaces(); 
             //Inv P&I
             $('.rate_HL_MS_MIN500_INV_LVR50_InterestRate').text(manager.getMS_MIN500_INV_LVR50().Rate).toTwoDecimalPlaces();
-            $('.rate_HL_CP_MS_MAX150_INV_LVR50_InterestRate').text(manager.getCP_MS_MAX150_INV_LVR50().Rate).toTwoDecimalPlaces();
+            $('.rate_HL_CP_MS_MIN500_INV_LVR50_InterestRate').text(manager.getCP_MS_MIN500_INV_LVR50().Rate).toTwoDecimalPlaces();
             //OO IO
             $('.rate_HL_MS_IO_MIN500_OO_LVR50_InterestRate').text(manager.getMS_IO_MIN500_OO_LVR50().Rate).toTwoDecimalPlaces();
             $('.rate_HL_CP_MS_IO_MIN500_OO_LVR50_InterestRate').text(manager.getCP_MS_IO_MIN500_OO_LVR50().Rate).toTwoDecimalPlaces();;
@@ -1919,7 +1919,7 @@ jQuery.fn.extend({
             $('.rate_HL_CP_MS_MIN500_LVR50_60_InterestRate').text(manager.getCP_MS_MIN500_LVR50_60().Rate).toTwoDecimalPlaces(); 
             //Inv P&I
             $('.rate_HL_MS_MIN500_INV_LVR50_60_InterestRate').text(manager.getMS_MIN500_INV_LVR50_60().Rate).toTwoDecimalPlaces();
-            $('.rate_HL_CP_MS_MAX150_INV_LVR50_60_InterestRate').text(manager.getCP_MS_MAX150_INV_LVR50_60().Rate).toTwoDecimalPlaces();
+            $('.rate_HL_CP_MS_MIN500_INV_LVR50_60_InterestRate').text(manager.getCP_MS_MIN500_INV_LVR50_60().Rate).toTwoDecimalPlaces();
             //OO IO
             $('.rate_HL_MS_IO_MIN500_OO_LVR50_60_InterestRate').text(manager.getMS_IO_MIN500_OO_LVR50_60().Rate).toTwoDecimalPlaces();
             $('.rate_HL_CP_MS_IO_MIN500_OO_LVR50_60_InterestRate').text(manager.getCP_MS_IO_MIN500_OO_LVR50_60().Rate).toTwoDecimalPlaces();;
@@ -1932,7 +1932,7 @@ jQuery.fn.extend({
             $('.rate_HL_CP_MS_MIN500_LVR60_70_InterestRate').text(manager.getCP_MS_MIN500_LVR60_70().Rate).toTwoDecimalPlaces(); 
             //Inv P&I
             $('.rate_HL_MS_MIN500_INV_LVR60_70_InterestRate').text(manager.getMS_MIN500_INV_LVR60_70().Rate).toTwoDecimalPlaces();
-            $('.rate_HL_CP_MS_MAX150_INV_LVR60_70_InterestRate').text(manager.getCP_MS_MAX150_INV_LVR60_70().Rate).toTwoDecimalPlaces();
+            $('.rate_HL_CP_MS_MIN500_INV_LVR60_70_InterestRate').text(manager.getCP_MS_MIN500_INV_LVR60_70().Rate).toTwoDecimalPlaces();
             //OO IO
             $('.rate_HL_MS_IO_MIN500_OO_LVR60_70_InterestRate').text(manager.getMS_IO_MIN500_OO_LVR60_70().Rate).toTwoDecimalPlaces();
             $('.rate_HL_CP_MS_IO_MIN500_OO_LVR60_70_InterestRate').text(manager.getCP_MS_IO_MIN500_OO_LVR60_70().Rate).toTwoDecimalPlaces();;
@@ -1945,7 +1945,7 @@ jQuery.fn.extend({
             $('.rate_HL_CP_MS_MIN500_LVR70_80_InterestRate').text(manager.getCP_MS_MIN500_LVR70_80().Rate).toTwoDecimalPlaces(); 
             //Inv P&I
             $('.rate_HL_MS_MIN500_INV_LVR70_80_InterestRate').text(manager.getMS_MIN500_INV_LVR70_80().Rate).toTwoDecimalPlaces();
-            $('.rate_HL_CP_MS_MAX150_INV_LVR70_80_InterestRate').text(manager.getCP_MS_MAX150_INV_LVR70_80().Rate).toTwoDecimalPlaces();
+            $('.rate_HL_CP_MS_MIN500_INV_LVR70_80_InterestRate').text(manager.getCP_MS_MIN500_INV_LVR70_80().Rate).toTwoDecimalPlaces();
             //OO IO
             $('.rate_HL_MS_IO_MIN500_OO_LVR70_80_InterestRate').text(manager.getMS_IO_MIN500_OO_LVR70_80().Rate).toTwoDecimalPlaces();
             $('.rate_HL_CP_MS_IO_MIN500_OO_LVR70_80_InterestRate').text(manager.getCP_MS_IO_MIN500_OO_LVR70_80().Rate).toTwoDecimalPlaces();;
@@ -2184,7 +2184,7 @@ jQuery.fn.extend({
         //IO OO
         $('.rate_HL_OA_150_500_8090_InterestRate_IO').text(manager.getOA_MAX500_8090_IO().Rate).toTwoDecimalPlaces();
         $('.rate_HL_OA_COMP_150_500_8090_InterestRate_IO').text(manager.getCOMP_OA_MAX500_8090_IO().Rate).toTwoDecimalPlaces();
-        //PI - INV
+        //PI
         $('.rate_HL_OA_150_500_90_InterestRate').text(manager.getOA_MAX500_90().Rate).toTwoDecimalPlaces();
         $('.rate_HL_OA_COMP_150_500_90_InterestRate').text(manager.getCOMP_OA_MAX500_90().Rate).toTwoDecimalPlaces();
         //IO
@@ -2308,7 +2308,7 @@ jQuery.fn.extend({
         $('.rate_HL_CP_OA_MIN500_LVR50_InterestRate').text(manager.getCP_OA_MIN500_LVR50().Rate).toTwoDecimalPlaces(); 
         //Inv P&I
         $('.rate_HL_OA_MIN500_INV_LVR50_InterestRate').text(manager.getOA_MIN500_INV_LVR50().Rate).toTwoDecimalPlaces();
-        $('.rate_HL_CP_OA_MAX150_INV_LVR50_InterestRate').text(manager.getCP_OA_MAX150_INV_LVR50().Rate).toTwoDecimalPlaces();
+        $('.rate_HL_CP_OA_MIN500_INV_LVR50_InterestRate').text(manager.getCP_OA_MIN500_INV_LVR50().Rate).toTwoDecimalPlaces();
         //OO IO
         $('.rate_HL_OA_IO_MIN500_OO_LVR50_InterestRate').text(manager.getOA_IO_MIN500_OO_LVR50().Rate).toTwoDecimalPlaces();
         $('.rate_HL_CP_OA_IO_MIN500_OO_LVR50_InterestRate').text(manager.getCP_OA_IO_MIN500_OO_LVR50().Rate).toTwoDecimalPlaces();;
@@ -2334,7 +2334,7 @@ jQuery.fn.extend({
         $('.rate_HL_CP_OA_MIN500_LVR60_70_InterestRate').text(manager.getCP_OA_MIN500_LVR60_70().Rate).toTwoDecimalPlaces(); 
         //Inv P&I
         $('.rate_HL_OA_MIN500_INV_LVR60_70_InterestRate').text(manager.getOA_MIN500_INV_LVR60_70().Rate).toTwoDecimalPlaces();
-        $('.rate_HL_CP_OA_MAX150_INV_LVR60_70_InterestRate').text(manager.getCP_OA_MAX150_INV_LVR60_70().Rate).toTwoDecimalPlaces();
+        $('.rate_HL_CP_OA_MIN500_INV_LVR60_70_InterestRate').text(manager.getCP_OA_MIN500_INV_LVR60_70().Rate).toTwoDecimalPlaces();
         //OO IO
         $('.rate_HL_OA_IO_MIN500_OO_LVR60_70_InterestRate').text(manager.getOA_IO_MIN500_OO_LVR60_70().Rate).toTwoDecimalPlaces();
         $('.rate_HL_CP_OA_IO_MIN500_OO_LVR60_70_InterestRate').text(manager.getCP_OA_IO_MIN500_OO_LVR60_70().Rate).toTwoDecimalPlaces();;
@@ -2347,7 +2347,7 @@ jQuery.fn.extend({
         $('.rate_HL_CP_OA_MIN500_LVR70_80_InterestRate').text(manager.getCP_OA_MIN500_LVR70_80().Rate).toTwoDecimalPlaces(); 
         //Inv P&I
         $('.rate_HL_OA_MIN500_INV_LVR70_80_InterestRate').text(manager.getOA_MIN500_INV_LVR70_80().Rate).toTwoDecimalPlaces();
-        $('.rate_HL_CP_OA_MAX150_INV_LVR70_80_InterestRate').text(manager.getCP_OA_MAX150_INV_LVR70_80().Rate).toTwoDecimalPlaces();
+        $('.rate_HL_CP_OA_MIN500_INV_LVR70_80_InterestRate').text(manager.getCP_OA_MIN500_INV_LVR70_80().Rate).toTwoDecimalPlaces();
         //OO IO
         $('.rate_HL_OA_IO_MIN500_OO_LVR70_80_InterestRate').text(manager.getOA_IO_MIN500_OO_LVR70_80().Rate).toTwoDecimalPlaces();
         $('.rate_HL_CP_OA_IO_MIN500_OO_LVR70_80_InterestRate').text(manager.getCP_OA_IO_MIN500_OO_LVR70_80().Rate).toTwoDecimalPlaces();;
