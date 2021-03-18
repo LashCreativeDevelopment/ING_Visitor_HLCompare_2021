@@ -233,7 +233,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 	];
 
 	// v2.0 - default options
-	var _depositMenus = [
+	var _depositDefaultMenus = [
 		{ name: '< 10%', value: 0 },
 		{ name: '10% - 20%', value: 1 },
 		{ name: '20% - 30%', value: 2 },
@@ -241,6 +241,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		{ name: '40% - 50%', value: 4 },
 		{ name: '> 50%', value: 5 },
 	];
+	var _depositDefaultOption = { name: '20% - 30%', value: 2 };
 
 	// CALCULATOR OPTIONS
 	$scope.calcOptions = {
@@ -268,8 +269,8 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		optionDeposit: {
 			title: 'Deposit:',
 			// v2.0
-			menus: _depositMenus,
-			selected: _depositMenus[2],
+			menus: _depositDefaultMenus.slice(),
+			selected: JSON.parse(JSON.stringify(_depositDefaultOption)),
 		},
 		optionRepayment: {
 			title: 'Repayment type:',
@@ -927,25 +928,17 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		if (borrowing == 0) {
 			if (purpose == 0) { // OO
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_MAX150_OO_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_MAX150_OO_'+rateCode);
 					interestRateCode1 = 'MS_IO_MAX150_OO';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MAX150_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_MAX150_'+rateCode);
 					interestRateCode1 = 'MS_MAX150';
 				}
 			}
 			if (purpose == 1) { // INV
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_MAX150_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_MAX150_INV_'+rateCode);
 					interestRateCode1 = 'MS_IO_MAX150_INV';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MAX150_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_MAX150_INV_'+rateCode);
 					interestRateCode1 = 'MS_MAX150_INV';
 				}
 			}
@@ -954,25 +947,17 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		else if (borrowing == 1) {
 			if (purpose == 0) { // OO
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_150_500_OO_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_150_500_OO_'+rateCode);
 					interestRateCode1 = 'MS_IO_150_500_OO';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS150_500_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS150_500_'+rateCode);
 					interestRateCode1 = 'MS150_500';
 				}
 			}
 			if (purpose == 1) { // INV
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_150_500_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_150_500_INV_'+rateCode);
 					interestRateCode1 = 'MS_IO_150_500_INV';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS150_500_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS150_500_INV_'+rateCode);
 					interestRateCode1 = 'MS150_500_INV';
 				}
 			}
@@ -981,25 +966,17 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		else if (borrowing == 2) {
 			if (purpose == 0) { // OO
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_MIN500_OO_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_MIN500_OO_'+rateCode);
 					interestRateCode1 = 'MS_IO_MIN500_OO';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MIN500_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_MIN500_'+rateCode);
 					interestRateCode1 = 'MS_MIN500';
 				}
 			}
 			if (purpose == 1) { // INV
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_MIN500_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_MIN500_INV_'+rateCode);
 					interestRateCode1 = 'MS_IO_MIN500_INV';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MIN500_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_MIN500_INV_'+rateCode);
 					interestRateCode1 = 'MS_MIN500_INV';
 				}
 			}
@@ -1008,25 +985,17 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		else if (borrowing == 3) {
 			if (purpose == 0) { // OO
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_MIN1_OO_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_MIN1_OO_'+rateCode);
 					interestRateCode1 = 'MS_IO_MIN1_OO';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MIN1_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_MIN1_'+rateCode);
 					interestRateCode1 = 'MS_MIN1';
 				}
 			}
 			if (purpose == 1) { // INV
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_MIN1_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_MIN1_INV_'+rateCode);
 					interestRateCode1 = 'MS_IO_MIN1_INV';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MIN1_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_MIN1_INV_'+rateCode);
 					interestRateCode1 = 'MS_MIN1_INV';
 				}
 			}
@@ -1058,25 +1027,17 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		if (borrowing == 0) {
 			if (purpose == 0) { // OO
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_MAX150_OO_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_MAX150_OO_'+rateCode);
 					interestRateCode1 = 'OA_IO_MAX150_OO';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_MAX150_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_MAX150_'+rateCode);
 					interestRateCode1 = 'OA_MAX150';
 				}
 			}
 			if (purpose == 1) { // INV
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_MAX150_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_MAX150_INV_'+rateCode);
 					interestRateCode1 = 'OA_IO_MAX150_INV';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_MAX150_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_MAX150_INV_'+rateCode);
 					interestRateCode1 = 'OA_MAX150_INV';
 				}
 			}
@@ -1085,25 +1046,17 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		else if (borrowing == 1) {
 			if (purpose == 0) { // OO
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_150_500_OO_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_150_500_OO_'+rateCode);
 					interestRateCode1 = 'OA_IO_150_500_OO';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA150_500_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA150_500_'+rateCode);
 					interestRateCode1 = 'OA150_500';
 				}
 			}
 			if (purpose == 1) { // INV
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_150_500_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_150_500_INV_'+rateCode);
 					interestRateCode1 = 'OA_IO_150_500_INV';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA150_500_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA150_500_INV_'+rateCode);
 					interestRateCode1 = 'OA150_500_INV';
 				}
 			}
@@ -1112,25 +1065,17 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		else if (borrowing == 2) {
 			if (purpose == 0) { // OO
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_MIN500_OO_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_MIN500_OO_'+rateCode);
 					interestRateCode1 = 'OA_IO_MIN500_OO';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_MIN500_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_MIN500_'+rateCode);
 					interestRateCode1 = 'OA_MIN500';
 				}
 			}
 			if (purpose == 1) { // INV
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_MIN500_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_MIN500_INV_'+rateCode);
 					interestRateCode1 = 'OA_IO_MIN500_INV';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_MIN500_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_MIN500_INV_'+rateCode);
 					interestRateCode1 = 'OA_MIN500_INV';
 				}
 			}
@@ -1139,25 +1084,17 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		else if( borrowing == 3) {
 			if (purpose == 0) { // OO
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_1M_OO_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_1M_OO_'+rateCode);
 					interestRateCode1 = 'OA_IO_1M_OO';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_PI_1M_OO_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_PI_1M_OO_'+rateCode);
 					interestRateCode1 = 'OA_PI_1M_OO';
 				}
 			}
 			if (purpose == 1) { // INV
 				if (repayType == 1) { // IO
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_1M_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_1M_INV_'+rateCode);
 					interestRateCode1 = 'OA_IO_1M_INV';
 				}
 				else { // P&I
-					// interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_PI_1M_INV_'+rateCode);
-					// interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_PI_1M_INV_'+rateCode);
 					interestRateCode1 = 'OA_PI_1M_INV';
 				}
 			}
@@ -1230,31 +1167,40 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 	// WATCH CALCULATOR OPTIONS
 	$scope.$watch('calcOptions.optionPurpose.selected', function () {
 		var menus = $scope.calcOptions.optionDeposit.menus;
+		var defaultLength = _depositDefaultMenus.length;
 
-		// v2.0 - check what the selected deposit would be with these conditions
-		// set deposit to 20-30% (default) and hide the rest if INV
+		// v2.0 - hide deposit below 20% (default) if INV
 		if ($scope.calcOptions.optionPurpose.selected == 1) { // INV - allow >20%
-			if (menus.length == 6) {
-				$scope.calcOptions.optionDeposit.menus = [_depositMenus[2]];
-				$scope.calcOptions.optionDeposit.selected = _depositMenus[2];
+			if (menus.length == defaultLength) {
+				// if option selected was below index 2 then make index 2 item selected
+				if( $scope.calcOptions.optionDeposit.selected == $scope.calcOptions.optionDeposit.menus[0] || 
+					$scope.calcOptions.optionDeposit.selected == $scope.calcOptions.optionDeposit.menus[1] ) {
+					$scope.calcOptions.optionDeposit.selected = $scope.calcOptions.optionDeposit.menus[2];
+				}
+				// remove first 2 from the dropdown
+				$scope.calcOptions.optionDeposit.menus.splice(0,2);
 			}
 		}
 		else if ($scope.calcOptions.optionPurpose.selected == 0) { // OO
-			if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length < 6) { 
+			if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length < defaultLength) { 
 				// do nothing
 			}
-			else if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length == 6) { // IO
-				$scope.calcOptions.optionDeposit.selected = _depositMenus[2];
-				$scope.calcOptions.optionDeposit.menus = [_depositMenus[2]];
+			else if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length == defaultLength) { // IO
+				// if option selected was below index 2 then make index 2 item selected
+				if( $scope.calcOptions.optionDeposit.selected == $scope.calcOptions.optionDeposit.menus[0] || 
+					$scope.calcOptions.optionDeposit.selected == $scope.calcOptions.optionDeposit.menus[1] ) {
+					$scope.calcOptions.optionDeposit.selected = $scope.calcOptions.optionDeposit.menus[2];
+				}
+				$scope.calcOptions.optionDeposit.menus.splice(0,2);
 			}
-			else if (menus.length < 6) {
-				$scope.calcOptions.optionDeposit.menus = _depositMenus;
-				$scope.calcOptions.optionDeposit.selected = _depositMenus[2];
+			else if (menus.length < defaultLength) {
+				$scope.calcOptions.optionDeposit.menus = _depositDefaultMenus.slice();
+				// $scope.calcOptions.optionDeposit.selected = $scope.calcOptions.optionDeposit.menus[2]; // keep the current option
 			}
 		}
-		else if (menus.length < 6) {
-		   $scope.calcOptions.optionDeposit.menus = _depositMenus;
-		   $scope.calcOptions.optionDeposit.selected = _depositMenus[2];
+		else if (menus.length < defaultLength) {
+		   $scope.calcOptions.optionDeposit.menus = _depositDefaultMenus.slice();
+		   // $scope.calcOptions.optionDeposit.selected = $scope.calcOptions.optionDeposit.menus[2]; // keep the current option
 		}
 
 		_updateCalculatorWithPurpose();
@@ -1298,18 +1244,22 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		_updateCalculator();
 	});
 	$scope.$watch('calcOptions.optionRepayment.selected', function () {
-		// v2.0
-		// set deposit to 20-30% (default) and hide the rest if OO & IO
+		// v2.0 - hide deposit below 20% (default) if OO & IO
 		var menus = $scope.calcOptions.optionDeposit.menus;
+		var defaultLength = _depositDefaultMenus.length;
 
 		if ($scope.calcOptions.optionPurpose.selected == 0) { // OO
-			if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length == 6) { // IO
-				$scope.calcOptions.optionDeposit.selected = _depositMenus[2];
-				$scope.calcOptions.optionDeposit.menus = [_depositMenus[2]];
+			if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length == defaultLength) { // IO
+				// if option selected was below index 2 then make index 2 item selected
+				if( $scope.calcOptions.optionDeposit.selected == $scope.calcOptions.optionDeposit.menus[0] || 
+					$scope.calcOptions.optionDeposit.selected == $scope.calcOptions.optionDeposit.menus[1] ) {
+					$scope.calcOptions.optionDeposit.selected = $scope.calcOptions.optionDeposit.menus[2];
+				}
+				$scope.calcOptions.optionDeposit.menus.splice(0,2);
 			}
-			else if (menus.length < 6) {
-				$scope.calcOptions.optionDeposit.menus = _depositMenus;
-				$scope.calcOptions.optionDeposit.selected = _depositMenus[2];
+			else if (menus.length < defaultLength) {
+				$scope.calcOptions.optionDeposit.menus = _depositDefaultMenus.slice();
+				// $scope.calcOptions.optionDeposit.selected = $scope.calcOptions.optionDeposit.menus[2]; // keep the current option
 			 }
 		}
 		
@@ -1679,7 +1629,7 @@ angular.module('Homeloan-App').directive('bsDropdown', ["$compile", function ($c
 					break;
 				}
 			}
-			
+
 			scope.selectVal = function (item) {
 				switch (attrs.menuType) {
 					case "button":
@@ -1698,9 +1648,12 @@ angular.module('Homeloan-App').directive('bsDropdown', ["$compile", function ($c
 				return $('<div>').html(text).text();
 			},
 
-			scope.$watch('items', function () {
-				// console.log('dropdown items changed');
-				scope.selectVal( scope.bSelectedItem );
+			// scope.$watch('items', function () {
+			// 	// scope.selectVal( scope.bSelectedItem );
+			// }),
+
+			scope.$watch('selectedItem', function() {
+				scope.selectVal(scope.selectedItem)
 			}),
 
 			scope.selectVal(scope.bSelectedItem);

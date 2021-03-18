@@ -10,16 +10,14 @@
 
 Questions:
 ---------
-- Showing <10%, 10%-20%, 20%-30% ... in the deposit dropdown, is this ok? 
 - Default Deposit? (used to be >20%) => TBC
-- Can we get sample json (currenteffective response)?
 
 
 
 Update log:
 ----------
 1. homeloan-style.min.css: zindex of popover to 1051 from 8 as the popover in the mobile tooltip, while the refinement popup is opened, goes behind
-2. home-loans.html: changing deposit radio button to dropdown (desktop, mobile, mobile refinement popup)
+2. home-loans.html: changing for 'Deposit' field from radio button to dropdown (desktop, mobile, mobile refinement popup)
 3. homeloan-controller-2.0.js (new)
 4. interestRateManager-homeloan-2.0.js (new) - angular notifier added based on the latest interestRateManager.js provided from ING (Laura)
 
@@ -27,10 +25,10 @@ Update log:
 
 Files to package up:
 -------------------
-/home-loans.html
+/home-loans-lvr-test.html
 /js/homeloan/homeloan-controller-2.0.js
 /js/homeloan/homeloan-controller-2.0.min.js
-/js/homeloan/interestRateManager-homeloan.2.0.js (MARK: replacing the interestRateManager.js on this page only)
+/js/homeloan/interestRateManager-homeloan.2.0.js (MARK: replacement for interestRateManager.js ONLY on this page)
 /css/homeloan-style.min.css
 
 
