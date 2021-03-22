@@ -1022,6 +1022,8 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		var deposit = $scope.calcOptions.optionDeposit.selected.value; // v2.0
 		var repayType = $scope.calcOptions.optionRepayment.selected;
 		var rateCode = _rateCode[deposit].code; // v2.0
+		var interestRateCode1 = ''; // v2.0
+		var interestRateCode2 = ''; // v2.0
 
 		//$150k or less
 		if (borrowing == 0) {
