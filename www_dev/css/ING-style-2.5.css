@@ -14084,7 +14084,8 @@ tr.mobile-tab {
     line-height: 1.2;
     margin-bottom: 10px;
 }
-.modal-body p {
+.modal-body p,
+.modal-body ul {
     margin-bottom: 10px;
     font-size: 12px;
 }
