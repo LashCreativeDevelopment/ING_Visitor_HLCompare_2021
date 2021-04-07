@@ -2,6 +2,7 @@
 function InterestRateManager() {
 	//document.origin is not by ie
 	this.serviceUrl = location.protocol + '//' + location.host + "/ReverseProxy/ProductService/V1/productservice.svc/json/interestrates/currenteffective";
+	// this.serviceUrl = location.protocol + '//' + location.host + "/js/homeloan/InterestRatesSample.json"; // TEST
 	this.enableCount = false;
 	this.responseObj;
 
