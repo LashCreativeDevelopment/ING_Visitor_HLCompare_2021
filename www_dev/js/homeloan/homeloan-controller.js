@@ -548,134 +548,181 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		updateFixedInterestRates: function (tableIndex, rowIndex) {
 			// live in
 			if ($scope.calcOptions.optionPurpose.selected == 0) {
-				$scope.fixedRateTableInfo.tableInfos = [
-					{
-						titleHtml: 'When combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is less than or equal to 80%',
-						rateInfos: [
-							{
-								year: 1,
-								fixed: 2.19,
-								comparison: 3.95,
-								combined: true,
-								specialOffer: 1,
-							},
-							{
-								year: 2,
-								fixed: 2.09,
-								comparison: 3.77,
-								combined: true,
-								specialOffer: 1,
-							},
-							{
-								year: 3,
-								fixed: 2.04,
-								comparison: 3.60,
-								combined: true,
-								specialOffer: 1,
-							},
-							{
-								year: 4,
-								fixed: 1.99,
-								comparison: 3.43,
-								combined: true,
-								specialOffer: 1,
-							},
-							{
-								year: 5,
-								fixed: 2.19,
-								comparison: 3.37,
-								combined: true,
-								specialOffer: 1,
-							}
-						],
+				// LVR is less than or equal to 80%
+				if ($scope.calcOptions.optionDeposit.selected == 2) {
+					$scope.fixedRateTableInfo.tableInfos = [
+						{
+							titleHtml: 'When combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is less than or equal to 80%',
+							rateInfos: [
+								{
+									year: 1,
+									fixed: 2.19,
+									comparison: 3.95,
+									combined: true,
+									specialOffer: 1,
+								},
+								{
+									year: 2,
+									fixed: 2.09,
+									comparison: 3.77,
+									combined: true,
+									specialOffer: 1,
+								},
+								{
+									year: 3,
+									fixed: 2.04,
+									comparison: 3.60,
+									combined: true,
+									specialOffer: 1,
+								},
+								{
+									year: 4,
+									fixed: 1.99,
+									comparison: 3.43,
+									combined: true,
+									specialOffer: 1,
+								},
+								{
+									year: 5,
+									fixed: 2.19,
+									comparison: 3.37,
+									combined: true,
+									specialOffer: 1,
+								}
+							],
+						},
+						{
+							titleHtml: 'When not combined with an <span class="color-orange bold">Orange Advantage</span>',
+							rateInfos: [
+								{
+									year: 1,
+									fixed: _getIR('FRL_1_YEAR'),
+									comparison: _getIR('COMP_FRL_1_YEAR'),
+									combined: false,
+									specialOffer: 3,
+								},
+								{
+									year: 2,
+									fixed: _getIR('FRL_2_YEARS'),
+									comparison: _getIR('COMP_FRL_2_YEARS'),
+									combined: false,
+									specialOffer: 3,
+								},
+								{
+									year: 3,
+									fixed: _getIR('FRL_3_YEARS'),
+									comparison: _getIR('COMP_FRL_3_YEARS'),
+									combined: false,
+									specialOffer: 3,
+								},
+								{
+									year: 4,
+									fixed: _getIR('FRL_4_YEARS'),
+									comparison: _getIR('COMP_FRL_4_YEARS'),
+									combined: false,
+									specialOffer: 3,
+								},
+								{
+									year: 5,
+									fixed: _getIR('FRL_5_YEARS'),
+									comparison: _getIR('COMP_FRL_5_YEARS'),
+									combined: false,
+									specialOffer: 3,
+								}
+							],
+						}
+					];
+				}
+				// LVR is greater than 80%
+				else {
+					$scope.fixedRateTableInfo.tableInfos = [
+						{
+							titleHtml: 'When combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is greater than 80%',
+							rateInfos: [
+								{
+									year: 1,
+									fixed: _getIR('FRL_OA_1_YEAR'),
+									comparison: _getIR('COMP_FRL_OA_1_YEAR'),
+									combined: true,
+									specialOffer: 2,
+								},
+								{
+									year: 2,
+									fixed: _getIR('FRL_OA_2_YEARS'),
+									comparison: _getIR('COMP_FRL_OA_2_YEARS'),
+									combined: true,
+									specialOffer: 2,
+								},
+								{
+									year: 3,
+									fixed: _getIR('FRL_OA_3_YEARS'),
+									comparison: _getIR('COMP_FRL_OA_3_YEARS'),
+									combined: true,
+									specialOffer: 2,
+								},
+								{
+									year: 4,
+									fixed: _getIR('FRL_OA_4_YEARS'),
+									comparison: _getIR('COMP_FRL_OA_4_YEARS'),
+									combined: true,
+									specialOffer: 2,
+								},
+								{
+									year: 5,
+									fixed: _getIR('FRL_OA_5_YEARS'),
+									comparison: _getIR('COMP_FRL_OA_5_YEARS'),
+									combined: true,
+									specialOffer: 2,
+								}
+							],
+						},
+						{
+							titleHtml: 'When not combined with an <span class="color-orange bold">Orange Advantage</span>',
+							rateInfos: [
+								{
+									year: 1,
+									fixed: _getIR('FRL_1_YEAR'),
+									comparison: _getIR('COMP_FRL_1_YEAR'),
+									combined: false,
+									specialOffer: 3,
+								},
+								{
+									year: 2,
+									fixed: _getIR('FRL_2_YEARS'),
+									comparison: _getIR('COMP_FRL_2_YEARS'),
+									combined: false,
+									specialOffer: 3,
+								},
+								{
+									year: 3,
+									fixed: _getIR('FRL_3_YEARS'),
+									comparison: _getIR('COMP_FRL_3_YEARS'),
+									combined: false,
+									specialOffer: 3,
+								},
+								{
+									year: 4,
+									fixed: _getIR('FRL_4_YEARS'),
+									comparison: _getIR('COMP_FRL_4_YEARS'),
+									combined: false,
+									specialOffer: 3,
+								},
+								{
+									year: 5,
+									fixed: _getIR('FRL_5_YEARS'),
+									comparison: _getIR('COMP_FRL_5_YEARS'),
+									combined: false,
+									specialOffer: 3,
+								}
+							],
+						}
+					];
+				}
 
-					},
-					{
-						titleHtml: 'When combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is greater than 80%',
-						rateInfos: [
-							{
-								year: 1,
-								fixed: _getIR('FRL_OA_1_YEAR'),
-								comparison: _getIR('COMP_FRL_OA_1_YEAR'),
-								combined: true,
-								specialOffer: 2,
-							},
-							{
-								year: 2,
-								fixed: _getIR('FRL_OA_2_YEARS'),
-								comparison: _getIR('COMP_FRL_OA_2_YEARS'),
-								combined: true,
-								specialOffer: 2,
-							},
-							{
-								year: 3,
-								fixed: _getIR('FRL_OA_3_YEARS'),
-								comparison: _getIR('COMP_FRL_OA_3_YEARS'),
-								combined: true,
-								specialOffer: 2,
-							},
-							{
-								year: 4,
-								fixed: _getIR('FRL_OA_4_YEARS'),
-								comparison: _getIR('COMP_FRL_OA_4_YEARS'),
-								combined: true,
-								specialOffer: 2,
-							},
-							{
-								year: 5,
-								fixed: _getIR('FRL_OA_5_YEARS'),
-								comparison: _getIR('COMP_FRL_OA_5_YEARS'),
-								combined: true,
-								specialOffer: 2,
-							}
-						],
-					},
-					{
-						titleHtml: 'When not combined with an <span class="color-orange bold">Orange Advantage</span>',
-						rateInfos: [
-							{
-								year: 1,
-								fixed: _getIR('FRL_1_YEAR'),
-								comparison: _getIR('COMP_FRL_1_YEAR'),
-								combined: false,
-								specialOffer: 3,
-							},
-							{
-								year: 2,
-								fixed: _getIR('FRL_2_YEARS'),
-								comparison: _getIR('COMP_FRL_2_YEARS'),
-								combined: false,
-								specialOffer: 3,
-							},
-							{
-								year: 3,
-								fixed: _getIR('FRL_3_YEARS'),
-								comparison: _getIR('COMP_FRL_3_YEARS'),
-								combined: false,
-								specialOffer: 3,
-							},
-							{
-								year: 4,
-								fixed: _getIR('FRL_4_YEARS'),
-								comparison: _getIR('COMP_FRL_4_YEARS'),
-								combined: false,
-								specialOffer: 3,
-							},
-							{
-								year: 5,
-								fixed: _getIR('FRL_5_YEARS'),
-								comparison: _getIR('COMP_FRL_5_YEARS'),
-								combined: false,
-								specialOffer: 3,
-							}
-						],
-					}
-				];
+				
 
-				// 070421 - show LVR is greater than 80% rate by default
-				// var lowestRateInfo = getLowestRateInfo($scope.fixedRateTableInfo.tableInfos);
-				// $scope.fixedRateTableInfo.updateFixedRateCardInfo(lowestRateInfo.tableIndex, lowestRateInfo.rateIndex);
-				$scope.fixedRateTableInfo.updateFixedRateCardInfo(1, 3);
+				var lowestRateInfo = getLowestRateInfo($scope.fixedRateTableInfo.tableInfos);
+				$scope.fixedRateTableInfo.updateFixedRateCardInfo(lowestRateInfo.tableIndex, lowestRateInfo.rateIndex);
 			}
 			// invest
 			else if ($scope.calcOptions.optionPurpose.selected == 1) {
