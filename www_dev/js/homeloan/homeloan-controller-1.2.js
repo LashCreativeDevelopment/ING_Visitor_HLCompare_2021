@@ -1,9 +1,5 @@
 /*
  * ING Homeloan Controllers
- * 11 Mar 2021: Lash
- * Version 2.0
- *
- * Q: $150K to $500K, INV, P&I, All borrowings, MS150_500_INV_ALL, CP_MS150_500_INV_ALL ???
  *
  */
 
@@ -18,6 +14,7 @@ $(document).ready(function () {
 angular.module("Homeloan-App", ['ING-App', 'slickCarousel', 'dynamicNumber']);
 
 angular.module('Homeloan-App').controller('HomeloanController', ["$scope", "$timeout", function ($scope, $timeout) {
+
 	$scope.mainInfo = {
 		readyToStart: false,
 		activePage: 0,  // only using initializing
@@ -104,6 +101,7 @@ angular.module('Homeloan-App').controller('HomeloanController', ["$scope", "$tim
 // FIRST TAB CONTROLLER
 // ----------------------------------------------
 angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope", "$timeout", "$uibModal", "$sce", function ($scope, $timeout, $uibModal, $sce) {
+
 	// PAGE INFO
 	$scope.pageInfo = {
 		title: 'Add your basics to compare home loans:',
@@ -222,27 +220,6 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		$scope.mainInfo.isTableOpen = false;
 	};
 
-	// v2.0 - _rateCode[0].code == LVR90
-	var _rateCode = [
-		{ code: 'LVR90' },
-		{ code: 'LVR80_90' },
-		{ code: 'LVR70_80' },
-		{ code: 'LVR60_70' },
-		{ code: 'LVR50_60' },
-		{ code: 'LVR50' },
-	];
-
-	// v2.0 - default options
-	var _depositDefaultMenus = [
-		{ name: '< 10%', value: 0 },
-		{ name: '10% - 20%', value: 1 },
-		{ name: '20% - 30%', value: 2 },
-		{ name: '30% - 40%', value: 3 },
-		{ name: '40% - 50%', value: 4 },
-		{ name: '> 50%', value: 5 },
-	];
-	var _depositDefaultOption = { name: '20% - 30%', value: 2 };
-
 	// CALCULATOR OPTIONS
 	$scope.calcOptions = {
 		optionPurpose: {
@@ -256,10 +233,10 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		optionBorrowing: {
 			title: 'Borrowing:',
 			menus: [
-				{ name: '< $150K', nameXs: '< $150K', value: '100000', threshold: 150000 },
+				{ name: '&lt; $150K', nameXs: '&lt; $150K', value: '100000', threshold: 150000 },
 				{ name: '$150K - <br/>$500K', nameXs: '$150K - $500K', value: '300000', threshold: 500000, doubleline: true },
-				{ name: '> $500K', nameXs: '$500K - $1Million', value: '500000', threshold: 1000000, doubleline: true },
-				{ name: '> $1Million', nameXs: '> $1Million', value: '1000000', threshold: Number.MAX_VALUE },
+				{ name: '&gt; $500K', nameXs: '$500K - $1Million', value: '500000', threshold: 1000000, doubleline: true },
+				{ name: '&gt; $1Million', nameXs: '&gt; $1Million', value: '1000000', threshold: Number.MAX_VALUE },
 			],
 			selected: 2,
 			value: '0',
@@ -268,9 +245,13 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		},
 		optionDeposit: {
 			title: 'Deposit:',
-			// v2.0
-			menus: _depositDefaultMenus.slice(),
-			selected: JSON.parse(JSON.stringify(_depositDefaultOption)),
+			menus: [
+				{ name: '&lt; 10%', value: undefined },
+				{ name: '&geq; 10% - <br/>&lt; 20%', value: undefined, doubleline: true },
+				{ name: '&geq; 20%', value: undefined },
+			],
+			selected: 2,
+			value: undefined,
 		},
 		optionRepayment: {
 			title: 'Repayment type:',
@@ -361,7 +342,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 			],
 			alertInfo: {
 				collapsed: true,
-				content: '', //'You could save $59,612.37 and pay off your loan 4 years and 4 months quicker', // v2.0 - not being used and better not display this at all even though this is hidden in the page
+				content: 'You could save $59,612.37 and pay off your loan 4 years and 4 months quicker',
 			},
 		},
 		{
@@ -415,7 +396,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 			],
 			alertInfo: {
 				collapsed: true,
-				content: '', //'You could save $59,612.37 and pay off your loan 4 years and 4 months quicker', // v2.0 - not being used and better not display this at all even though this is hidden in the page
+				content: 'You could save $59,612.37 and pay off your loan 4 years and 4 months quicker',
 			},
 		},
 		{
@@ -429,7 +410,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 			interestInfo2: {
 				name: 'Comparison rate',
 			},
-			specialOffer: true,
+			specialOffer: 4,
 			repaymentValue: undefined,
 			features: [
 				{
@@ -471,7 +452,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 			],
 			alertInfo: {
 				collapsed: true,
-				content: '', //'You could save $59,612.37 and pay off your loan 4 years and 4 months quicker', // v2.0 - not being used and better not display this at all even though this is hidden in the page
+				content: 'You could save $59,612.37 and pay off your loan 4 years and 4 months quicker',
 			},
 		}
 	];
@@ -553,6 +534,10 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		}
 	};
 
+
+	// 070421 - Noticed this has been updated by Digital
+	// tablesInfos[0] was added recently with hardcoded rates
+	// specialOffer added to show different special offer information popup
 	// TOOLTIP, POPOVER, MODAL
 	$scope.fixedRateTableInfo = {
 		selected: {
@@ -561,170 +546,269 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		},
 		tableInfos: [],
 		updateFixedInterestRates: function (tableIndex, rowIndex) {
-			// v2.0
-			var deposit = $scope.calcOptions.optionDeposit.selected.value;
-			var rateCode = _rateCode[deposit].code;
-
-			// OO
+			// live in
 			if ($scope.calcOptions.optionPurpose.selected == 0) {
-				// P&I
-				if( $scope.calcOptions.optionRepayment.selected == 0 ) {
+				// LVR is 80% or less <=
+				if ($scope.calcOptions.optionDeposit.selected == 2) {
 					$scope.fixedRateTableInfo.tableInfos = [
 						{
-							titleHtml: 'When combined with an <span class="color-orange bold">Orange Advantage</span>',
+							titleHtml: 'When combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is 80% or less',
 							rateInfos: [
 								{
 									year: 1,
-									fixed: _getIR('FRL_OA_1_YEAR' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_OA_1_YEAR' + '_' + rateCode),
-									combined: true
+									fixed: 2.04,
+									comparison: 3.94,
+									combined: true,
+									specialOffer: 3,
 								},
 								{
 									year: 2,
-									fixed: _getIR('FRL_OA_2_YEARS' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_OA_2_YEARS' + '_' + rateCode),
-									combined: true
+									fixed: 1.84,
+									comparison: 3.73,
+									combined: true,
+									specialOffer: 3,
 								},
 								{
 									year: 3,
-									fixed: _getIR('FRL_OA_3_YEARS' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_OA_3_YEARS' + '_' + rateCode),
-									combined: true
+									fixed: 1.89,
+									comparison: 3.56,
+									combined: true,
+									specialOffer: 3,
 								},
 								{
 									year: 4,
-									fixed: _getIR('FRL_OA_4_YEARS' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_OA_4_YEARS' + '_' + rateCode),
-									combined: true
+									fixed: 2.34,
+									comparison: 3.54,
+									combined: true,
+									specialOffer: 3,
 								},
 								{
 									year: 5,
-									fixed: _getIR('FRL_OA_5_YEARS' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_OA_5_YEARS' + '_' + rateCode),
-									combined: true
+									fixed: 2.49,
+									comparison: 3.48,
+									combined: true,
+									specialOffer: 3,
 								}
 							],
 						},
 						{
-							titleHtml: 'When not combined with an <span class="color-orange bold">Orange Advantage</span>',
+							titleHtml: 'When not combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is 80% or less',
 							rateInfos: [
 								{
 									year: 1,
-									fixed: _getIR('FRL_1_YEAR' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_1_YEAR' + '_' + rateCode),
-									combined: false
+									fixed: 2.14,
+									comparison: 3.94,
+									combined: false,
+									specialOffer: 4,
 								},
 								{
 									year: 2,
-									fixed: _getIR('FRL_2_YEARS' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_2_YEARS' + '_' + rateCode),
-									combined: false
+									fixed: 1.94,
+									comparison: 3.74,
+									combined: false,
+									specialOffer: 4,
 								},
 								{
 									year: 3,
-									fixed: _getIR('FRL_3_YEARS' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_3_YEARS' + '_' + rateCode),
-									combined: false
+									fixed: 1.99,
+									comparison: 3.59,
+									combined: false,
+									specialOffer: 4,
 								},
 								{
 									year: 4,
-									fixed: _getIR('FRL_4_YEARS' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_4_YEARS' + '_' + rateCode),
-									combined: false
+									fixed: 2.44,
+									comparison: 3.58,
+									combined: false,
+									specialOffer: 4,
 								},
 								{
 									year: 5,
-									fixed: _getIR('FRL_5_YEARS' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_5_YEARS' + '_' + rateCode),
-									combined: false
+									fixed: 2.59,
+									comparison: 3.52,
+									combined: false,
+									specialOffer: 4,
 								}
 							],
 						}
 					];
 				}
-				// IO
-				else if ( $scope.calcOptions.optionRepayment.selected == 1 ) {
+				// LVR is above 80% and less than or equal to 90%
+				else if ($scope.calcOptions.optionDeposit.selected == 1) {
 					$scope.fixedRateTableInfo.tableInfos = [
 						{
-							titleHtml: 'When combined with an <span class="color-orange bold">Orange Advantage</span>',
+							titleHtml: 'When combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is above 80% and less than or equal to 90%',
 							rateInfos: [
 								{
 									year: 1,
-									fixed: _getIR('FRL_OA_1_YEAR_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_OA_1_YEAR_IO' + '_' + rateCode),
-									combined: true
+									fixed: 2.14,
+									comparison: 3.94,
+									combined: true,
+									specialOffer: 2,
 								},
 								{
 									year: 2,
-									fixed: _getIR('FRL_OA_2_YEARS_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_OA_2_YEARS_IO' + '_' + rateCode),
-									combined: true
+									fixed: 1.94,
+									comparison: 3.74,
+									combined: true,
+									specialOffer: 2,
 								},
 								{
 									year: 3,
-									fixed: _getIR('FRL_OA_3_YEARS_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_OA_3_YEARS_IO' + '_' + rateCode),
-									combined: true
+									fixed: 1.99,
+									comparison: 3.59,
+									combined: true,
+									specialOffer: 2,
 								},
 								{
 									year: 4,
-									fixed: _getIR('FRL_OA_4_YEARS_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_OA_4_YEARS_IO' + '_' + rateCode),
-									combined: true
+									fixed: 2.44,
+									comparison: 3.58,
+									combined: true,
+									specialOffer: 2,
 								},
 								{
 									year: 5,
-									fixed: _getIR('FRL_OA_5_YEARS_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_OA_5_YEARS_IO' + '_' + rateCode),
-									combined: true
+									fixed: 2.59,
+									comparison: 3.52,
+									combined: true,
+									specialOffer: 2,
 								}
+								
 							],
 						},
 						{
-							titleHtml: 'When not combined with an <span class="color-orange bold">Orange Advantage</span>',
+							titleHtml: 'When not combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and less than or equal to 90%',
 							rateInfos: [
 								{
 									year: 1,
-									fixed: _getIR('FRL_1_YEAR_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_1_YEAR_IO' + '_' + rateCode),
-									combined: false
+									fixed: 2.24,
+									comparison: 3.95,
+									combined: false,
+									specialOffer: 4,
 								},
 								{
 									year: 2,
-									fixed: _getIR('FRL_2_YEARS_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_2_YEARS_IO' + '_' + rateCode),
-									combined: false
+									fixed: 2.04,
+									comparison: 3.76,
+									combined: false,
+									specialOffer: 4,
 								},
 								{
 									year: 3,
-									fixed: _getIR('FRL_3_YEARS_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_3_YEARS_IO' + '_' + rateCode),
-									combined: false
+									fixed: 2.09,
+									comparison: 3.61,
+									combined: false,
+									specialOffer: 4,
 								},
 								{
 									year: 4,
-									fixed: _getIR('FRL_4_YEARS_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_4_YEARS_IO' + '_' + rateCode),
-									combined: false
+									fixed: 2.54,
+									comparison: 3.61,
+									combined: false,
+									specialOffer: 4,
 								},
 								{
 									year: 5,
-									fixed: _getIR('FRL_5_YEARS_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_5_YEARS_IO' + '_' + rateCode),
-									combined: false
+									fixed: 2.69,
+									comparison: 3.56,
+									combined: false,
+									specialOffer: 4,
 								}
 							],
 						}
 					];
 				}
+				// LVR is more than 90%
 				else {
-					return;
+					$scope.fixedRateTableInfo.tableInfos = [
+						{
+							titleHtml: 'When combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is more than 90%',
+							rateInfos: [
+								{
+									year: 1,
+									fixed: 2.59,
+									comparison: 4.11,
+									combined: true,
+									specialOffer: 1,
+								},
+								{
+									year: 2,
+									fixed: 2.39,
+									comparison: 3.82,
+									combined: true,
+									specialOffer: 1,
+								},
+								{
+									year: 3,
+									fixed: 2.44,
+									comparison: 3.70,
+									combined: true,
+									specialOffer: 1,
+								},
+								{
+									year: 4,
+									fixed: 2.89,
+									comparison: 3.72,
+									combined: true,
+									specialOffer: 1,
+								},
+								{
+									year: 5,
+									fixed: 3.04,
+									comparison: 3.70,
+									combined: true,
+									specialOffer: 1,
+								}
+							],
+						},
+						{
+							titleHtml: 'When not combined with a vaiable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is more than 90%',
+							rateInfos: [
+								{
+									year: 1,
+									fixed: 2.69,
+									comparison: 3.99,
+									combined: false,
+									specialOffer: 4,
+								},
+								{
+									year: 2,
+									fixed: 2.49,
+									comparison: 3.84,
+									combined: false,
+									specialOffer: 4,
+								},
+								{
+									year: 3,
+									fixed: 2.54,
+									comparison: 3.72,
+									combined: false,
+									specialOffer: 4,
+								},
+								{
+									year: 4,
+									fixed: 2.99,
+									comparison: 3.76,
+									combined: false,
+									specialOffer: 4,
+								},
+								{
+									year: 5,
+									fixed: 3.14,
+									comparison: 3.74,
+									combined: false,
+									specialOffer: 4,
+								}
+							],
+						}
+					];
 				}
 
 				var lowestRateInfo = getLowestRateInfo($scope.fixedRateTableInfo.tableInfos);
 				$scope.fixedRateTableInfo.updateFixedRateCardInfo(lowestRateInfo.tableIndex, lowestRateInfo.rateIndex);
 			}
-			// INV
+			// invest
 			else if ($scope.calcOptions.optionPurpose.selected == 1) {
 				// P&I
 				if( $scope.calcOptions.optionRepayment.selected == 0 ) {
@@ -734,28 +818,28 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 							rateInfos: [
 								{
 									year: 1,
-									fixed: _getIR('FRL_INV_1_YEAR' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_INV_1_YEAR' + '_' + rateCode),
+									fixed: _getIR('FRL_INV_1_YEAR'),
+									comparison: _getIR('COMP_FRL_INV_1_YEAR'),
 								},
 								{
 									year: 2,
-									fixed: _getIR('FRL_INV_2_YEARS' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_INV_2_YEARS' + '_' + rateCode),
+									fixed: _getIR('FRL_INV_2_YEARS'),
+									comparison: _getIR('COMP_FRL_INV_2_YEARS'),
 								},
 								{
 									year: 3,
-									fixed: _getIR('FRL_INV_3_YEARS' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_INV_3_YEARS' + '_' + rateCode),
+									fixed: _getIR('FRL_INV_3_YEARS'),
+									comparison: _getIR('COMP_FRL_INV_3_YEARS'),
 								},
 								{
 									year: 4,
-									fixed: _getIR('FRL_INV_4_YEARS' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_INV_4_YEARS' + '_' + rateCode),
+									fixed: _getIR('FRL_INV_4_YEARS'),
+									comparison: _getIR('COMP_FRL_INV_4_YEARS'),
 								},
 								{
 									year: 5,
-									fixed: _getIR('FRL_INV_5_YEARS' + '_' + rateCode),
-									comparison: _getIR('COMP_FRL_INV_5_YEARS' + '_' + rateCode),
+									fixed: _getIR('FRL_INV_5_YEARS'),
+									comparison: _getIR('COMP_FRL_INV_5_YEARS'),
 								}
 							]
 						},
@@ -769,28 +853,28 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 							rateInfos: [
 								{
 									year: 1,
-									fixed: _getIR('FRL_INV_1_YEAR_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_INV_1_YEAR_IO' + '_' + rateCode),
+									fixed: _getIR('FRL_INV_1_YEAR_IO'),
+									comparison: _getIR('COMP_FRL_INV_1_YEAR_IO'),
 								},
 								{
 									year: 2,
-									fixed: _getIR('FRL_INV_2_YEARS_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_INV_2_YEARS_IO' + '_' + rateCode),
+									fixed: _getIR('FRL_INV_2_YEARS_IO'),
+									comparison: _getIR('COMP_FRL_INV_2_YEARS_IO'),
 								},
 								{
 									year: 3,
-									fixed: _getIR('FRL_INV_3_YEARS_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_INV_3_YEARS_IO' + '_' + rateCode),
+									fixed: _getIR('FRL_INV_3_YEARS_IO'),
+									comparison: _getIR('COMP_FRL_INV_3_YEARS_IO'),
 								},
 								{
 									year: 4,
-									fixed: _getIR('FRL_INV_4_YEARS_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_INV_4_YEARS_IO' + '_' + rateCode),
+									fixed: _getIR('FRL_INV_4_YEARS_IO'),
+									comparison: _getIR('COMP_FRL_INV_4_YEARS_IO'),
 								},
 								{
 									year: 5,
-									fixed: _getIR('FRL_INV_5_YEARS_IO' + '_' + rateCode),
-									comparison: _getIR('CP_FRL_INV_5_YEARS_IO' + '_' + rateCode),
+									fixed: _getIR('FRL_INV_5_YEARS_IO'),
+									comparison: _getIR('COMP_FRL_INV_5_YEARS_IO'),
 								}
 							]
 						},
@@ -837,7 +921,6 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 			$scope.fixedRateTableInfo.selected.tableIndex = tableIndex;
 			$scope.fixedRateTableInfo.selected.rowIndex = rowIndex;
 
-			//
 			var rateInfo = $scope.fixedRateTableInfo.tableInfos[tableIndex].rateInfos[rowIndex];
 
 			_update_FRL_CardInterestRatesEx(rateInfo);
@@ -909,271 +992,316 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 		_updateFixedRateTableInfoEx();
 	};
 
-	// v2.0
-	// MS
 	var _update_MS_CardInterestRates = function () {
 		var cardInfo = $scope.cardInfos[0];
 		var interestInfo1 = cardInfo.interestInfo1;
 		var interestInfo2 = cardInfo.interestInfo2;
 		var purpose = $scope.calcOptions.optionPurpose.selected;
 		var borrowing = $scope.calcOptions.optionBorrowing.selected;
-		var deposit = $scope.calcOptions.optionDeposit.selected.value; // v2.0
+		var deposit = $scope.calcOptions.optionDeposit.selected;
 		var repayType = $scope.calcOptions.optionRepayment.selected;
-		var rateCode = _rateCode[deposit].code; // v2.0
-		var interestRateCode1 = ''; // v2.0
-		var interestRateCode2 = ''; // v2.0
 
-		// v2.0
 		//$150k or less
 		if (borrowing == 0) {
-			if (purpose == 0) { // OO
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'MS_IO_MAX150_OO';
+			if (purpose == 0) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_MAX150');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_MAX150');
 				}
-				else { // P&I
-					interestRateCode1 = 'MS_MAX150';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MAX150');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_MAX150');
 				}
 			}
-			if (purpose == 1) { // INV
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'MS_IO_MAX150_INV';
+			if (purpose == 1) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_INV_MAX150');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_INV_MAX150');
 				}
-				else { // P&I
-					interestRateCode1 = 'MS_MAX150_INV';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_PI_INV_MAX150');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_PI_INV_MAX150');
 				}
 			}
 		}
 		//>$150k <$500k
 		else if (borrowing == 1) {
-			if (purpose == 0) { // OO
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'MS_IO_150_500_OO';
+			if (deposit == 2) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_150_500_OO_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_150_500_OO_LVR80');
 				}
-				else { // P&I
-					interestRateCode1 = 'MS150_500';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS150_500_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS150_500_LVR80');
 				}
 			}
-			if (purpose == 1) { // INV
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'MS_IO_150_500_INV';
+			if (deposit == 1) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS150_500_LVR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS150_500_LR80_90');
+			}
+			if (deposit == 0) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS150_500_LVR90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS150_500_LVR90');
+			}
+			if (purpose == 1 && deposit == 0) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS150_500_INVLR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CPMS150_500_INV80_90');
+			}
+			if (purpose == 1 && deposit == 1) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS150_500_INVLR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CPMS150_500_INV80_90');
+			}
+			if (purpose == 1 && deposit == 2) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_150_500_INV_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_150_500_INV_LVR80');
 				}
-				else { // P&I
-					interestRateCode1 = 'MS150_500_INV';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS150_500_INV_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS150_500_INVLR80');
 				}
 			}
 		}
 		//>$500k <$1MIL
 		else if (borrowing == 2) {
-			if (purpose == 0) { // OO
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'MS_IO_MIN500_OO';
+			if (deposit == 2) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_MIN500_OO_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_MIN500_OO_LVR80');
 				}
-				else { // P&I
-					interestRateCode1 = 'MS_MIN500';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MIN500_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_MIN500_LR80');
 				}
 			}
-			if (purpose == 1) { // INV
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'MS_IO_MIN500_INV';
+			if (deposit == 1) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MIN500_LVR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_MIN500_LR80_90');
+			}
+			if (deposit == 0) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MIN500_LVR90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_MIN500_LVR90');
+			}
+			if (purpose == 1 && deposit == 0) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MSMIN500_INV_LR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MSMIN500_INV80_90');
+			}
+			if (purpose == 1 && deposit == 1) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MSMIN500_INV_LR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MSMIN500_INV80_90');
+			}
+			if (purpose == 1 && deposit == 2) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_MIN500_INV_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_MIN500_INV_LVR80');
 				}
-				else { // P&I
-					interestRateCode1 = 'MS_MIN500_INV';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MIN500_INV_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MSMIN500_INV_LR80');
 				}
 			}
 		}
 		//>$1MIL
 		else if (borrowing == 3) {
-			if (purpose == 0) { // OO
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'MS_IO_MIN1_OO';
+			if (deposit == 2) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS1M_OO_IO_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS1M_OO_IO_LVR80');
 				}
-				else { // P&I
-					interestRateCode1 = 'MS_MIN1';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS1M_OO_PI_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS1M_OO_PI_LVR80');
 				}
 			}
-			if (purpose == 1) { // INV
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'MS_IO_MIN1_INV';
+			if (deposit == 1) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MIN500_LVR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_MIN500_LR80_90');
+			}
+			if (deposit == 0) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MIN500_LVR90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_MIN500_LVR90');
+			}
+			if (purpose == 1 && deposit == 0) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MSMIN500_INV_LR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MSMIN500_INV80_90');
+			}
+			if (purpose == 1 && deposit == 1) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MSMIN500_INV_LR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MSMIN500_INV80_90');
+			}
+			if (purpose == 1 && deposit == 2) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_IO_MIN500_INV_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MS_IO_MIN500_INV_LVR80');
 				}
-				else { // P&I
-					interestRateCode1 = 'MS_MIN1_INV';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('MS_MIN500_INV_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_MSMIN500_INV_LR80');
 				}
 			}
 		}
-
-		// add rate code (LVR50, LVR50_60 ... LVR90)
-		interestRateCode1 += '_' + rateCode;
-		interestRateCode2 = 'CP_' + interestRateCode1; // adding 'CP_' for comparison rate
-
-		// console.log('[MS] Rate code: ' + interestRateCode1 + ', Comparison rate code: ' + interestRateCode2);
-
-
-
-// --------------
-// MARK: override
-// --------------
-if(interestRateCode1 == 'MS150_500_LVR80_90') {
-	interestRateCode2 = 'CP_MS150_500_LR80_90';
-}
-else if(interestRateCode1 == 'MS150_500_INV_LVR80_90') {
-	interestRateCode1 = 'MS150_500_INVLR80_90';
-	interestRateCode2 = 'CPMS150_500_INV80_90';
-}
-else if(interestRateCode1 == 'MS_MIN500_LVR80_90') {
-	interestRateCode2 = 'CP_MS_MIN500_LR80_90';
-}
-else if(interestRateCode1 == 'MS_MIN500_INV_LVR80_90') {
-	interestRateCode1 = 'MSMIN500_INV_LR80_90';
-	interestRateCode2 = 'CP_MSMIN500_INV80_90';
-}
-
-
-
-
-
-
-		interestInfo1.rate = $scope.mainInfo.getInterestRateByCode(interestRateCode1);
-		interestInfo2.rate = $scope.mainInfo.getInterestRateByCode(interestRateCode2);
 	};
-
-	// v2.0
-	// OA
 	var _update_OA_CardInterestRates = function () {
 		var cardInfo = $scope.cardInfos[1];
 		var interestInfo1 = cardInfo.interestInfo1;
 		var interestInfo2 = cardInfo.interestInfo2;
 		var purpose = $scope.calcOptions.optionPurpose.selected;
 		var borrowing = $scope.calcOptions.optionBorrowing.selected;
-		var deposit = $scope.calcOptions.optionDeposit.selected.value; // v2.0
+		var deposit = $scope.calcOptions.optionDeposit.selected;
 		var repayType = $scope.calcOptions.optionRepayment.selected;
-		var rateCode = _rateCode[deposit].code; // v2.0
-		var interestRateCode1 = ''; // v2.0
-		var interestRateCode2 = ''; // v2.0
 
 		//$150k or less
 		if (borrowing == 0) {
-			if (purpose == 0) { // OO
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'OA_IO_MAX150_OO';
+			if (purpose == 0) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_MAX150');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_MAX150');
 				}
-				else { // P&I
-					interestRateCode1 = 'OA_MAX150';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_MAX150');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_MAX150');
 				}
 			}
-			if (purpose == 1) { // INV
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'OA_IO_MAX150_INV';
+			if (purpose == 1) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_INV_MAX150');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_INV_MAX150');
 				}
-				else { // P&I
-					interestRateCode1 = 'OA_MAX150_INV';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_PI_INV_MAX150');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_PI_INV_MAX150');
 				}
 			}
 		}
 		//>$150k <$500k
 		else if (borrowing == 1) {
-			if (purpose == 0) { // OO
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'OA_IO_150_500_OO';
+			if (deposit == 2) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_150_500_OO_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_150_500_OO_LVR80');
 				}
-				else { // P&I
-					interestRateCode1 = 'OA150_500';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA150_500_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA150_500_LVR80');
 				}
 			}
-			if (purpose == 1) { // INV
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'OA_IO_150_500_INV';
+			if (deposit == 1) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA150_500_LVR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA150_500_LR80_90');
+			}
+			if (deposit == 0) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA150_500_LVR90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA150_500_LVR90');
+			}
+			if (purpose == 1 && deposit == 0) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA150_500_INVLR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CPOA150_500_INV80_90');
+			}
+			if (purpose == 1 && deposit == 1) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA150_500_INVLR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CPOA150_500_INV80_90');
+			}
+			if (purpose == 1 && deposit == 2) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_150_500_INV_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_150_500_INV_LVR80');
 				}
-				else { // P&I
-					interestRateCode1 = 'OA150_500_INV';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA150_500_INV_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA150_500_INVLR80');
 				}
 			}
 		}
 		//>$500k <$1MIL
 		else if (borrowing == 2) {
-			if (purpose == 0) { // OO
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'OA_IO_MIN500_OO';
+			if (deposit == 2) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_MIN500_OO_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_MIN500_OO_LVR80');
 				}
-				else { // P&I
-					interestRateCode1 = 'OA_MIN500';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_MIN500_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_MIN500_LR80');
 				}
 			}
-			if (purpose == 1) { // INV
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'OA_IO_MIN500_INV';
+			if (deposit == 1) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_MIN500_LVR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_MIN500_LR80_90');
+			}
+			if (deposit == 0) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_MIN500_LVR90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_MIN500_LVR90');
+			}
+			if (purpose == 1 && deposit == 0) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OAMIN500_INV_LR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OAMIN500_INV80_90');
+			}
+			if (purpose == 1 && deposit == 1) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OAMIN500_INV_LR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OAMIN500_INV80_90');
+			}
+			if (purpose == 1 && deposit == 2) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_MIN500_INV_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_MIN500_INV_LVR80');
 				}
-				else { // P&I
-					interestRateCode1 = 'OA_MIN500_INV';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_MIN500_INV_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OAMIN500_INV_LR80');
 				}
 			}
 		}
 		//>$1MIL
 		else if( borrowing == 3) {
-			if (purpose == 0) { // OO
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'OA_IO_1M_OO';
+			if (deposit == 2) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA1M_OO_IO_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA1M_OO_IO_LVR80');
 				}
-				else { // P&I
-					interestRateCode1 = 'OA_PI_1M_OO';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA1M_OO_PI_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA1M_OO_PI_LVR80');
 				}
 			}
-			if (purpose == 1) { // INV
-				if (repayType == 1) { // IO
-					interestRateCode1 = 'OA_IO_1M_INV';
+			if (deposit == 1) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_MIN500_LVR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_MIN500_LR80_90');
+			}
+			if (deposit == 0) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_MIN500_LVR90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_MIN500_LVR90');
+			}
+			if (purpose == 1 && deposit == 0) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OAMIN500_INV_LR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OAMIN500_INV80_90');
+			}
+			if (purpose == 1 && deposit == 1) {
+				interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OAMIN500_INV_LR80_90');
+				interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OAMIN500_INV80_90');
+			}
+			if (purpose == 1 && deposit == 2) {
+				if (repayType == 1) {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_IO_MIN500_INV_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OA_IO_MIN500_INV_LVR80');
 				}
-				else { // P&I
-					interestRateCode1 = 'OA_PI_1M_INV';
+				else {
+					interestInfo1.rate = $scope.mainInfo.getInterestRateByCode('OA_MIN500_INV_LVR80');
+					interestInfo2.rate = $scope.mainInfo.getInterestRateByCode('CP_OAMIN500_INV_LR80');
 				}
 			}
 		}
-
-		// add rate code (LVR50, LVR50_60 ... LVR90)
-		interestRateCode1 += '_' + rateCode;
-		interestRateCode2 = 'CP_' + interestRateCode1; // adding 'CP_' for comparison rate
-
-		// console.log('[OA] Rate code: ' + interestRateCode1 + ', Comparison rate code: ' + interestRateCode2);
-
-
-
-
-// --------------
-// MARK: override
-// --------------
-if (interestRateCode1 == 'OA150_500_LVR80_90') {
-	interestRateCode2 = 'CP_OA150_500_LR80_90';
-}
-else if (interestRateCode1 == 'OA150_500_INV_LVR80_90') {
-	interestRateCode1 = 'OA150_500_INVLR80_90';
-	interestRateCode2 = 'CPOA150_500_INV80_90';
-}
-else if (interestRateCode1 == 'OA_MIN500_LVR80_90') {
-	interestRateCode2 = 'CP_OA_MIN500_LR80_90';
-}
-else if (interestRateCode1 == 'OA_MIN500_INV_LVR80_90') {
-	interestRateCode1 = 'OAMIN500_INV_LR80_90';
-	interestRateCode2 = 'CP_OAMIN500_INV80_90';
-}
-
-
-
-
-
-
-		interestInfo1.rate = $scope.mainInfo.getInterestRateByCode(interestRateCode1);
-		interestInfo2.rate = $scope.mainInfo.getInterestRateByCode(interestRateCode2);
 	};
-
-	// FRL
 	var _update_FRL_CardInterestRatesEx = function (rateInfo) {
 		var cardInfo = $scope.cardInfos[2];
 		cardInfo.interestInfo1.rate = rateInfo.fixed;
 		cardInfo.interestInfo1.name = rateInfo.year + ' YR fixed rate <span class="icon-font icon-arrow-down"></span>';
 		cardInfo.interestInfo2.rate = rateInfo.comparison;
 		if (rateInfo.combined == false) {
-			cardInfo.specialOffer = false;
+			cardInfo.specialOffer = 4; // Nothing
 		}
 		else {
-			cardInfo.specialOffer = true;
+			cardInfo.specialOffer = rateInfo.specialOffer; // 1 OR 2 OR 3
 		}
 	}
 
@@ -1219,44 +1347,29 @@ else if (interestRateCode1 == 'OA_MIN500_INV_LVR80_90') {
 
 	// WATCH CALCULATOR OPTIONS
 	$scope.$watch('calcOptions.optionPurpose.selected', function () {
-		var menus = $scope.calcOptions.optionDeposit.menus;
-		var defaultLength = _depositDefaultMenus.length;
-
-		// v2.0 - hide deposit below 20% (default) if INV
-		if ($scope.calcOptions.optionPurpose.selected == 1) { // INV - allow >20%
-			if (menus.length == defaultLength) {
-				// if option selected was below index 2 then make index 2 item selected
-				if( $scope.calcOptions.optionDeposit.selected == $scope.calcOptions.optionDeposit.menus[0] || 
-					$scope.calcOptions.optionDeposit.selected == $scope.calcOptions.optionDeposit.menus[1] ) {
-					$scope.calcOptions.optionDeposit.selected = $scope.calcOptions.optionDeposit.menus[2];
-				}
-				// remove first 2 from the dropdown
-				$scope.calcOptions.optionDeposit.menus.splice(0,2);
-			}
-		}
-		else if ($scope.calcOptions.optionPurpose.selected == 0) { // OO
-			if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length < defaultLength) { 
-				// do nothing
-			}
-			else if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length == defaultLength) { // IO
-				// if option selected was below index 2 then make index 2 item selected
-				if( $scope.calcOptions.optionDeposit.selected == $scope.calcOptions.optionDeposit.menus[0] || 
-					$scope.calcOptions.optionDeposit.selected == $scope.calcOptions.optionDeposit.menus[1] ) {
-					$scope.calcOptions.optionDeposit.selected = $scope.calcOptions.optionDeposit.menus[2];
-				}
-				$scope.calcOptions.optionDeposit.menus.splice(0,2);
-			}
-			else if (menus.length < defaultLength) {
-				$scope.calcOptions.optionDeposit.menus = _depositDefaultMenus.slice();
-				// $scope.calcOptions.optionDeposit.selected = $scope.calcOptions.optionDeposit.menus[2]; // keep the current option
-			}
-		}
-		else if (menus.length < defaultLength) {
-		   $scope.calcOptions.optionDeposit.menus = _depositDefaultMenus.slice();
-		   // $scope.calcOptions.optionDeposit.selected = $scope.calcOptions.optionDeposit.menus[2]; // keep the current option
-		}
-
 		_updateCalculatorWithPurpose();
+		var menus = $scope.calcOptions.optionDeposit.menus;
+		if ($scope.calcOptions.optionPurpose.selected == 1){
+			if (menus.length == 3) {
+				$scope.calcOptions.optionDeposit.selected = 2;
+				$scope.calcOptions.optionDeposit.menus.splice(0,2);
+			}
+		}
+		else if ($scope.calcOptions.optionPurpose.selected == 0) {
+			if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length < 3) { }
+			else if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length == 3) {
+				$scope.calcOptions.optionDeposit.selected = 2;
+				$scope.calcOptions.optionDeposit.menus.splice(0, 2);
+			}
+			else if (menus.length < 3) {
+				$scope.calcOptions.optionDeposit.menus.unshift({ name: '&lt; 10%', value: undefined }, { name: '&geq; 10% - <br/>&lt; 20%', value: undefined, doubleline: true });
+				$scope.calcOptions.optionDeposit.selected = 2;
+			}
+		}
+		else if (menus.length < 3) {
+		   $scope.calcOptions.optionDeposit.menus.unshift({ name: '&lt; 10%', value: undefined }, { name: '&geq; 10% - <br/>&lt; 20%', value: undefined, doubleline: true });
+		   $scope.calcOptions.optionDeposit.selected = 2;
+		}
 	});
 	$scope.$watch('calcOptions.optionBorrowing.selected', function () {
 		if ($scope.calcOptions.optionBorrowing.isFromInput) {
@@ -1297,22 +1410,17 @@ else if (interestRateCode1 == 'OA_MIN500_INV_LVR80_90') {
 		_updateCalculator();
 	});
 	$scope.$watch('calcOptions.optionRepayment.selected', function () {
-		// v2.0 - hide deposit below 20% (default) if OO & IO
 		var menus = $scope.calcOptions.optionDeposit.menus;
-		var defaultLength = _depositDefaultMenus.length;
-
-		if ($scope.calcOptions.optionPurpose.selected == 0) { // OO
-			if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length == defaultLength) { // IO
-				// if option selected was below index 2 then make index 2 item selected
-				if( $scope.calcOptions.optionDeposit.selected == $scope.calcOptions.optionDeposit.menus[0] || 
-					$scope.calcOptions.optionDeposit.selected == $scope.calcOptions.optionDeposit.menus[1] ) {
-					$scope.calcOptions.optionDeposit.selected = $scope.calcOptions.optionDeposit.menus[2];
-				}
+		if ($scope.calcOptions.optionPurpose.selected == 0){
+			if ($scope.calcOptions.optionRepayment.selected == 1 && menus.length == 3) {
+				$scope.calcOptions.optionDeposit.selected = 2;
 				$scope.calcOptions.optionDeposit.menus.splice(0,2);
+				
 			}
-			else if (menus.length < defaultLength) {
-				$scope.calcOptions.optionDeposit.menus = _depositDefaultMenus.slice();
-				// $scope.calcOptions.optionDeposit.selected = $scope.calcOptions.optionDeposit.menus[2]; // keep the current option
+			else if (menus.length < 3) {
+				$scope.calcOptions.optionDeposit.menus.unshift({ name: '&lt; 10%', value: undefined }, { name: '&geq; 10% - <br/>&lt; 20%', value: undefined, doubleline: true });
+				$scope.calcOptions.optionDeposit.selected = 2;
+	 
 			 }
 		}
 		
@@ -1321,13 +1429,18 @@ else if (interestRateCode1 == 'OA_MIN500_INV_LVR80_90') {
 	$scope.$watch('calcOptions.optionFrequency.selected', function () {
 		_updateCalculator();
 	});
+	$scope.$watch('calcOptions.optionLoanTerm.selected', function () {
+		_updateCalculator();
+	});
 	// MARK: this watch only for mobile modal view
 	$scope.$watch('calcOptions.optionFrequency.selectedIndex', function () {
 		$scope.calcOptions.optionFrequency.selected = $scope.calcOptions.optionFrequency.menus[$scope.calcOptions.optionFrequency.selectedIndex];
 	});
-	$scope.$watch('calcOptions.optionLoanTerm.selected', function () {
-		_updateCalculator();
-	});
+	
+	// 191001 LASH - this doesn't do anything, commented this part out for now
+	//$scope.$watch('calcOptions.optionPurpose.selected', function () {
+	//
+	//});
 }]);
 
 
@@ -1612,6 +1725,7 @@ angular.module('Homeloan-App').controller('ModalMobileCalculatorController', ["$
 // MOBILE: MODAL FIXED RATE TABLE CONTROLLER
 // ----------------------------------------------
 angular.module('Homeloan-App').controller('ModalMobileFixedRateTableController', ["$scope", "$uibModalInstance", "fixedRateTableInfo", "mainInfo", function ($scope, $uibModalInstance, fixedRateTableInfo, mainInfo) {
+
 	$scope.fixedRateTableInfo = fixedRateTableInfo;
 	$scope.mainInfo = mainInfo;
 
@@ -1663,7 +1777,6 @@ angular.module('Homeloan-App').directive('bsDropdown', ["$compile", function ($c
 		},
 		link: function (scope, element, attrs) {
 			var html = '';
-
 			switch (attrs.menuType) {
 				case "button":
 					html += '<div class="btn-group btn-block"><button class="btn btn-dropdown-orange btn-block dropdown-toggle symbol-right text-left" data-toggle="dropdown">Action</button><span class="button-symbol"><span class="caret"></span></span>';
@@ -1673,16 +1786,13 @@ angular.module('Homeloan-App').directive('bsDropdown', ["$compile", function ($c
 					break;
 			}
 			html += '<ul class="dropdown-menu"><li ng-repeat="item in items"><a tabindex="-1" data-ng-click="selectVal(item)" href="javascript:;">{{rawText(item.name)}}</a></li></ul></div>';
-			
 			element.append($compile(html)(scope));
-			
 			for (var i = 0; i < scope.items.length; i++) {
 				if (scope.items[i].name === scope.selectedItem.name) {
 					scope.bSelectedItem = scope.items[i];
 					break;
 				}
 			}
-
 			scope.selectVal = function (item) {
 				switch (attrs.menuType) {
 					case "button":
@@ -1696,19 +1806,9 @@ angular.module('Homeloan-App').directive('bsDropdown', ["$compile", function ($c
 					selectedVal: item
 				});
 			};
-			
 			scope.rawText = function (text) {
 				return $('<div>').html(text).text();
 			},
-
-			// scope.$watch('items', function () {
-			// 	// scope.selectVal( scope.bSelectedItem );
-			// }),
-
-			scope.$watch('selectedItem', function() {
-				scope.selectVal(scope.selectedItem)
-			}),
-
 			scope.selectVal(scope.bSelectedItem);
 		}
 	};
