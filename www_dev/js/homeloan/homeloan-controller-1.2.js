@@ -678,7 +678,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 							],
 						},
 						{
-							titleHtml: 'When not combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and less than or equal to 90%',
+							titleHtml: 'When not combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is above 80% and less than or equal to 90%',
 							rateInfos: [
 								{
 									year: 1,
