@@ -6,13 +6,7 @@
  *
  */
 
-
-
-Questions:
----------
-- Default Deposit? (used to be >20%) => TBC
-
-
+# V2.0 is to add more deposit options with introduction of new associated rates
 
 Update log:
 ----------
@@ -20,15 +14,24 @@ Update log:
 2. home-loans.html: changing for 'Deposit' field from radio button to dropdown (desktop, mobile, mobile refinement popup)
 3. homeloan-controller-2.0.js (new)
 4. interestRateManager-homeloan-2.0.js (new) - angular notifier added based on the latest interestRateManager.js provided from ING (Laura)
+5. repayment information popup style issue - blue mobile modal dialog missing height: 100% (not sure what happened but this is not visible on production either)
 
-
-
-Files to package up:
+V2.0 Package:
 -------------------
 /home-loans-lvr-test.html
 /js/homeloan/homeloan-controller-2.0.js
 /js/homeloan/homeloan-controller-2.0.min.js
 /js/homeloan/interestRateManager-homeloan.2.0.js (MARK: replacement for interestRateManager.js ONLY on this page)
+/css/homeloan-style.min.css
+
+
+
+# V1.2 is updating the FRL rates to show different table per deposit selection
+
+V1.2 Package:
+------------
+/home-loans.html
+/js/homeloan/homeloan-controller-1.2.js
 /css/homeloan-style.min.css
 
 
