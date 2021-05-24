@@ -16,6 +16,11 @@ Update log:
 4. interestRateManager-homeloan-2.0.js (new) - angular notifier added based on the latest interestRateManager.js provided from ING (Laura)
 5. repayment information popup style issue - blue mobile modal dialog missing height: 100% (not sure what happened but this is not visible on production either)
 
+
+TODO:
+[ ] Make sure we have to latest home-loans.html contents in the home-loans-lvr-test.html
+
+
 V2.0 Package:
 -------------------
 /home-loans-lvr-test.html
@@ -27,6 +32,8 @@ V2.0 Package:
 
 
 # V1.2 is updating the FRL rates to show different table per deposit selection
+
+## Package released: 21 May 2021 
 
 V1.2 Package:
 ------------
