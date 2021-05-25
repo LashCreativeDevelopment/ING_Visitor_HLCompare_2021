@@ -592,7 +592,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 							],
 						},
 						{
-							titleHtml: 'When not combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is 80% or less',
+							titleHtml: 'When <strong>not</strong> combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is 80% or less',
 							rateInfos: [
 								{
 									year: 1,
@@ -678,7 +678,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 							],
 						},
 						{
-							titleHtml: 'When not combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is above 80% and less than or equal to 90%',
+							titleHtml: 'When <strong>not</strong> combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is above 80% and less than or equal to 90%',
 							rateInfos: [
 								{
 									year: 1,
@@ -763,7 +763,7 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 							],
 						},
 						{
-							titleHtml: 'When not combined with a vaiable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is more than 90%',
+							titleHtml: 'When <strong>not</strong> combined with a variable <span class="color-orange bold">Orange Advantage</span> home loan and LVR is more than 90%',
 							rateInfos: [
 								{
 									year: 1,
