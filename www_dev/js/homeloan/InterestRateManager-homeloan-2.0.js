@@ -748,8 +748,8 @@ function InterestRateManager() {
 	this.getMS_MIN500_90 = function () { return this.Find("MS_MIN500_LVR90"); };
 	this.getCOMP_MS_MIN500_90 = function () { return this.Find("CP_MS_MIN500_LVR90"); };
     //IO
-    this.getMS_MIN500_90_IO = function () { return this.Find("MS_IO_MIN500_OO_LVR90"); };
-	this.getCOMP_MS_MIN500_90_IO = function () { return this.Find("CP_MS_IO_MIN500_OO_LVR90"); };
+    this.getMS_IO_MIN500_OO_LVR90 = function () { return this.Find("MS_IO_MIN500_OO_LVR90"); };
+	this.getCP_MS_IO_MIN500_OO_LVR90 = function () { return this.Find("CP_MS_IO_MIN500_OO_LVR90"); };
 
     //PI
 	this.getMS_MIN500_INV_80 = function () { return this.Find("MS_MIN500_INV_LVR80"); };
@@ -1886,6 +1886,9 @@ jQuery.fn.extend({
             //PI
             $('.rate_HL_MS_MIN500_90_InterestRate').text(manager.getMS_MIN500_90().Rate).toTwoDecimalPlaces();
             $('.rate_HL_MS_COMP_MIN500_90_InterestRate').text(manager.getCOMP_MS_MIN500_90().Rate).toTwoDecimalPlaces();
+             //IO
+             $('.rate_HL_MS_IO_MIN500_LVR90_InterestRate').text(manager.getMS_IO_MIN500_OO_LVR90().Rate).toTwoDecimalPlaces();
+             $('.rate_HL_CP_MS_IO_MIN500_LVR90_InterestRate').text(manager.getCP_MS_IO_MIN500_OO_LVR90().Rate).toTwoDecimalPlaces();
             //PI
             $('.rate_HL_MS_MIN500_INV_80_InterestRate').text(manager.getMS_MIN500_INV_80().Rate).toTwoDecimalPlaces();
             $('.rate_HL_MS_COMP_MIN500_INV_80_InterestRate').text(manager.getCOMP_MS_MIN500_INV_80().Rate).toTwoDecimalPlaces();
@@ -2106,10 +2109,10 @@ jQuery.fn.extend({
         $('.rate_HL_CP_OA_MAX150_INV_LVR50_60_InterestRate').text(manager.getCP_OA_MAX150_INV_LVR50_60().Rate).toTwoDecimalPlaces();
         //OO IO
         $('.rate_HL_OA_IO_MAX150_OO_LVR50_60_InterestRate').text(manager.getOA_IO_MAX150_OO_LVR50_60().Rate).toTwoDecimalPlaces();
-        $('.rate_HL_CP_OA_IO_MAX150_OO_LVR50_60_InterestRate').text(manager.getCP_OA_IO_MAX150_OO_LVR50_60().Rate).toTwoDecimalPlaces();;
+        $('.rate_HL_CP_OA_IO_MAX150_OO_LVR50_60_InterestRate').text(manager.getCP_OA_IO_MAX150_OO_LVR50_60().Rate).toTwoDecimalPlaces();
         //INV IO
         $('.rate_HL_OA_IO_MAX150_INV_LVR50_60_InterestRate').text(manager.getOA_IO_MAX150_INV_LVR50_60().Rate).toTwoDecimalPlaces();
-        $('.rate_HL_OA_IO_MAX150_INV_LVR50_60_InterestRate').text(manager.getCP_OA_IO_MAX150_INV_LVR50_60().Rate).toTwoDecimalPlaces();
+        $('.rate_HL_CP_OA_IO_MAX150_INV_LVR50_60_InterestRate').text(manager.getCP_OA_IO_MAX150_INV_LVR50_60().Rate).toTwoDecimalPlaces();
 
         //LVR between 60% and 70%
         //OO P&I
