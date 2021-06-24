@@ -86,6 +86,12 @@ angular.module('Homeloan-App').controller('HomeloanController', ["$scope", "$tim
 				}
 			});
 		}
+
+		if(!rate) {
+			console.error('Rate code not found: '+code);
+			rate = null;
+		}
+
 		return rate;
 	};
 
@@ -1013,18 +1019,18 @@ angular.module('Homeloan-App').controller('HomeloanCompareController', ["$scope"
 // MARK: override
 // --------------
 if(interestRateCode1 == 'MS150_500_LVR80_90') {
-	interestRateCode2 = 'CP_MS150_500_LR80_90';
+	interestRateCode2 = 'CP_MS150_500_LR80_90'; // OK
 }
 else if(interestRateCode1 == 'MS150_500_INV_LVR80_90') {
-	interestRateCode1 = 'MS150_500_INVLR80_90';
-	interestRateCode2 = 'CPMS150_500_INV80_90';
+	interestRateCode1 = 'MS150_500_INVLR80_90'; // OK
+	interestRateCode2 = 'CPMS150_500_INV80_90'; // OK
 }
 else if(interestRateCode1 == 'MS_MIN500_LVR80_90') {
-	interestRateCode2 = 'CP_MS_MIN500_LR80_90';
+	interestRateCode2 = 'CP_MS_MIN500_LR80_90'; // OK
 }
 else if(interestRateCode1 == 'MS_MIN500_INV_LVR80_90') {
-	interestRateCode1 = 'MSMIN500_INV_LR80_90';
-	interestRateCode2 = 'CP_MSMIN500_INV80_90';
+	interestRateCode1 = 'MSMIN500_INV_LR80_90'; // OK
+	interestRateCode2 = 'CP_MSMIN500_INV80_90'; // OK
 }
 
 
@@ -1140,18 +1146,18 @@ else if(interestRateCode1 == 'MS_MIN500_INV_LVR80_90') {
 // MARK: override
 // --------------
 if (interestRateCode1 == 'OA150_500_LVR80_90') {
-	interestRateCode2 = 'CP_OA150_500_LR80_90';
+	interestRateCode2 = 'CP_OA150_500_LR80_90'; // OK
 }
 else if (interestRateCode1 == 'OA150_500_INV_LVR80_90') {
-	interestRateCode1 = 'OA150_500_INVLR80_90';
-	interestRateCode2 = 'CPOA150_500_INV80_90';
+	interestRateCode1 = 'OA150_500_INVLR80_90'; // OK
+	interestRateCode2 = 'CPOA150_500_INV80_90'; // OK
 }
 else if (interestRateCode1 == 'OA_MIN500_LVR80_90') {
-	interestRateCode2 = 'CP_OA_MIN500_LR80_90';
+	interestRateCode2 = 'CP_OA_MIN500_LR80_90'; // OK
 }
 else if (interestRateCode1 == 'OA_MIN500_INV_LVR80_90') {
-	interestRateCode1 = 'OAMIN500_INV_LR80_90';
-	interestRateCode2 = 'CP_OAMIN500_INV80_90';
+	interestRateCode1 = 'OAMIN500_INV_LR80_90'; // OK
+	interestRateCode2 = 'CP_OAMIN500_INV80_90'; // OK
 }
 
 
